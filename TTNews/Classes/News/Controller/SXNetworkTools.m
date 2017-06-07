@@ -7,6 +7,7 @@
 
 #import "SXNetworkTools.h"
 #import "NSString+Addition.h"
+#import "QHProgressHUD.h"
 
 @implementation SXNetworkTools
 
@@ -24,7 +25,7 @@
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         instance = [[self alloc]initWithBaseURL:url sessionConfiguration:config];
-        
+        [instance.requestSerializer setTimeoutInterval:5];
         instance.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
     });
     return instance;
@@ -156,6 +157,23 @@
         distanceStr = [df stringFromDate:beDate];
     }
     return distanceStr;
+}
+
++ (void)showText:(UIView*)view text:(NSString *)text hideAfterDelay:(CGFloat)delay {
+    [QHProgressHUD hideHUDForView:view animated:NO];
+    if(!text || text.length == 0) {
+        return;
+    }
+    QHProgressHUD *hud = [QHProgressHUD showHUDAddedTo:view animated:YES];
+    hud.mode = QHProgressHUDModeText;
+    if (text.length > 15) {
+        hud.detailsLabel.numberOfLines = 0;
+        hud.detailsLabel.text = text;
+    } else {
+        hud.label.numberOfLines = 0;
+        hud.label.text = text;
+    }
+    [hud hideAnimated:YES afterDelay:delay];
 }
 
 @end

@@ -28,7 +28,14 @@
 #import "NoPictureNewsTableViewCell.h"
 #import "SXNetworkTools.h"
 
-@interface ContentTableViewController ()
+@interface ContentTableViewController () {
+    NSString* max_time;
+    NSString* min_time;
+    
+    UIView* emptyView;
+    UILabel* emtpyTitle;
+    UIImageView* emptyImg;
+}
 
 @property (nonatomic, strong) NSMutableArray *headerNewsArray;
 @property (nonatomic, assign) NSInteger currentPage;
@@ -81,6 +88,29 @@ static NSString * const noPictureCell = @"NoPictureCell";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BigPictureTableViewCell class]) bundle:nil] forCellReuseIdentifier:bigPictureCell];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SinglePictureNewsTableViewCell class]) bundle:nil] forCellReuseIdentifier:singlePictureCell];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MultiPictureTableViewCell class]) bundle:nil] forCellReuseIdentifier:multiPictureCell];
+    max_time = @"";
+    min_time = @"0";
+    self.arrayList = [[NSMutableArray alloc] initWithCapacity:8];
+    
+    emptyView = [[UIView alloc] initWithFrame:self.tableView.frame];
+    emptyView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
+
+    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleEmptyTap:)];
+    [emptyView addGestureRecognizer:tapGest];
+    
+    [self.view addSubview:emptyView];
+    
+    emptyImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"empty"]];
+    [emptyImg setFrame:CGRectMake((emptyView.frame.size.width-64)/2, (emptyView.frame.size.height-100)/3, 64, 64)];
+    [emptyView addSubview:emptyImg];
+    
+    emtpyTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, emptyImg.frame.size.height+emptyImg.frame.origin.y+20, emptyView.frame.size.width, 20)];
+    [emtpyTitle setText:@"没有更多数据，请点击刷新"];
+    [emtpyTitle setTextAlignment:NSTextAlignmentCenter];
+    [emtpyTitle setFont:[UIFont systemFontOfSize:16]];
+    emtpyTitle.dk_textColorPicker = DKColorPickerWithKey(TEXT);
+    [emptyView addSubview:emtpyTitle];
+    emptyView.hidden = YES;
 }
 
 
@@ -108,9 +138,9 @@ static NSString * const noPictureCell = @"NoPictureCell";
                                    @"", @"method",
                                    qid, @"qid",
                                    self.type, @"cid",
-                                   @"1",@"page",
-                                   @"0",@"min_time",
-                                   @"",@"max_time",
+                                   @"2",@"page",
+                                   @"",@"min_time",
+                                   max_time,@"max_time",
                                    nil];
     NSString* paramsString = [SXNetworkTools genParams:params];
     NSString *requestURL = [NSString stringWithFormat: @"%@?%@", GETLIST_CONF_URL,paramsString];
@@ -127,7 +157,7 @@ static NSString * const noPictureCell = @"NoPictureCell";
                                    self.type, @"cid",
                                    qid, @"qid",
                                    @"2",@"page",
-                                   @"0",@"min_time",
+                                   min_time,@"min_time",
                                    @"",@"max_time",
                                    nil];
     NSString* paramsString = [SXNetworkTools genParams:params];
@@ -142,23 +172,64 @@ static NSString * const noPictureCell = @"NoPictureCell";
         NSString *code = [responseObject[@"code"] stringValue];
         if([code isEqualToString:@"0"]) {
             NSArray *temArray = responseObject[@"data"][@"data"];
+            max_time = responseObject[@"data"][@"max_time"];
+            min_time = responseObject[@"data"][@"min_time"];
             NSArray *arrayM = [SXNewsEntity mj_objectArrayWithKeyValuesArray:temArray];
             if (type == 1) {
-                self.arrayList = [arrayM mutableCopy];
+                if([self.arrayList count]>0) {
+                    [self.arrayList insertObjects:arrayM atIndexes:[NSIndexSet indexSetWithIndexesInRange
+                                                                    :NSMakeRange(0,arrayM.count)]];
+                }
+                else {
+                    [self.arrayList addObjectsFromArray:arrayM];
+                }
                 [self.tableView.mj_header endRefreshing];
                 [self.tableView reloadData];
             }else if(type == 2){
                 [self.arrayList addObjectsFromArray:arrayM];
-                
                 [self.tableView.mj_footer endRefreshing];
                 [self.tableView reloadData];
             }
+            emptyView.hidden = YES;
         }
-        else
+        else {
+            if (type == 1) {
+                [self.tableView.mj_header endRefreshing];
+            }
+            else if(type == 2){
+                [self.tableView.mj_footer endRefreshing];
+            }
+            [self.tableView reloadData];
             NSLog(@"获取数据失败！");
+            if([self.arrayList count]==0) {
+                emtpyTitle.text = @"没有更多数据，请点击刷新";
+                [emptyImg setImage:[UIImage imageNamed:@"empty"]];
+                emptyView.hidden = NO;
+            }
+            else {
+                emptyView.hidden = YES;
+                [SXNetworkTools showText:self.view text:@"没有更多数据，请稍候再试！" hideAfterDelay:3];
+            }
+        }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
+        if (type == 1) {
+            [self.tableView.mj_header endRefreshing];
+        }
+        else if(type == 2){
+            [self.tableView.mj_footer endRefreshing];
+        }
+        NSLog(@"获取数据失败！");
+        if([self.arrayList count]==0) {
+            [emtpyTitle setText:@"网络不给力，请点击刷新"];
+            [emptyImg setImage:[UIImage imageNamed:@"disconnected"]];
+            emptyView.hidden = NO;
+        }
+        else {
+            emptyView.hidden = YES;
+            [SXNetworkTools showText:self.view text:@"网络连接异常，请稍候再试！" hideAfterDelay:3];
+        }
     }] resume];
 }// ------想把这里改成block来着
 
@@ -295,4 +366,10 @@ static NSString * const noPictureCell = @"NoPictureCell";
     [[SDImageCache sharedImageCache] clearDiskOnCompletion:nil];
     
 }
+
+- (void)handleEmptyTap:(UIGestureRecognizer *)gesture
+{
+    [self loadData];
+}
+
 @end

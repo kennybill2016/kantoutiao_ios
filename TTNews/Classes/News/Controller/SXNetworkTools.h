@@ -18,4 +18,6 @@
 
 + (NSString *)distanceTimeWithBeforeTime:(double)beTime;
 
++ (void)showText:(UIView*)view text:(NSString *)text hideAfterDelay:(CGFloat)delay;
+
 @end

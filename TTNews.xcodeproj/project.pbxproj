@@ -10,6 +10,7 @@
 		3666923CB69C8396D0399198 /* libPods-TTNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515C0EEAA8A25E4B4995CA1F /* libPods-TTNews.a */; };
 		A7EEF0491EE7A55700076DD4 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */; };
 		A7EEF04D1EE7A6CE00076DD4 /* NSData+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */; };
+		A7EEF0501EE8211F00076DD4 /* QHProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04F1EE8211F00076DD4 /* QHProgressHUD.m */; };
 		EE3A071E1CDA1DAD0024C37A /* ContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3A071D1CDA1DAD0024C37A /* ContentTableViewController.m */; };
 		EE4635C81CC72B8900DB248F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4635C71CC72B8900DB248F /* main.m */; };
 		EE4635D31CC72B8900DB248F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4635D21CC72B8900DB248F /* Assets.xcassets */; };
@@ -101,6 +102,8 @@
 		A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
 		A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Addition.m"; sourceTree = "<group>"; };
 		A7EEF04C1EE7A6CE00076DD4 /* NSData+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Addition.h"; sourceTree = "<group>"; };
+		A7EEF04E1EE8211F00076DD4 /* QHProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHProgressHUD.h; sourceTree = "<group>"; };
+		A7EEF04F1EE8211F00076DD4 /* QHProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHProgressHUD.m; sourceTree = "<group>"; };
 		A7F2AEA11EE6CF770041161C /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		EE3A071D1CDA1DAD0024C37A /* ContentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTableViewController.m; sourceTree = "<group>"; };
 		EE4635C31CC72B8900DB248F /* TTNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -457,6 +460,8 @@
 		EE79B0C41CC8C435001029EF /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				A7EEF04E1EE8211F00076DD4 /* QHProgressHUD.h */,
+				A7EEF04F1EE8211F00076DD4 /* QHProgressHUD.m */,
 				EEB3DF741D8ED3730039ABF5 /* SXNetworkTools.h */,
 				EEB3DF751D8ED3730039ABF5 /* SXNetworkTools.m */,
 				EE79B0C71CC8C435001029EF /* TTDataTool.h */,
@@ -850,6 +855,7 @@
 				EE79B12A1CC8C435001029EF /* TTNormalNewsFetchDataParameter.m in Sources */,
 				EE79B1171CC8C435001029EF /* ShowMultiPictureViewController.m in Sources */,
 				EE79B1151CC8C435001029EF /* DetailViewController.m in Sources */,
+				A7EEF0501EE8211F00076DD4 /* QHProgressHUD.m in Sources */,
 				EE79B1221CC8C435001029EF /* Foundation+Log.m in Sources */,
 				A7EEF04D1EE7A6CE00076DD4 /* NSData+Addition.m in Sources */,
 				EEB3DF9C1D8F913A0039ABF5 /* BigPictureTableViewCell.m in Sources */,
