@@ -26,6 +26,7 @@
 #import "BigPictureTableViewCell.h"
 #import <UIImageView+WebCache.h>
 #import "NoPictureNewsTableViewCell.h"
+#import "SXNetworkTools.h"
 
 @interface ContentTableViewController ()
 
@@ -197,6 +198,9 @@ static NSString * const noPictureCell = @"NoPictureCell";
         cell.theTitle = NewsModel.title;
         cell.source = NewsModel.source;
         cell.imageUrls = [NSArray arrayWithArray:NewsModel.cover];
+        double time = [NewsModel.show_time doubleValue];
+        NSString* showTime = [SXNetworkTools distanceTimeWithBeforeTime:time];
+        cell.showTime = showTime;
         return cell;
     }else if (contentType==1){
         SinglePictureNewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:singlePictureCell];
@@ -204,6 +208,9 @@ static NSString * const noPictureCell = @"NoPictureCell";
         cell.contentTittle = NewsModel.title;
         cell.desc = NewsModel.introduction;
         cell.source = NewsModel.source;
+        double time = [NewsModel.show_time doubleValue];
+        NSString* showTime = [SXNetworkTools distanceTimeWithBeforeTime:time];
+        cell.showTime = showTime;
         return cell;
     }
     else {

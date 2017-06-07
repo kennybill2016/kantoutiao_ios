@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *newsTittleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentCount;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sourceLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *separatorLine;
 @end
@@ -50,7 +51,12 @@
 
 -(void)setSource:(NSString *)source {
     _source = source;
-    self.commentCount.text = source;
+    self.sourceLabel.text = source;
+}
+
+-(void)setShowTime:(NSString *)showTime {
+    _showTime = showTime;
+    self.commentCount.text = _showTime;
 }
 
 @end

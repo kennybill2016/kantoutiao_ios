@@ -32,8 +32,8 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdfsadfasdfasdfasdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK7-vS-5I9">
-                        <rect key="frame" x="206" y="57.5" width="107.5" height="13.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK7-vS-5I9">
+                        <rect key="frame" x="291" y="57.5" width="22.5" height="13.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17.5" id="ZAX-wf-bxz"/>
                         </constraints>
@@ -65,6 +65,20 @@
                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="来源" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Px0-Mk-dLA">
+                        <rect key="frame" x="95" y="57" width="158" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17.5" id="bS1-uh-vcr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bS1-uh-vcr"/>
+                            </mask>
+                        </variation>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="n7R-v2-oFm" firstAttribute="leading" secondItem="YOn-GG-NyU" secondAttribute="trailing" constant="10" id="0nx-RV-5MS"/>
@@ -76,6 +90,7 @@
                     <constraint firstAttribute="trailing" secondItem="n7R-v2-oFm" secondAttribute="trailing" constant="10" id="GgH-m1-Vzd"/>
                     <constraint firstItem="YOn-GG-NyU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="H1B-3e-LbR"/>
                     <constraint firstItem="Quh-YW-FDC" firstAttribute="top" secondItem="n7R-v2-oFm" secondAttribute="bottom" constant="5" id="IgG-Am-z1s"/>
+                    <constraint firstItem="Px0-Mk-dLA" firstAttribute="leading" secondItem="n7R-v2-oFm" secondAttribute="leading" id="NLh-g9-yJW"/>
                     <constraint firstItem="AK7-vS-5I9" firstAttribute="bottom" secondItem="YOn-GG-NyU" secondAttribute="bottom" id="OTO-7u-Kqf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="8CP-ca-Ae0" secondAttribute="trailing" id="R3v-gp-sgK"/>
                     <constraint firstItem="n7R-v2-oFm" firstAttribute="top" secondItem="YOn-GG-NyU" secondAttribute="top" id="S6d-Rh-f8J"/>
@@ -94,6 +109,7 @@
                     <constraint firstItem="AK7-vS-5I9" firstAttribute="top" secondItem="Quh-YW-FDC" secondAttribute="bottom" constant="5" id="uWQ-z7-Bgo"/>
                     <constraint firstAttribute="trailing" secondItem="8CP-ca-Ae0" secondAttribute="trailing" constant="10" id="v6L-uI-ahB"/>
                     <constraint firstItem="n7R-v2-oFm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="vim-u4-16f"/>
+                    <constraint firstItem="Px0-Mk-dLA" firstAttribute="bottom" secondItem="YOn-GG-NyU" secondAttribute="bottom" id="vjm-Va-Htl"/>
                     <constraint firstItem="Quh-YW-FDC" firstAttribute="trailing" secondItem="AK7-vS-5I9" secondAttribute="trailing" id="wKY-IG-WVD"/>
                 </constraints>
                 <variation key="default">
@@ -129,6 +145,7 @@
                 <outlet property="newsTittleLabel" destination="n7R-v2-oFm" id="jK1-BK-Pwe"/>
                 <outlet property="pictureImageView" destination="YOn-GG-NyU" id="tNd-ka-Vrq"/>
                 <outlet property="separatorLine" destination="8CP-ca-Ae0" id="5qp-2z-e5l"/>
+                <outlet property="sourceLabel" destination="Px0-Mk-dLA" id="laM-ry-ALV"/>
             </connections>
             <point key="canvasLocation" x="-42" y="334.5"/>
         </tableViewCell>

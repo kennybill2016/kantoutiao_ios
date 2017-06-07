@@ -14,5 +14,6 @@
 @property (nonatomic, copy) NSString *theTitle;
 @property (nonatomic, copy) NSString *iconImage;
 @property (nonatomic, copy) NSString *source;
+@property (nonatomic, copy) NSString *showTime;
 
 @end

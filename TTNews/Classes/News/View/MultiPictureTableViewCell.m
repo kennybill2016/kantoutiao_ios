@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *pictureCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *separatorLine;
+@property (strong, nonatomic) IBOutlet UILabel *showTimeLabel;
 
 @end
 
@@ -54,5 +55,9 @@
     self.commentCountLabel.text = source;
 }
 
+-(void)setShowTime:(NSString *)showTime {
+    _showTime = showTime;
+    self.showTimeLabel.text = _showTime;
+}
 
 @end

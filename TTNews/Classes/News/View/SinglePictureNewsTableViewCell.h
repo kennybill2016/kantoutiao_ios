@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *LblTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 @property (nonatomic, copy) NSString *source;
+@property (nonatomic, copy) NSString *showTime;
 
 @end
