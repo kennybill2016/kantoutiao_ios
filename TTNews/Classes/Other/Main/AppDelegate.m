@@ -10,6 +10,7 @@
 #import "TTTabBarController.h"
 #import "TTConst.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import <SMS_SDK/SMSSDK.h>
 
 @interface AppDelegate ()
 
@@ -24,12 +25,16 @@
     self.window.rootViewController = [[TTTabBarController alloc] init];
     [self.window makeKeyAndVisible];
     
+    //初始化应用，appKey和appSecret从后台申请得
+    [SMSSDK registerApp:@"1e86dbfc4687e"
+             withSecret:@"88be18ee2217aa8c3e721a8ed1626f97"];
+    
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"59255cf0aed1796e04001ae6"];
     
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx16907b0df42cf132" appSecret:@"16b46a81b2c70b6c97eceb4a3d69d71f" redirectURL:@"http://www.kuaikanpian.com"];
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106207188"/*设置QQ平台的appID*/  appSecret:@"ghlLP7dNh7WZJizp" redirectURL:@"http://www.kuaikanpian.com"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"http://www.kuaikanpian.com"];
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"http://www.kuaikanpian.com"];
     return YES;
 }
 

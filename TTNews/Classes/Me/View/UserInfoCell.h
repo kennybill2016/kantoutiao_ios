@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UserInfoCellDelegate <NSObject>
+
+- (void)tapQQLogin;
+- (void)tapMobileLogin;
+
+@end
+
 @interface UserInfoCell : UITableViewCell
+
+@property (nonatomic,weak)NSObject<UserInfoCellDelegate> *delegate;
+
 -(void)setAvatarImage:(UIImage *)image Name:(NSString *)name Signature:(NSString *)content;
 @end

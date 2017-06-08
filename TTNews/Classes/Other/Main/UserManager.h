@@ -10,9 +10,17 @@
 
 @interface UserManager : NSObject
 
+@property (nonatomic,copy) NSString *uid;
+
 @property (nonatomic,copy) NSString *username;
+@property (nonatomic,copy) NSString *iconurl;
 @property (nonatomic,copy) NSString *mobile;
 
+@property (nonatomic,copy) NSString *accessToken;
+@property (nonatomic,copy) NSString *openid;
+
 + (instancetype)sharedUserManager;
+
+- (void)setUserInfo:(NSString*)userName iconUrl:(NSString*)url uid:(NSString*)uid token:(NSString*)token mobile:(NSString*)mobile;
 
 @end

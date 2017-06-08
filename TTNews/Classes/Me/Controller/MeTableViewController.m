@@ -22,13 +22,16 @@
 #import "TwoLabelCell.h"
 #import "DisclosureCell.h"
 #import "UIColor+HEX.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "UserManager.h"
+#import "SXNetworkTools.h"
 
 static NSString *const UserInfoCellIdentifier = @"UserInfoCell";
 static NSString *const SwitchCellIdentifier = @"SwitchCell";
 static NSString *const TwoLabelCellIdentifier = @"TwoLabelCell";
 static NSString *const DisclosureCellIdentifier = @"DisclosureCell";
 
-@interface MeTableViewController ()
+@interface MeTableViewController () <UserInfoCellDelegate>
 
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, weak) UISwitch *shakeCanChangeSkinSwitch;
@@ -135,7 +138,7 @@ CGFloat const footViewHeight = 10;
         NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:UserNameKey];
         NSString *content = [[NSUserDefaults standardUserDefaults] stringForKey:UserSignatureKey];
         [cell setAvatarImage:image Name:name Signature:content];
-
+        cell.delegate = self;
         return cell;
     }
     
@@ -219,4 +222,86 @@ CGFloat const footViewHeight = 10;
     [[SDImageCache sharedImageCache] clearDiskOnCompletion:nil];
     
 }
+
+- (void)tapQQLogin{
+    __weak typeof(self) weakSelf = self;
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
+            
+        } else {
+            UMSocialUserInfoResponse *resp = result;
+            
+            // 授权信息
+            NSLog(@"QQ uid: %@", resp.uid);
+            NSLog(@"QQ openid: %@", resp.openid);
+            NSLog(@"QQ accessToken: %@", resp.accessToken);
+            NSLog(@"QQ expiration: %@", resp.expiration);
+            
+            // 用户信息
+            NSLog(@"QQ name: %@", resp.name);
+            NSLog(@"QQ iconurl: %@", resp.iconurl);
+            NSLog(@"QQ gender: %@", resp.unionGender);
+            
+            // 第三方平台SDK源数据
+            NSLog(@"QQ originalResponse: %@", resp.originalResponse);
+
+            [weakSelf setUserInfoFromQQ:resp];
+        }
+    }];
+}
+
+- (void)tapMobileLogin{
+    
+}
+
+- (void)setUserInfoFromQQ:(UMSocialUserInfoResponse *)resp {
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                   resp.uid,@"loginid",
+                                   nil];
+    NSString* paramsString = [SXNetworkTools genParams:params];
+    NSString *requestURL = [NSString stringWithFormat: @"%@?%@", USER_CONF_URL,paramsString];
+    
+    [[[SXNetworkTools sharedNetworkTools] GET:requestURL parameters:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
+        NSLog(@"%@",requestURL);
+        NSString *code = [responseObject[@"code"] stringValue];
+        if([code isEqualToString:@"0"]) {
+            [[UserManager sharedUserManager] setUserInfo:resp.name iconUrl:resp.iconurl uid:resp.openid token:resp.accessToken mobile:nil];
+            [SXNetworkTools showText:self.view text:@"登录成功！" hideAfterDelay:1];
+        }
+        else {
+            NSLog(@"授权QQ登录失败");
+            [SXNetworkTools showText:self.view text:@"登录失败，请稍候再试！" hideAfterDelay:2];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        [SXNetworkTools showText:self.view text:@"登录失败，请稍候再试！" hideAfterDelay:2];
+    }] resume];
+
+}
+
+- (void)setUserInfoFromMobile:(NSString *)mobile {
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                   mobile,@"loginid",
+                                   nil];
+    NSString* paramsString = [SXNetworkTools genParams:params];
+    NSString *requestURL = [NSString stringWithFormat: @"%@?%@", USER_CONF_URL,paramsString];
+    
+    [[[SXNetworkTools sharedNetworkTools] GET:requestURL parameters:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
+        NSLog(@"%@",requestURL);
+        NSString *code = [responseObject[@"code"] stringValue];
+        if([code isEqualToString:@"0"]) {
+            [[UserManager sharedUserManager] setUserInfo:nil iconUrl:nil uid:nil token:nil mobile:mobile];
+            [SXNetworkTools showText:self.view text:@"登录成功！" hideAfterDelay:1];
+        }
+        else {
+            NSLog(@"授权手机登录失败");
+            [SXNetworkTools showText:self.view text:@"登录失败，请稍候再试！" hideAfterDelay:2];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        [SXNetworkTools showText:self.view text:@"登录失败，请稍候再试！" hideAfterDelay:2];
+    }] resume];
+    
+}
+
 @end

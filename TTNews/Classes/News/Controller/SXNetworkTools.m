@@ -8,6 +8,7 @@
 #import "SXNetworkTools.h"
 #import "NSString+Addition.h"
 #import "QHProgressHUD.h"
+#import "UserManager.h"
 
 @implementation SXNetworkTools
 
@@ -77,12 +78,17 @@
     NSString* devid = [SXNetworkTools uniqueGlobalDeviceIdentifier];
     NSString* curtime = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
     NSString* nance = [SXNetworkTools getNance:curtime deviceid:devid?:@"" randomTick:rtick?:@""];
-        
+    
+    NSString* uid = [UserManager sharedUserManager].uid;
+    if( uid == nil )
+        uid = @"";
+
     NSMutableDictionary* defaultParams =
     [[NSMutableDictionary alloc] initWithObjectsAndKeys:
      devid,@"deviceid",
      nance, @"n",
      @"8",@"limit",
+     uid,@"uid",
      nil];
     [defaultParams addEntriesFromDictionary:myParams];
     

@@ -37,6 +37,10 @@
         [avatarImageViewBG setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:avatarImageViewBG];
         
+        UITapGestureRecognizer *tapGest1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleQQTap:)];
+        [avatarImageViewBG addGestureRecognizer:tapGest1];
+        avatarImageViewBG.userInteractionEnabled=YES;
+        
         UIImageView *avatarImageView = [[UIImageView alloc] init];
         self.QQImageView = avatarImageView;
         avatarImageView.frame =CGRectMake(avatarImageViewBG.frame.origin.x+(avatarImageViewBG.frame.size.width-22)/2, avatarImageViewBG.frame.origin.y+(avatarImageViewBG.frame.size.height-24)/2, 22, 24);
@@ -51,6 +55,10 @@
         mobileImageViewBG.layer.masksToBounds = YES;
         [mobileImageViewBG setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:mobileImageViewBG];
+        
+        UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleMobileTap:)];
+        [mobileImageViewBG addGestureRecognizer:tapGest];
+        mobileImageViewBG.userInteractionEnabled = YES;
         
         UIImageView *mobileImageView = [[UIImageView alloc] init];
         self.mobileImageView = mobileImageView;
@@ -94,4 +102,19 @@
 //    self.contentLabel.text = content;
     
 }
+
+- (void)handleQQTap:(UIGestureRecognizer *)gesture
+{
+    if([self.delegate respondsToSelector:@selector(tapQQLogin)]) {
+        [self.delegate tapQQLogin];
+    }
+}
+
+- (void)handleMobileTap:(UIGestureRecognizer *)gesture
+{
+    if([self.delegate respondsToSelector:@selector(tapMobileLogin)]) {
+        [self.delegate tapMobileLogin];
+    }
+}
+
 @end
