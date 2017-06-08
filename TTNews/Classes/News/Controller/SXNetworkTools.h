@@ -8,6 +8,7 @@
 #import <AFNetworking/AFNetworking.h>
 
 #define GETLIST_CONF_URL @"http://localhost:8887/content/getList.php"
+#define DETAIL_CONF_URL  @"http://localhost:8887/content/detail.php"
 
 @interface SXNetworkTools : AFHTTPSessionManager
 

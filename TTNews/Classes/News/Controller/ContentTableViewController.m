@@ -313,6 +313,32 @@ static NSString * const noPictureCell = @"NoPictureCell";
 #pragma mark -UITableViewDelegate 点击了某个cell
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SXNewsEntity *NewsModel = self.arrayList[indexPath.row];
+    NSString* qid = @"0";
+    if( qid == nil )
+        qid = @"0";
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                   self.type, @"cid",
+                                   qid, @"qid",
+                                   NewsModel.nid,@"nid",
+                                   nil];
+    NSString* paramsString = [SXNetworkTools genParams:params];
+    NSString *requestURL = [NSString stringWithFormat: @"%@?%@", DETAIL_CONF_URL,paramsString];
+    DetailViewController *viewController = [[DetailViewController alloc] init];
+    viewController.url = requestURL;
+    viewController.maintitle = NewsModel.title;
+    static NSDateFormatter *df;
+    if(df == nil)
+    {
+        df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"YYYY-MM-dd HH:mm"];
+    }
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[NewsModel.publish_time doubleValue]];
+    NSString* time = [df stringFromDate:date];
+    viewController.publish_time = time;
+    viewController.source = NewsModel.source;
+    viewController.srcurl = NewsModel.url;
+    [self.navigationController pushViewController:viewController animated:YES];
+    /*
     NSInteger contentType = [NewsModel.content_type integerValue];
     if (contentType==0) {
         [self pushToDetailViewControllerWithUrl:NewsModel.url];
@@ -323,7 +349,8 @@ static NSString * const noPictureCell = @"NoPictureCell";
         [self pushToDetailViewControllerWithUrl:NewsModel.url];
 
     }else if (contentType==4){
-        [self pushToDetailViewControllerWithUrl:NewsModel.url];
+
+//        [self pushToDetailViewControllerWithUrl:requestURL];
 //        ShowMultiPictureViewController *viewController = [[ShowMultiPictureViewController alloc] init];
 //        viewController.imageUrls = [NSArray arrayWithArray:NewsModel.cover];
 //        NSString *text = NewsModel.introduction;
@@ -333,11 +360,10 @@ static NSString * const noPictureCell = @"NoPictureCell";
 //        viewController.text = text;
 //        [self.navigationController pushViewController:viewController animated:YES];
     }else if(contentType == 1){
-        [self pushToDetailViewControllerWithUrl:NewsModel.url];
+
     }
     else {
-        [self pushToDetailViewControllerWithUrl:NewsModel.url];
-    }
+    }*/
 }
 
 #pragma mark --private Method--点击了某一条新闻，调转到新闻对应的网页去

@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TTNews/Classes/News/Controller/ContentTableViewController.m"
-            timestampString = "518542114.053954"
+            timestampString = "518590380.321934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
             landmarkName = "-handleEmptyTap:"
             landmarkType = "7">
          </BreakpointContent>

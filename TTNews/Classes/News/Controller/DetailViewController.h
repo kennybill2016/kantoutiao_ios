@@ -11,5 +11,10 @@
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *maintitle;
+@property (nonatomic, copy) NSString *source;
+@property (nonatomic, copy) NSString *publish_time;
+@property (nonatomic, copy) NSString *srcurl;
+@property (nonatomic, copy) NSString *introduct;
 
 @end

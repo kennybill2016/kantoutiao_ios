@@ -12,8 +12,16 @@
 #import "TTConst.h"
 #import "TTJudgeNetworking.h"
 #import <DKNightVersion.h>
+#import "SXNetworkTools.h"
+#import <UShareUI/UShareUI.h>
 
-@interface DetailViewController ()<UIWebViewDelegate>
+@interface DetailViewController ()<UIWebViewDelegate>{
+    NSString* content;
+    
+    UIView* emptyView;
+    UILabel* emtpyTitle;
+    UIImageView* emptyImg;
+}
 
 @property (nonatomic, weak) UIView *shadeView;//(页面模式时，用来使页面变暗)
 
@@ -38,21 +46,74 @@
 
     [self setupWebView];
     [self setupNaigationBar];
-    [self setupToolBars];
+    [self setupEmptyView];
+    [self loadData];
+//    [self setupToolBars];
 //    [self setupShadeView];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [SVProgressHUD show];
-    self.navigationController.toolbarHidden = NO;
+//    self.navigationController.toolbarHidden = NO;
 
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [SVProgressHUD dismiss];
-    self.navigationController.toolbarHidden = YES;
+//    self.navigationController.toolbarHidden = YES;
+}
+
+- (void)setupEmptyView{
+    emptyView = [[UIView alloc] initWithFrame:self.view.frame];
+    emptyView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
+    
+    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleEmptyTap:)];
+    [emptyView addGestureRecognizer:tapGest];
+    
+    [self.view addSubview:emptyView];
+    
+    emptyImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"empty"]];
+    [emptyImg setFrame:CGRectMake((emptyView.frame.size.width-64)/2, (emptyView.frame.size.height-100)/3, 64, 64)];
+    [emptyView addSubview:emptyImg];
+    
+    emtpyTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, emptyImg.frame.size.height+emptyImg.frame.origin.y+20, emptyView.frame.size.width, 20)];
+    [emtpyTitle setText:@"没有更多数据，请点击刷新"];
+    [emtpyTitle setTextAlignment:NSTextAlignmentCenter];
+    [emtpyTitle setFont:[UIFont systemFontOfSize:16]];
+    emtpyTitle.dk_textColorPicker = DKColorPickerWithKey(TEXT);
+    [emptyView addSubview:emtpyTitle];
+    emptyView.hidden = YES;
+}
+
+- (void)loadData{
+    __weak typeof(self) weakSelf = self;
+    [[[SXNetworkTools sharedNetworkTools] GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
+        NSLog(@"%@",self.url);
+        NSString *code = [responseObject[@"code"] stringValue];
+        if([code isEqualToString:@"0"]) {
+            content = responseObject[@"data"][@"content"];
+            emptyView.hidden = YES;
+            NSString* headerHtml = [NSString stringWithFormat:@"<head><title>%@</title> <style>img{max-width:%fpx !important;}</style></head><font size='4'><strong>%@</strong></font><br/><font size='2' color='gray'>%@  %@</font><br/><br/>%@",weakSelf.maintitle,kScreenWidth-20,weakSelf.maintitle,weakSelf.source,weakSelf.publish_time,content];
+             ;
+            [weakSelf.webView loadHTMLString:headerHtml baseURL:nil];
+        }
+        else {
+            NSLog(@"获取数据失败！");
+            emtpyTitle.text = @"加载数据失败，请点击刷新";
+            [emptyImg setImage:[UIImage imageNamed:@"empty"]];
+            emptyView.hidden = NO;
+        }
+        [SVProgressHUD dismiss];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        [emtpyTitle setText:@"网络不给力，请点击刷新"];
+        [emptyImg setImage:[UIImage imageNamed:@"disconnected"]];
+        emptyView.hidden = NO;
+        [SVProgressHUD dismiss];
+    }] resume];
 }
 
 #pragma mark --private Method--初始化webView
@@ -63,8 +124,7 @@
     webView.delegate = self;
     [self.view addSubview:webView];
     [SVProgressHUD show];
-    
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+//    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 
 }
 
@@ -73,10 +133,10 @@
     UIButton *collectButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.collectButton = collectButton;
     collectButton.frame =CGRectMake(0, 0, 30, 30);
-    [collectButton setImage:[UIImage imageNamed:@"navigationBarItem_favorite_normal"] forState:UIControlStateNormal];
-    [collectButton setImage:[UIImage imageNamed:@"navigationBarItem_favorite_pressed"] forState:UIControlStateHighlighted];
-    [self.collectButton setImage:[[UIImage imageNamed:@"navigationBarItem_favorited_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]forState:UIControlStateSelected];
-    [collectButton addTarget:self action:@selector(collectThisNews) forControlEvents:UIControlEventTouchUpInside];
+    [collectButton setImage:[UIImage imageNamed:@"share_icon"] forState:UIControlStateNormal];
+//    [collectButton setImage:[UIImage imageNamed:@"navigationBarItem_favorite_pressed"] forState:UIControlStateHighlighted];
+    [self.collectButton setImage:[[UIImage imageNamed:@"share_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]forState:UIControlStateHighlighted];
+    [collectButton addTarget:self action:@selector(shareThisNews) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:collectButton];
 }
 
@@ -168,6 +228,79 @@
         [self.collectButton setImage:[UIImage imageNamed:@"navigationBarItem_favorite_normal"] forState:UIControlStateNormal];
         [self.collectButton setImage:[UIImage imageNamed:@"navigationBarItem_favorite_pressed"] forState:UIControlStateHighlighted];
     }
+}
+
+- (void)handleEmptyTap:(UIGestureRecognizer *)gesture
+{
+    [self loadData];
+}
+
+- (void)shareThisNews {
+    __weak typeof(self)weakSelf = self;
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"] ] ||
+       [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]] ||
+       [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"sinaweibo://"]] ) {
+        [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_WechatFavorite)]];
+        [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+            // 根据获取的platformType确定所选平台进行下一步操作
+            [weakSelf shareWebPageToPlatformType:platformType];
+        }];
+    }
+    else {
+        [self shareSystem];
+    }
+}
+
+- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType {
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    
+    //创建网页内容对象
+    UIImage *imageToShare = [UIImage imageNamed:@"appinfoimage"];
+//    NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.title descr:self.introduct thumImage:imageToShare];
+    //设置网页地址
+    shareObject.webpageUrl = self.srcurl;
+    
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            UMSocialLogInfo(@"************Share fail with error %@*********",error);
+        }else{
+            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                UMSocialShareResponse *resp = data;
+                //分享结果消息
+                UMSocialLogInfo(@"response message is %@",resp.message);
+                //第三方原始返回的数据
+                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+                
+            }else{
+                UMSocialLogInfo(@"response data is %@",data);
+            }
+        }
+    }];
+}
+
+- (void)shareSystem {
+    UIImage *imageToShare = [UIImage imageNamed:@"appinfoimage"];
+    NSURL *urlToShare = [NSURL URLWithString:self.srcurl];
+    NSArray *activityItems = @[self.maintitle, imageToShare, urlToShare];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+    //不出现在活动项目
+    activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList];
+    
+    UIActivityViewControllerCompletionWithItemsHandler myBlock = ^(UIActivityType activityType, BOOL completed, NSArray * returnedItems, NSError * activityError)
+    {
+    };
+    
+    activityVC.completionWithItemsHandler = myBlock;
+    
+    UIViewController * rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [rootVc presentViewController:activityVC animated:TRUE completion:nil];
 }
 
 @end
