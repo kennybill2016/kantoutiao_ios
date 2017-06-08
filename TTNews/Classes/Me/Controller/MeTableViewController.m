@@ -21,6 +21,7 @@
 #import <DKNightVersion.h>
 #import "TwoLabelCell.h"
 #import "DisclosureCell.h"
+#import "UIColor+HEX.h"
 
 static NSString *const UserInfoCellIdentifier = @"UserInfoCell";
 static NSString *const SwitchCellIdentifier = @"SwitchCell";
@@ -38,7 +39,7 @@ static NSString *const DisclosureCellIdentifier = @"DisclosureCell";
 
 @end
 
-CGFloat const footViewHeight = 20;
+CGFloat const footViewHeight = 10;
 
 @implementation MeTableViewController
 
@@ -61,17 +62,14 @@ CGFloat const footViewHeight = 20;
 
 -(void)setupBasic{
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetMaxY(self.navigationController.navigationBar.frame) + 10, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetMaxY(self.navigationController.navigationBar.frame), 0, 0, 0);
     self.tableView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
-    self.tableView.dk_separatorColorPicker = DKColorPickerWithKey(SEP);
+    self.tableView.dk_separatorColorPicker = DKColorPickerWithKey(HIGHLIGHTED);
     self.navigationController.navigationBar.dk_barTintColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
     [self.tableView registerClass:[UserInfoCell class] forCellReuseIdentifier:UserInfoCellIdentifier];
     [self.tableView registerClass:[SwitchCell class] forCellReuseIdentifier:SwitchCellIdentifier];
     [self.tableView registerClass:[TwoLabelCell class] forCellReuseIdentifier:TwoLabelCellIdentifier];
     [self.tableView registerClass:[DisclosureCell class] forCellReuseIdentifier:DisclosureCellIdentifier];
-
-    
-
 }
 
 -(void)caculateCacheSize {
@@ -101,7 +99,7 @@ CGFloat const footViewHeight = 20;
 
 #pragma mark -UITableViewDataSource 返回indexPath对应的cell的高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) return 80;
+    if (indexPath.section == 0) return 100;
     
     return 44;
 }
@@ -126,8 +124,8 @@ CGFloat const footViewHeight = 20;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0) {
         UserInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:UserInfoCellIdentifier];
+        cell.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
         cell.textLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);
-
         NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"headerImage"];
         UIImage *image = [UIImage imageWithContentsOfFile:path];
         if (image == nil) {

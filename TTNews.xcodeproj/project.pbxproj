@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3666923CB69C8396D0399198 /* libPods-TTNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515C0EEAA8A25E4B4995CA1F /* libPods-TTNews.a */; };
+		A727D5961EE96A4A0048AD56 /* UIImage+colorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5911EE96A4A0048AD56 /* UIImage+colorImage.m */; };
+		A727D5971EE96A4A0048AD56 /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5931EE96A4A0048AD56 /* UIColor+HEX.m */; };
+		A727D5981EE96A4A0048AD56 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5951EE96A4A0048AD56 /* UIImage+Alpha.m */; };
 		A7EEF0491EE7A55700076DD4 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */; };
 		A7EEF04D1EE7A6CE00076DD4 /* NSData+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */; };
 		A7EEF0501EE8211F00076DD4 /* QHProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04F1EE8211F00076DD4 /* QHProgressHUD.m */; };
+		A7EEF0531EE93D3400076DD4 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF0521EE93D3400076DD4 /* UserManager.m */; };
 		EE3A071E1CDA1DAD0024C37A /* ContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3A071D1CDA1DAD0024C37A /* ContentTableViewController.m */; };
 		EE4635C81CC72B8900DB248F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4635C71CC72B8900DB248F /* main.m */; };
 		EE4635D31CC72B8900DB248F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4635D21CC72B8900DB248F /* Assets.xcassets */; };
@@ -98,12 +102,20 @@
 		47ED23446BBCD16E40946062 /* Pods-TTNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTNews/Pods-TTNews.release.xcconfig"; sourceTree = "<group>"; };
 		515C0EEAA8A25E4B4995CA1F /* libPods-TTNews.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTNews.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		717B946A98B6AB20011716E0 /* Pods-TTNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTNews/Pods-TTNews.debug.xcconfig"; sourceTree = "<group>"; };
+		A727D5901EE96A4A0048AD56 /* UIImage+colorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+colorImage.h"; sourceTree = "<group>"; };
+		A727D5911EE96A4A0048AD56 /* UIImage+colorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+colorImage.m"; sourceTree = "<group>"; };
+		A727D5921EE96A4A0048AD56 /* UIColor+HEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEX.h"; sourceTree = "<group>"; };
+		A727D5931EE96A4A0048AD56 /* UIColor+HEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEX.m"; sourceTree = "<group>"; };
+		A727D5941EE96A4A0048AD56 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		A727D5951EE96A4A0048AD56 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		A7EEF0451EE7A55700076DD4 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
 		A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
 		A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Addition.m"; sourceTree = "<group>"; };
 		A7EEF04C1EE7A6CE00076DD4 /* NSData+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Addition.h"; sourceTree = "<group>"; };
 		A7EEF04E1EE8211F00076DD4 /* QHProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHProgressHUD.h; sourceTree = "<group>"; };
 		A7EEF04F1EE8211F00076DD4 /* QHProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHProgressHUD.m; sourceTree = "<group>"; };
+		A7EEF0511EE93D3400076DD4 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		A7EEF0521EE93D3400076DD4 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		A7F2AEA11EE6CF770041161C /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		EE3A071D1CDA1DAD0024C37A /* ContentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTableViewController.m; sourceTree = "<group>"; };
 		EE4635C31CC72B8900DB248F /* TTNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -438,6 +450,12 @@
 		EE79B0B81CC8C435001029EF /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A727D5901EE96A4A0048AD56 /* UIImage+colorImage.h */,
+				A727D5911EE96A4A0048AD56 /* UIImage+colorImage.m */,
+				A727D5921EE96A4A0048AD56 /* UIColor+HEX.h */,
+				A727D5931EE96A4A0048AD56 /* UIColor+HEX.m */,
+				A727D5941EE96A4A0048AD56 /* UIImage+Alpha.h */,
+				A727D5951EE96A4A0048AD56 /* UIImage+Alpha.m */,
 				A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */,
 				A7EEF04C1EE7A6CE00076DD4 /* NSData+Addition.h */,
 				A7EEF0451EE7A55700076DD4 /* NSString+Addition.h */,
@@ -489,6 +507,8 @@
 				EE79B0D31CC8C435001029EF /* TTNavigationController.m */,
 				EE79B0D41CC8C435001029EF /* TTTabBarController.h */,
 				EE79B0D51CC8C435001029EF /* TTTabBarController.m */,
+				A7EEF0511EE93D3400076DD4 /* UserManager.h */,
+				A7EEF0521EE93D3400076DD4 /* UserManager.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -802,6 +822,7 @@
 				EE79B1351CC8C435001029EF /* TTPicture.m in Sources */,
 				EE79B1381CC8C435001029EF /* PictureCommentCell.m in Sources */,
 				EE8A194C1D5C476C00BAE119 /* TTNetworkManager.m in Sources */,
+				A727D5981EE96A4A0048AD56 /* UIImage+Alpha.m in Sources */,
 				EE79B10E1CC8C435001029EF /* AppInfoViewController.m in Sources */,
 				EE79B1281CC8C435001029EF /* TTConst.m in Sources */,
 				EE8A19351D5AF9FD00BAE119 /* UserInfoCell.m in Sources */,
@@ -835,8 +856,10 @@
 				EE79B1471CC8C435001029EF /* VideoCommentCell.m in Sources */,
 				EE79B1291CC8C435001029EF /* TTDataTool.m in Sources */,
 				EE79B1201CC8C435001029EF /* SinglePictureNewsTableViewCell.m in Sources */,
+				A727D5971EE96A4A0048AD56 /* UIColor+HEX.m in Sources */,
 				EE79B1191CC8C435001029EF /* TTNormalNews.m in Sources */,
 				EE79B1401CC8C435001029EF /* VideoViewController.m in Sources */,
+				A727D5961EE96A4A0048AD56 /* UIImage+colorImage.m in Sources */,
 				EE4635C81CC72B8900DB248F /* main.m in Sources */,
 				EEC791841CD1AEB8008B7C2D /* TTImageCyclePlayView.m in Sources */,
 				EE8A193B1D5B2BDD00BAE119 /* TwoLabelCell.m in Sources */,
@@ -850,6 +873,7 @@
 				EE79B1421CC8C435001029EF /* TTVideoComment.m in Sources */,
 				EEB32A4B1CD38CAF00FF0AB8 /* TTTopChannelContianerView.m in Sources */,
 				EE79B1451CC8C435001029EF /* VideoPlayView.m in Sources */,
+				A7EEF0531EE93D3400076DD4 /* UserManager.m in Sources */,
 				EE79B12B1CC8C435001029EF /* TTPictureFetchDataParameter.m in Sources */,
 				EE79B1131CC8C435001029EF /* SendFeedbackViewController.m in Sources */,
 				EE79B12A1CC8C435001029EF /* TTNormalNewsFetchDataParameter.m in Sources */,

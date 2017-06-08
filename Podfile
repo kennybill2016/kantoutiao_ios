@@ -19,7 +19,9 @@ pod 'Google-Mobile-Ads-SDK'
 pod 'UMengAnalytics'
 pod ‘UMengUShare/UI’
 pod ‘UMengUShare/Social/WeChat'
-pod ‘UMengUShare/Social/ReducedQQ'
+pod ‘UMengUShare/Social/QQ'
+pod 'MOBFoundation_IDFA'
+pod 'SMSSDK'
 
 end
 
