@@ -13,5 +13,4 @@ CGFloat const cellBottomBarHeight = 40;
 CGFloat const cellTopCommentTopLabelHeight = 16;
 NSString * const IsShakeCanChangeSkinKey = @"IsShakeCanChangeSkinKey";
 NSString * const IsDownLoadNoImageIn3GKey = @"IsDownLoadNoImageIn3GKey";
-NSString * const UserNameKey = @"UserNameKey";
-NSString * const UserSignatureKey = @"UserSignatureKey";
+

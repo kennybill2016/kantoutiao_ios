@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define kUserLoginNotification @"UserLoginNotification"
+#define kUserLogoutNotification @"UserLogoutNotification"
+
 @interface UserManager : NSObject
 
 @property (nonatomic,copy) NSString *uid;
@@ -21,6 +24,10 @@
 
 + (instancetype)sharedUserManager;
 
-- (void)setUserInfo:(NSString*)userName iconUrl:(NSString*)url uid:(NSString*)uid token:(NSString*)token mobile:(NSString*)mobile;
+- (BOOL)isLogined;
+- (void)loadUserInfo;
+
+- (void)setUserInfoFromMobile:(NSString*)mobile;
+- (void)setUserInfo:(NSString*)userName iconUrl:(NSString*)url uid:(NSString*)uid ;
 
 @end

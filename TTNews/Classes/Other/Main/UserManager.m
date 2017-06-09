@@ -8,6 +8,11 @@
 
 #import "UserManager.h"
 
+NSString * const kUserNameKey = @"UserNameKey";
+NSString * const kUidKey = @"UidKey";
+NSString * const kUserIconUrlKey = @"UserIconUrlKey";
+
+
 @implementation UserManager
 
 + (instancetype)sharedUserManager
@@ -20,16 +25,47 @@
     return instance;
 }
 
-//uid=B36811DAC55EE945F1CC64E6A114F8A5
-//token=5BFB253C926E6E34A9A1544FF3311D5C
+- (void)loadUserInfo {
+    self.username = [[NSUserDefaults standardUserDefaults] stringForKey:kUserNameKey];
+    self.uid = [[NSUserDefaults standardUserDefaults] stringForKey:kUidKey];
+    self.iconurl = [[NSUserDefaults standardUserDefaults] stringForKey:kUserIconUrlKey];    
+}
 
-- (void)setUserInfo:(NSString*)userName iconUrl:(NSString*)url uid:(NSString*)uid token:(NSString*)token mobile:(NSString*)mobile{
+- (void)saveUserInfo {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil userInfo:nil];
+    [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:kUserNameKey];
+    [[NSUserDefaults standardUserDefaults] setValue:self.uid forKey:kUidKey];
+    [[NSUserDefaults standardUserDefaults] setValue:self.iconurl forKey:kUserIconUrlKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setUserInfoFromMobile:(NSString*)mobile{
+    [self logout];
+    self.username=mobile;
+    self.mobile=mobile;
     
+    [self saveUserInfo];
+}
+
+- (void)setUserInfo:(NSString*)userName iconUrl:(NSString*)url uid:(NSString*)uid{
+    [self logout];
     self.username=userName;
     self.iconurl=url;
     self.uid=uid;
-    self.accessToken=token;
-    self.mobile=mobile;
+
+    [self saveUserInfo];
+}
+
+- (BOOL)isLogined{
+    return (self.mobile.length>0 ||self.uid.length>0)?YES:NO;
+}
+
+- (void)logout {
+    self.username=nil;
+    self.iconurl=nil;
+    self.uid=nil;
+    self.accessToken=nil;
+    self.mobile=nil;
 }
 
 @end

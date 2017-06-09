@@ -11,6 +11,8 @@
 #import "TTConst.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import <SMS_SDK/SMSSDK.h>
+#import <SMS_SDK/Extend/SMSSDK+AddressBookMethods.h>
+#import "UserManager.h"
 
 @interface AppDelegate ()
 
@@ -28,6 +30,7 @@
     //初始化应用，appKey和appSecret从后台申请得
     [SMSSDK registerApp:@"1e86dbfc4687e"
              withSecret:@"88be18ee2217aa8c3e721a8ed1626f97"];
+    [SMSSDK enableAppContactFriends:NO];
     
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"59255cf0aed1796e04001ae6"];
@@ -51,18 +54,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:@(NO) forKey:IsDownLoadNoImageIn3GKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    
-    NSString *userName = [[NSUserDefaults standardUserDefaults] stringForKey:UserNameKey];
-    if (userName==nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"微信登录" forKey:UserNameKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
-    NSString *userSignature = [[NSUserDefaults standardUserDefaults] stringForKey:UserSignatureKey];
-    if (userSignature==nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"登录后查看我的零钱和金币" forKey:UserSignatureKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+    [[UserManager sharedUserManager] loadUserInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

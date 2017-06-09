@@ -35,16 +35,16 @@
     [self.headerImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeHeaderImage)]];
     self.headerImageView.layer.cornerRadius = self.headerImageView.frame.size.width *0.5;
     self.headerImageView.layer.masksToBounds = YES;
-    self.nameTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:UserNameKey];
-    self.signatureTextView.text = [[NSUserDefaults standardUserDefaults] stringForKey:UserSignatureKey];
+//    self.nameTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:UserNameKey];
+//    self.signatureTextView.text = [[NSUserDefaults standardUserDefaults] stringForKey:UserSignatureKey];
     self.signatureTextView.layer.cornerRadius = 5;
     self.signatureTextView.layer.masksToBounds = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[NSUserDefaults standardUserDefaults] setObject:self.nameTextField.text forKey:UserNameKey];
-    [[NSUserDefaults standardUserDefaults] setObject:self.signatureTextView.text forKey:UserSignatureKey];
+//    [[NSUserDefaults standardUserDefaults] setObject:self.nameTextField.text forKey:UserNameKey];
+//    [[NSUserDefaults standardUserDefaults] setObject:self.signatureTextView.text forKey:UserSignatureKey];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

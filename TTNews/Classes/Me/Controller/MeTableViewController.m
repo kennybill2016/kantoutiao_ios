@@ -74,6 +74,9 @@ CGFloat const footViewHeight = 10;
     [self.tableView registerClass:[SwitchCell class] forCellReuseIdentifier:SwitchCellIdentifier];
     [self.tableView registerClass:[TwoLabelCell class] forCellReuseIdentifier:TwoLabelCellIdentifier];
     [self.tableView registerClass:[DisclosureCell class] forCellReuseIdentifier:DisclosureCellIdentifier];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserLogin) name:kUserLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserLogout) name:kUserLogoutNotification object:nil];
 }
 
 -(void)caculateCacheSize {
@@ -136,9 +139,7 @@ CGFloat const footViewHeight = 10;
             image = [UIImage imageNamed:@"defaultUserIcon"];
             [UIImagePNGRepresentation(image) writeToFile:path atomically:YES];
         }
-        NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:UserNameKey];
-        NSString *content = [[NSUserDefaults standardUserDefaults] stringForKey:UserSignatureKey];
-        [cell setAvatarImage:image Name:name Signature:content];
+        [cell setAvatarImage:image Name:[UserManager sharedUserManager].username Signature:nil];
         cell.delegate = self;
         return cell;
     }
@@ -267,7 +268,7 @@ CGFloat const footViewHeight = 10;
         NSLog(@"%@",requestURL);
         NSString *code = [responseObject[@"code"] stringValue];
         if([code isEqualToString:@"0"]) {
-            [[UserManager sharedUserManager] setUserInfo:resp.name iconUrl:resp.iconurl uid:resp.openid token:resp.accessToken mobile:nil];
+            [[UserManager sharedUserManager] setUserInfo:resp.name iconUrl:resp.iconurl uid:resp.openid];
             [SXNetworkTools showText:self.view text:@"登录成功！" hideAfterDelay:1];
         }
         else {
@@ -281,29 +282,14 @@ CGFloat const footViewHeight = 10;
 
 }
 
-- (void)setUserInfoFromMobile:(NSString *)mobile {
-    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                   mobile,@"loginid",
-                                   nil];
-    NSString* paramsString = [SXNetworkTools genParams:params];
-    NSString *requestURL = [NSString stringWithFormat: @"%@?%@", USER_CONF_URL,paramsString];
-    
-    [[[SXNetworkTools sharedNetworkTools] GET:requestURL parameters:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        NSLog(@"%@",requestURL);
-        NSString *code = [responseObject[@"code"] stringValue];
-        if([code isEqualToString:@"0"]) {
-            [[UserManager sharedUserManager] setUserInfo:nil iconUrl:nil uid:nil token:nil mobile:mobile];
-            [SXNetworkTools showText:self.view text:@"登录成功！" hideAfterDelay:1];
-        }
-        else {
-            NSLog(@"授权手机登录失败");
-            [SXNetworkTools showText:self.view text:@"登录失败，请稍候再试！" hideAfterDelay:2];
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",error);
-        [SXNetworkTools showText:self.view text:@"登录失败，请稍候再试！" hideAfterDelay:2];
-    }] resume];
-    
+- (void)onUserLogin{
+    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
+    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)onUserLogout{
+    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
+    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end
