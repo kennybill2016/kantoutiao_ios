@@ -22,6 +22,7 @@
 *.swp
 *.lock
 profile
+.xcconfig
 
 
 ####
