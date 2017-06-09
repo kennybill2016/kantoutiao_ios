@@ -25,6 +25,7 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "UserManager.h"
 #import "SXNetworkTools.h"
+#import "LoginViewController.h"
 
 static NSString *const UserInfoCellIdentifier = @"UserInfoCell";
 static NSString *const SwitchCellIdentifier = @"SwitchCell";
@@ -251,7 +252,8 @@ CGFloat const footViewHeight = 10;
 }
 
 - (void)tapMobileLogin{
-    
+    LoginViewController* loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    [self.navigationController pushViewController:loginVC animated:YES];
 }
 
 - (void)setUserInfoFromQQ:(UMSocialUserInfoResponse *)resp {

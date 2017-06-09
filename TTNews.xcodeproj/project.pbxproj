@@ -11,6 +11,11 @@
 		A727D5961EE96A4A0048AD56 /* UIImage+colorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5911EE96A4A0048AD56 /* UIImage+colorImage.m */; };
 		A727D5971EE96A4A0048AD56 /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5931EE96A4A0048AD56 /* UIColor+HEX.m */; };
 		A727D5981EE96A4A0048AD56 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5951EE96A4A0048AD56 /* UIImage+Alpha.m */; };
+		A727D59D1EEA3CFC0048AD56 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D59B1EEA3CFC0048AD56 /* LoginViewController.m */; };
+		A727D59E1EEA3CFC0048AD56 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A727D59C1EEA3CFC0048AD56 /* LoginViewController.xib */; };
+		A727D5A41EEA48B10048AD56 /* UITextField+Bounds.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5A31EEA48B10048AD56 /* UITextField+Bounds.m */; };
+		A727D5A71EEA4A4D0048AD56 /* TextFieldBound.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5A61EEA4A4D0048AD56 /* TextFieldBound.m */; };
+		A727D5AA1EEA58430048AD56 /* TextFieldCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5A91EEA58430048AD56 /* TextFieldCustom.m */; };
 		A7EEF0491EE7A55700076DD4 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */; };
 		A7EEF04D1EE7A6CE00076DD4 /* NSData+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */; };
 		A7EEF0501EE8211F00076DD4 /* QHProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04F1EE8211F00076DD4 /* QHProgressHUD.m */; };
@@ -108,6 +113,15 @@
 		A727D5931EE96A4A0048AD56 /* UIColor+HEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEX.m"; sourceTree = "<group>"; };
 		A727D5941EE96A4A0048AD56 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		A727D5951EE96A4A0048AD56 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		A727D59A1EEA3CFC0048AD56 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		A727D59B1EEA3CFC0048AD56 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		A727D59C1EEA3CFC0048AD56 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		A727D5A21EEA48B10048AD56 /* UITextField+Bounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Bounds.h"; sourceTree = "<group>"; };
+		A727D5A31EEA48B10048AD56 /* UITextField+Bounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Bounds.m"; sourceTree = "<group>"; };
+		A727D5A51EEA4A4D0048AD56 /* TextFieldBound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldBound.h; sourceTree = "<group>"; };
+		A727D5A61EEA4A4D0048AD56 /* TextFieldBound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldBound.m; sourceTree = "<group>"; };
+		A727D5A81EEA58430048AD56 /* TextFieldCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCustom.h; sourceTree = "<group>"; };
+		A727D5A91EEA58430048AD56 /* TextFieldCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCustom.m; sourceTree = "<group>"; };
 		A7EEF0451EE7A55700076DD4 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
 		A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
 		A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Addition.m"; sourceTree = "<group>"; };
@@ -357,6 +371,9 @@
 				EE79B0911CC8C435001029EF /* AppInfoViewController.xib */,
 				EE79B0971CC8C435001029EF /* SendFeedbackViewController.h */,
 				EE79B0981CC8C435001029EF /* SendFeedbackViewController.m */,
+				A727D59A1EEA3CFC0048AD56 /* LoginViewController.h */,
+				A727D59B1EEA3CFC0048AD56 /* LoginViewController.m */,
+				A727D59C1EEA3CFC0048AD56 /* LoginViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -379,6 +396,10 @@
 				EE8A193A1D5B2BDD00BAE119 /* TwoLabelCell.m */,
 				EE8A193C1D5B46CE00BAE119 /* DisclosureCell.h */,
 				EE8A193D1D5B46CE00BAE119 /* DisclosureCell.m */,
+				A727D5A51EEA4A4D0048AD56 /* TextFieldBound.h */,
+				A727D5A61EEA4A4D0048AD56 /* TextFieldBound.m */,
+				A727D5A81EEA58430048AD56 /* TextFieldCustom.h */,
+				A727D5A91EEA58430048AD56 /* TextFieldCustom.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -471,6 +492,8 @@
 				EE79B0C11CC8C435001029EF /* UIImageView+Extension.m */,
 				EE79B0C21CC8C435001029EF /* UIView+Extension.h */,
 				EE79B0C31CC8C435001029EF /* UIView+Extension.m */,
+				A727D5A21EEA48B10048AD56 /* UITextField+Bounds.h */,
+				A727D5A31EEA48B10048AD56 /* UITextField+Bounds.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -745,6 +768,7 @@
 				EE79B11B1CC8C435001029EF /* ChannelCollectionViewCell.xib in Resources */,
 				EE79B13D1CC8C435001029EF /* ShowBigPictureViewController.xib in Resources */,
 				EE79B1391CC8C435001029EF /* PictureCommentCell.xib in Resources */,
+				A727D59E1EEA3CFC0048AD56 /* LoginViewController.xib in Resources */,
 				EE79B1461CC8C435001029EF /* VideoPlayView.xib in Resources */,
 				EE79B11F1CC8C435001029EF /* NoPictureNewsTableViewCell.xib in Resources */,
 				EE4636B81CC7499D00DB248F /* LaunchScreen.xib in Resources */,
@@ -834,6 +858,7 @@
 				EE79B1491CC8C435001029EF /* VideoTableViewCell.m in Sources */,
 				A7EEF0491EE7A55700076DD4 /* NSString+Addition.m in Sources */,
 				EE79B13E1CC8C435001029EF /* VideoCommentViewController.m in Sources */,
+				A727D5AA1EEA58430048AD56 /* TextFieldCustom.m in Sources */,
 				EE79B1361CC8C435001029EF /* TTPictureComment.m in Sources */,
 				EE79B11A1CC8C435001029EF /* ChannelCollectionViewCell.m in Sources */,
 				EE79B1371CC8C435001029EF /* TTPictureUser.m in Sources */,
@@ -865,9 +890,12 @@
 				EE8A193B1D5B2BDD00BAE119 /* TwoLabelCell.m in Sources */,
 				EE79B1231CC8C435001029EF /* NSDate+Extension.m in Sources */,
 				EE79B11C1CC8C435001029EF /* MultiPictureTableViewCell.m in Sources */,
+				A727D59D1EEA3CFC0048AD56 /* LoginViewController.m in Sources */,
 				EEB3DFA11D8F92010039ABF5 /* TopPictureTableViewCell.m in Sources */,
 				EE79B1261CC8C435001029EF /* UIImageView+Extension.m in Sources */,
+				A727D5A41EEA48B10048AD56 /* UITextField+Bounds.m in Sources */,
 				EE79B1441CC8C435001029EF /* FullViewController.m in Sources */,
+				A727D5A71EEA4A4D0048AD56 /* TextFieldBound.m in Sources */,
 				EE79B1431CC8C435001029EF /* TTVideoUser.m in Sources */,
 				EE79B1121CC8C435001029EF /* MeTableViewController.m in Sources */,
 				EE79B1421CC8C435001029EF /* TTVideoComment.m in Sources */,
