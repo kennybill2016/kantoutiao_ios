@@ -11,10 +11,8 @@
 #import <DKNightVersion.h>
 
 @interface UserInfoCell()
-@property (nonatomic, weak) UIImageView *QQImageView;
-@property (nonatomic, weak) UIImageView *mobileImageView;
-@property (nonatomic, weak) UILabel *qqLabel;
-@property (nonatomic, weak) UILabel *mobileLabel;
+@property (nonatomic, weak) UIImageView *avatarImageView;
+@property (nonatomic, weak) UILabel *nameLabel;
 @property (nonatomic, weak) UILabel *contentLabel;
 @end
 @implementation UserInfoCell
@@ -22,99 +20,49 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        CGFloat cellHeight = 100;
+        CGFloat cellHeight = 80;
         CGFloat margin = 20;
-        CGFloat btnWidth = 200;
-        
-        UIView* sepView = [[UIView alloc] initWithFrame:CGRectMake(0, cellHeight-1, kScreenWidth, 1)];
-        sepView.dk_backgroundColorPicker = DKColorPickerWithKey(HIGHLIGHTED);
-        [self addSubview:sepView];
- 
-        UIImageView *avatarImageViewBG = [[UIImageView alloc] init];
-        avatarImageViewBG.frame =CGRectMake((kScreenWidth-btnWidth)/2, margin-5, cellHeight - 2*margin, cellHeight - 2*margin);
-        avatarImageViewBG.layer.cornerRadius = avatarImageViewBG.frame.size.width * 0.5;
-        avatarImageViewBG.layer.masksToBounds = YES;
-        [avatarImageViewBG setBackgroundColor:[UIColor whiteColor]];
-        [self addSubview:avatarImageViewBG];
-        
-        UITapGestureRecognizer *tapGest1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleQQTap:)];
-        [avatarImageViewBG addGestureRecognizer:tapGest1];
-        avatarImageViewBG.userInteractionEnabled=YES;
         
         UIImageView *avatarImageView = [[UIImageView alloc] init];
-        self.QQImageView = avatarImageView;
-        avatarImageView.frame =CGRectMake(avatarImageViewBG.frame.origin.x+(avatarImageViewBG.frame.size.width-22)/2, avatarImageViewBG.frame.origin.y+(avatarImageViewBG.frame.size.height-24)/2, 22, 24);
-        UIImage* image = [UIImage imageNamed:@"qq_login"];
-        [avatarImageView setImage:image];
+        self.avatarImageView = avatarImageView;
+        avatarImageView.frame =CGRectMake(margin, margin, cellHeight - 2*margin, cellHeight - 2*margin);
         
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width * 0.5;
+        avatarImageView.layer.masksToBounds = YES;
         [self addSubview:avatarImageView];
         
-        UIImageView *mobileImageViewBG = [[UIImageView alloc] init];
-        mobileImageViewBG.frame =CGRectMake(avatarImageViewBG.frame.origin.x+btnWidth-avatarImageViewBG.frame.size.width, margin-5, cellHeight - 2*margin, cellHeight - 2*margin);
-        mobileImageViewBG.layer.cornerRadius = avatarImageViewBG.frame.size.width * 0.5;
-        mobileImageViewBG.layer.masksToBounds = YES;
-        [mobileImageViewBG setBackgroundColor:[UIColor whiteColor]];
-        [self addSubview:mobileImageViewBG];
+        UILabel *nameLabel = [[UILabel alloc] init];
+        self.nameLabel = nameLabel;
+        CGFloat nameLabelHeight = 21.5;
+        nameLabel.font = [UIFont systemFontOfSize:16];
         
-        UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleMobileTap:)];
-        [mobileImageViewBG addGestureRecognizer:tapGest];
-        mobileImageViewBG.userInteractionEnabled = YES;
+        nameLabel.frame = CGRectMake(CGRectGetMaxX(avatarImageView.frame) + margin, avatarImageView.frame.origin.y +(avatarImageView.frame.size.height - nameLabelHeight)/2, kScreenWidth - 3*margin -avatarImageView.frame.size.width, nameLabelHeight);
+        nameLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);
+        [self addSubview:nameLabel];
         
-        UIImageView *mobileImageView = [[UIImageView alloc] init];
-        self.mobileImageView = mobileImageView;
-        mobileImageView.frame =CGRectMake(mobileImageViewBG.frame.origin.x+(mobileImageViewBG.frame.size.width-18)/2, mobileImageViewBG.frame.origin.y+(mobileImageViewBG.frame.size.height-35)/2, 18, 35);
-        UIImage* mobileimage = [UIImage imageNamed:@"mobile_login"];
-        [mobileImageView setImage:mobileimage];
-        
-        [self addSubview:mobileImageView];
-
-        
-        UILabel *qqLabel = [[UILabel alloc] init];
-        self.qqLabel = qqLabel;
-        [qqLabel setText:@"QQ登录"];
-        qqLabel.font = [UIFont systemFontOfSize:12];
-        [qqLabel setTextAlignment:NSTextAlignmentCenter];
-
-        qqLabel.frame = CGRectMake(avatarImageViewBG.frame.origin.x, avatarImageViewBG.frame.origin.y +avatarImageViewBG.frame.size.height+5, avatarImageViewBG.frame.size.width, 14);
-        qqLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);
-        [self addSubview:qqLabel];
-
         UILabel *contentLabel = [[UILabel alloc] init];
         self.contentLabel = contentLabel;
-        [contentLabel setText:@"手机登录"];
-        [contentLabel setTextAlignment:NSTextAlignmentCenter];
+        CGFloat contentLabelHeight = 17.5;
+        
         contentLabel.font = [UIFont systemFontOfSize:12];
         contentLabel.textColor = [UIColor grayColor];
-        contentLabel.frame = CGRectMake(mobileImageViewBG.frame.origin.x, mobileImageViewBG.frame.origin.y +mobileImageViewBG.frame.size.height+5, mobileImageViewBG.frame.size.width, 14);
+        contentLabel.frame = CGRectMake(CGRectGetMaxX(avatarImageView.frame) + margin, avatarImageView.frame.origin.y +avatarImageView.frame.size.height*0.5+0.5*margin, kScreenWidth - 3*margin -avatarImageView.frame.size.width, contentLabelHeight);
         contentLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         contentLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);
-        [self addSubview:contentLabel];
-
+//        [self addSubview:contentLabel];
+        
         self.accessoryType = UITableViewCellAccessoryNone;
-        self.selectionStyle = UITableViewCellSelectionStyleNone;        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.dk_backgroundColorPicker = DKColorPickerWithRGB(0xffffff, 0x343434, 0xfafafa);
+        
     }
     return self;
 }
 
 - (void)setAvatarImage:(UIImage *)image Name:(NSString *)name Signature:(NSString *)content {
-//    self.avatarImageView.image = image;
-//    self.nameLabel.text = name;
-//    self.contentLabel.text = content;
+    self.avatarImageView.image = image;
+    self.nameLabel.text = name;
+    self.contentLabel.text = content;
     
 }
-
-- (void)handleQQTap:(UIGestureRecognizer *)gesture
-{
-    if([self.delegate respondsToSelector:@selector(tapQQLogin)]) {
-        [self.delegate tapQQLogin];
-    }
-}
-
-- (void)handleMobileTap:(UIGestureRecognizer *)gesture
-{
-    if([self.delegate respondsToSelector:@selector(tapMobileLogin)]) {
-        [self.delegate tapMobileLogin];
-    }
-}
-
 @end

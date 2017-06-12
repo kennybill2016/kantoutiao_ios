@@ -17,7 +17,6 @@
 
 @property (nonatomic,copy) NSString *username;
 @property (nonatomic,copy) NSString *iconurl;
-@property (nonatomic,copy) NSString *mobile;
 
 @property (nonatomic,copy) NSString *accessToken;
 @property (nonatomic,copy) NSString *openid;

@@ -32,7 +32,6 @@ NSString * const kUserIconUrlKey = @"UserIconUrlKey";
 }
 
 - (void)saveUserInfo {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil userInfo:nil];
     [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:kUserNameKey];
     [[NSUserDefaults standardUserDefaults] setValue:self.uid forKey:kUidKey];
     [[NSUserDefaults standardUserDefaults] setValue:self.iconurl forKey:kUserIconUrlKey];
@@ -40,15 +39,15 @@ NSString * const kUserIconUrlKey = @"UserIconUrlKey";
 }
 
 - (void)setUserInfoFromMobile:(NSString*)mobile{
-    [self logout];
     self.username=mobile;
-    self.mobile=mobile;
+    self.uid=mobile;
+    self.iconurl=nil;
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil userInfo:nil];
     [self saveUserInfo];
 }
 
 - (void)setUserInfo:(NSString*)userName iconUrl:(NSString*)url uid:(NSString*)uid{
-    [self logout];
     self.username=userName;
     self.iconurl=url;
     self.uid=uid;
@@ -57,15 +56,14 @@ NSString * const kUserIconUrlKey = @"UserIconUrlKey";
 }
 
 - (BOOL)isLogined{
-    return (self.mobile.length>0 ||self.uid.length>0)?YES:NO;
+    return (self.uid.length>0)?YES:NO;
 }
 
 - (void)logout {
     self.username=nil;
     self.iconurl=nil;
     self.uid=nil;
-    self.accessToken=nil;
-    self.mobile=nil;
+    [self saveUserInfo];
 }
 
 @end

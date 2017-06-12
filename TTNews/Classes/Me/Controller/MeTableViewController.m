@@ -26,11 +26,13 @@
 #import "UserManager.h"
 #import "SXNetworkTools.h"
 #import "LoginViewController.h"
+#import "UserLoginCell.h"
 
 static NSString *const UserInfoCellIdentifier = @"UserInfoCell";
 static NSString *const SwitchCellIdentifier = @"SwitchCell";
 static NSString *const TwoLabelCellIdentifier = @"TwoLabelCell";
 static NSString *const DisclosureCellIdentifier = @"DisclosureCell";
+static NSString *const UserLoginCellIdentifier = @"UserLoginCell";
 
 @interface MeTableViewController () <UserInfoCellDelegate>
 
@@ -74,6 +76,7 @@ CGFloat const footViewHeight = 10;
     [self.tableView registerClass:[SwitchCell class] forCellReuseIdentifier:SwitchCellIdentifier];
     [self.tableView registerClass:[TwoLabelCell class] forCellReuseIdentifier:TwoLabelCellIdentifier];
     [self.tableView registerClass:[DisclosureCell class] forCellReuseIdentifier:DisclosureCellIdentifier];
+    [self.tableView registerClass:[UserLoginCell class] forCellReuseIdentifier:UserLoginCellIdentifier];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserLogin) name:kUserLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserLogout) name:kUserLogoutNotification object:nil];
@@ -127,9 +130,8 @@ CGFloat const footViewHeight = 10;
     return footView;
 }
 
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section == 0) {
+- (UITableViewCell*)cellForUser:(UITableView *)tableView {
+    if([UserManager sharedUserManager].isLogined){
         UserInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:UserInfoCellIdentifier];
         cell.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
         cell.textLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);
@@ -142,6 +144,26 @@ CGFloat const footViewHeight = 10;
         [cell setAvatarImage:image Name:[UserManager sharedUserManager].username Signature:nil];
         cell.delegate = self;
         return cell;
+    }
+    else {
+        UserLoginCell *cell = [tableView dequeueReusableCellWithIdentifier:UserLoginCellIdentifier];
+        cell.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
+        cell.textLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);
+        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"headerImage"];
+        UIImage *image = [UIImage imageWithContentsOfFile:path];
+        if (image == nil) {
+            image = [UIImage imageNamed:@"defaultUserIcon"];
+            [UIImagePNGRepresentation(image) writeToFile:path atomically:YES];
+        }
+        [cell setAvatarImage:image Name:[UserManager sharedUserManager].username Signature:nil];
+        cell.delegate = self;
+        return cell;
+    }
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 0) {
+        return [self cellForUser:tableView];
     }
     
     if (indexPath.section == 1&&indexPath.row <1) {
