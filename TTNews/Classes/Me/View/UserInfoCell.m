@@ -53,7 +53,8 @@
         
         self.accessoryType = UITableViewCellAccessoryNone;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.dk_backgroundColorPicker = DKColorPickerWithRGB(0xffffff, 0x343434, 0xfafafa);
+        self.dk_backgroundColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
+//        self.dk_backgroundColorPicker = DKColorPickerWithRGB(0xffffff, 0x343434, 0xfafafa);
         
     }
     return self;

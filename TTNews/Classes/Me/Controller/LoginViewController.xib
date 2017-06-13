@@ -83,7 +83,9 @@
                         <constraint firstAttribute="height" constant="40" id="alD-2N-tMR"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="登录"/>
+                    <state key="normal" title="登录">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.3046072345890411" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="touchLogin:" destination="-1" eventType="touchUpInside" id="9xT-n5-qjt"/>
                     </connections>
