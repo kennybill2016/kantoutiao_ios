@@ -19,6 +19,7 @@
 		A727D5B01EEE40FA0048AD56 /* UserLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5AF1EEE40FA0048AD56 /* UserLoginCell.m */; };
 		A727D5B31EEE7D190048AD56 /* UserLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5B21EEE7D190048AD56 /* UserLoginView.m */; };
 		A727D5B61EEE8A570048AD56 /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5B51EEE8A570048AD56 /* UserInfoView.m */; };
+		A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */; };
 		A7EEF0491EE7A55700076DD4 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */; };
 		A7EEF04D1EE7A6CE00076DD4 /* NSData+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */; };
 		A7EEF0501EE8211F00076DD4 /* QHProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04F1EE8211F00076DD4 /* QHProgressHUD.m */; };
@@ -131,6 +132,7 @@
 		A727D5B21EEE7D190048AD56 /* UserLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginView.m; sourceTree = "<group>"; };
 		A727D5B41EEE8A570048AD56 /* UserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
 		A727D5B51EEE8A570048AD56 /* UserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
+		A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7EEF0451EE7A55700076DD4 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
 		A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
 		A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Addition.m"; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 		EE4635C61CC72B8900DB248F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */,
 				EE4636B71CC7499D00DB248F /* LaunchScreen.xib */,
 				EE4635D21CC72B8900DB248F /* Assets.xcassets */,
 				EE4635D71CC72B8900DB248F /* Info.plist */,
@@ -797,6 +800,7 @@
 				EEB3DFA21D8F92010039ABF5 /* TopPictureTableViewCell.xib in Resources */,
 				EE79B1331CC8C435001029EF /* PictureCommentViewController.xib in Resources */,
 				EE79B1111CC8C435001029EF /* EditUserInfoViewController.xib in Resources */,
+				A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */,
 				EE79B13F1CC8C435001029EF /* VideoCommentViewController.xib in Resources */,
 				EE4BEB5D1D5480E400B4A035 /* NewsURLs.plist in Resources */,
 			);

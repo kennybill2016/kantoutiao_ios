@@ -15,7 +15,6 @@ pod 'FMDB'
 pod 'NJKWebViewProgress'
 pod 'DKNightVersion'
 pod 'AFNetworking'
-pod 'Google-Mobile-Ads-SDK'
 pod 'UMengAnalytics'
 pod ‘UMengUShare/UI’
 pod ‘UMengUShare/Social/WeChat'
@@ -23,6 +22,8 @@ pod ‘UMengUShare/Social/QQ'
 pod 'MOBFoundation_IDFA'
 pod 'SMSSDK'
 pod 'Bugtags'
+pod 'Firebase/Core'
+pod 'Firebase/AdMob'
 
 end
 

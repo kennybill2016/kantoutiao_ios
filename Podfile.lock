@@ -31,10 +31,27 @@ PODS:
     - DKNightVersion/Core
   - DKNightVersion/UIKit (2.4.3):
     - DKNightVersion/Core
+  - Firebase/AdMob (4.0.1):
+    - Firebase/Core
+    - Google-Mobile-Ads-SDK (= 7.20.0)
+  - Firebase/Core (4.0.1):
+    - FirebaseAnalytics (= 4.0.0)
+    - FirebaseCore (= 4.0.1)
+  - FirebaseAnalytics (4.0.0):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (4.0.1):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (2.0.0):
+    - FirebaseCore (~> 4.0)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
   - Google-Mobile-Ads-SDK (7.20.0)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
   - MOBFoundation_IDFA (2.2.19)
@@ -72,8 +89,9 @@ DEPENDENCIES:
   - Bugtags
   - DACircularProgress
   - DKNightVersion
+  - Firebase/AdMob
+  - Firebase/Core
   - FMDB
-  - Google-Mobile-Ads-SDK
   - MJExtension
   - MJRefresh
   - MOBFoundation_IDFA
@@ -92,8 +110,13 @@ SPEC CHECKSUMS:
   Bugtags: 2ec94ad18b279ce00073ccc7a42cbd4870704882
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DKNightVersion: eaa80cc4014b4bae7d4b535fd87ecc6a3c2767b3
+  Firebase: f984cd44a160be77ad0590f432e574562bfd4083
+  FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
+  FirebaseCore: 06172c5a0744ab3dd14f778fd666c22855e20098
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Google-Mobile-Ads-SDK: 168312cdc167fa22746d4ea8e839fc4825dd2966
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MOBFoundation_IDFA: 4561562ab2364873a904a590dcdffea9f10ab8c6
@@ -105,6 +128,6 @@ SPEC CHECKSUMS:
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   UMengUShare: cd54ae52958426b79aa9193a7b02058d6a6d9aa0
 
-PODFILE CHECKSUM: 21f2abcf9abd253031f9f657c37e3e4695e774c5
+PODFILE CHECKSUM: ee308d9960397eea8b03ca7805966c20fbb0d051
 
 COCOAPODS: 1.2.0

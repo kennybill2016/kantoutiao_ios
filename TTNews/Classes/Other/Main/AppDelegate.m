@@ -14,6 +14,7 @@
 #import <SMS_SDK/Extend/SMSSDK+AddressBookMethods.h>
 #import "UserManager.h"
 #import <Bugtags/Bugtags.h>
+#import <Firebase/Firebase.h>
 
 @interface AppDelegate ()
 
@@ -23,11 +24,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Bugtags startWithAppKey:@"86876356259cf37d8e39aebe03e80c6f" invocationEvent:BTGInvocationEventBubble];
+    [Bugtags startWithAppKey:@"86876356259cf37d8e39aebe03e80c6f" invocationEvent:BTGInvocationEventNone];
     [self setupUserDefaults];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[TTTabBarController alloc] init];
     [self.window makeKeyAndVisible];
+    
+    [FIRApp configure];
     
     //初始化应用，appKey和appSecret从后台申请得
     [SMSSDK registerApp:@"1e86dbfc4687e"
