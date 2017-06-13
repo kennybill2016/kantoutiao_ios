@@ -8,6 +8,7 @@
 
 #import "AppInfoViewController.h"
 #import "TTConst.h"
+#import <DKNightVersion.h>
 
 @interface AppInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
@@ -19,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于";
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:nil];
+    
+    self.navigationController.navigationBar.dk_barTintColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
     // Do any additional setup after loading the view from its nib.
 }
 

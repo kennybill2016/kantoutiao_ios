@@ -30,6 +30,7 @@
 #import "UserLoginView.h"
 #import "UserInfoView.h"
 
+
 static NSString *const UserInfoCellIdentifier = @"UserInfoCell";
 static NSString *const SwitchCellIdentifier = @"SwitchCell";
 static NSString *const TwoLabelCellIdentifier = @"TwoLabelCell";
@@ -244,7 +245,7 @@ CGFloat const footViewHeight = 10;
     
     DisclosureCell *cell = [tableView dequeueReusableCellWithIdentifier:DisclosureCellIdentifier];
     if (indexPath.row == 2) {
-        cell.leftLabel.text = @"反馈";
+        cell.leftLabel.text = @"意见反馈";
     } else if(indexPath.row == 3) {
         cell.leftLabel.text = @"关于";
     }

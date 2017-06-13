@@ -13,6 +13,7 @@
 #import <SMS_SDK/SMSSDK.h>
 #import <SMS_SDK/Extend/SMSSDK+AddressBookMethods.h>
 #import "UserManager.h"
+#import <Bugtags/Bugtags.h>
 
 @interface AppDelegate ()
 
@@ -22,6 +23,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Bugtags startWithAppKey:@"86876356259cf37d8e39aebe03e80c6f" invocationEvent:BTGInvocationEventBubble];
     [self setupUserDefaults];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[TTTabBarController alloc] init];

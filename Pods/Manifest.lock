@@ -14,6 +14,9 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Bugtags (2.3.2):
+    - Bugtags/Core (= 2.3.2)
+  - Bugtags/Core (2.3.2)
   - DACircularProgress (2.3.1)
   - DKNightVersion (2.4.3):
     - DKNightVersion/Core (= 2.4.3)
@@ -66,6 +69,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - Bugtags
   - DACircularProgress
   - DKNightVersion
   - FMDB
@@ -85,6 +89,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Bugtags: 2ec94ad18b279ce00073ccc7a42cbd4870704882
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DKNightVersion: eaa80cc4014b4bae7d4b535fd87ecc6a3c2767b3
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
@@ -100,6 +105,6 @@ SPEC CHECKSUMS:
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   UMengUShare: cd54ae52958426b79aa9193a7b02058d6a6d9aa0
 
-PODFILE CHECKSUM: 9166107c7e1e228e4f538893d9eb52d831b18824
+PODFILE CHECKSUM: 21f2abcf9abd253031f9f657c37e3e4695e774c5
 
 COCOAPODS: 1.2.0

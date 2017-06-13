@@ -78,6 +78,9 @@
     [moneybutton setImage:[UIImage imageNamed:@"money_icon"] forState:UIControlStateNormal];
     self.moneyBtn = moneybutton;
     [self addSubview:self.moneyBtn];
+    
+    self.coinBtn.hidden = YES;
+    self.moneyBtn.hidden = YES;
 }
 
 - (void)updateUI {

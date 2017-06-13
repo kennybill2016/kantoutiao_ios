@@ -22,6 +22,7 @@ pod ‘UMengUShare/Social/WeChat'
 pod ‘UMengUShare/Social/QQ'
 pod 'MOBFoundation_IDFA'
 pod 'SMSSDK'
+pod 'Bugtags'
 
 end
 
