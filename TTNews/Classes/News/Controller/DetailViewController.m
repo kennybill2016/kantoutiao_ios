@@ -14,6 +14,7 @@
 #import <DKNightVersion.h>
 #import "SXNetworkTools.h"
 #import <UShareUI/UShareUI.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 @interface DetailViewController ()<UIWebViewDelegate>{
     NSString* content;
@@ -31,6 +32,8 @@
 @property (nonatomic, weak) UIBarButtonItem *backItem;
 @property (nonatomic, weak) UIBarButtonItem *forwardItem;
 @property (nonatomic, weak) UIBarButtonItem *refreshItem;
+
+@property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
 
@@ -50,6 +53,8 @@
     [self loadData];
 //    [self setupToolBars];
 //    [self setupShadeView];
+    
+    [self setupAdMob];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -63,6 +68,25 @@
     [super viewWillDisappear:animated];
     [SVProgressHUD dismiss];
 //    self.navigationController.toolbarHidden = YES;
+}
+
+- (void)setupAdMob {
+    self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50)];
+    [self.bannerView setAdSize:kGADAdSizeSmartBannerPortrait];
+    [self.view addSubview:self.bannerView];
+    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.rootViewController = self;
+}
+
+- (void)requestAdMob {
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+    request.testDevices = @[
+                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
+                            ];
+    [self.bannerView loadRequest:request];
 }
 
 - (void)setupEmptyView{
@@ -193,6 +217,8 @@
     [SVProgressHUD dismiss];
     self.backItem.enabled = webView.canGoBack;
     self.forwardItem.enabled = webView.canGoForward;
+    
+    [self requestAdMob];
 }
 
 #pragma mark -UIWebViewDelegate-加载Webview失败

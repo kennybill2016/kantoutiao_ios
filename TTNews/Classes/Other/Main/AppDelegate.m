@@ -31,6 +31,7 @@
     [self.window makeKeyAndVisible];
     
     [FIRApp configure];
+//    [GADMobileAds configureWithApplicationID:@"ca-app-pub-3940256099942544~1458002511"];
     
     //初始化应用，appKey和appSecret从后台申请得
     [SMSSDK registerApp:@"1e86dbfc4687e"

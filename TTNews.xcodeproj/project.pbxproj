@@ -20,6 +20,8 @@
 		A727D5B31EEE7D190048AD56 /* UserLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5B21EEE7D190048AD56 /* UserLoginView.m */; };
 		A727D5B61EEE8A570048AD56 /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5B51EEE8A570048AD56 /* UserInfoView.m */; };
 		A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */; };
+		A7BF17781EEFFA910062DBBD /* NativeExpressAdViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */; };
+		A7BF17791EEFFA910062DBBD /* NativeExpressAdViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17771EEFFA910062DBBD /* NativeExpressAdViewCell.xib */; };
 		A7EEF0491EE7A55700076DD4 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */; };
 		A7EEF04D1EE7A6CE00076DD4 /* NSData+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */; };
 		A7EEF0501EE8211F00076DD4 /* QHProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04F1EE8211F00076DD4 /* QHProgressHUD.m */; };
@@ -133,6 +135,9 @@
 		A727D5B41EEE8A570048AD56 /* UserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
 		A727D5B51EEE8A570048AD56 /* UserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
 		A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A7BF17751EEFFA910062DBBD /* NativeExpressAdViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeExpressAdViewCell.h; sourceTree = "<group>"; };
+		A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeExpressAdViewCell.m; sourceTree = "<group>"; };
+		A7BF17771EEFFA910062DBBD /* NativeExpressAdViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeExpressAdViewCell.xib; sourceTree = "<group>"; };
 		A7EEF0451EE7A55700076DD4 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
 		A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
 		A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Addition.m"; sourceTree = "<group>"; };
@@ -708,6 +713,9 @@
 				EE79B0AB1CC8C435001029EF /* ChannelCollectionViewCell.h */,
 				EE79B0AC1CC8C435001029EF /* ChannelCollectionViewCell.m */,
 				EE79B0AD1CC8C435001029EF /* ChannelCollectionViewCell.xib */,
+				A7BF17751EEFFA910062DBBD /* NativeExpressAdViewCell.h */,
+				A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */,
+				A7BF17771EEFFA910062DBBD /* NativeExpressAdViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -790,6 +798,7 @@
 				EE79B1461CC8C435001029EF /* VideoPlayView.xib in Resources */,
 				EE79B11F1CC8C435001029EF /* NoPictureNewsTableViewCell.xib in Resources */,
 				EE4636B81CC7499D00DB248F /* LaunchScreen.xib in Resources */,
+				A7BF17791EEFFA910062DBBD /* NativeExpressAdViewCell.xib in Resources */,
 				EE79B10F1CC8C435001029EF /* AppInfoViewController.xib in Resources */,
 				EEB3DF9D1D8F913A0039ABF5 /* BigPictureTableViewCell.xib in Resources */,
 				EE79B1211CC8C435001029EF /* SinglePictureNewsTableViewCell.xib in Resources */,
@@ -902,6 +911,7 @@
 				EE79B11E1CC8C435001029EF /* NoPictureNewsTableViewCell.m in Sources */,
 				EE79B1471CC8C435001029EF /* VideoCommentCell.m in Sources */,
 				EE79B1291CC8C435001029EF /* TTDataTool.m in Sources */,
+				A7BF17781EEFFA910062DBBD /* NativeExpressAdViewCell.m in Sources */,
 				EE79B1201CC8C435001029EF /* SinglePictureNewsTableViewCell.m in Sources */,
 				A727D5971EE96A4A0048AD56 /* UIColor+HEX.m in Sources */,
 				EE79B1191CC8C435001029EF /* TTNormalNews.m in Sources */,
