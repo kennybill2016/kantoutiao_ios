@@ -40,8 +40,6 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"手机登录";
     
-    self.view.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
-    
     [_loginView setBackgroundColor:[UIColor whiteColor]];
     _loginView.layer.cornerRadius = 4;
     _loginView.layer.borderWidth = 1;
@@ -66,6 +64,13 @@
     
     _mobileField.delegate = self;
     _verifyField.delegate = self;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:nil];
+    self.navigationController.navigationBar.dk_barTintColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
 }
 
 - (void)didReceiveMemoryWarning {

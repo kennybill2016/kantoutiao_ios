@@ -32,50 +32,55 @@
 - (void)initialization {
     CGFloat cellHeight = self.frame.size.height;
     CGFloat margin = 40;
-    CGFloat btnWidth = 200;
+    CGFloat btnWidth = 240;
+    CGFloat imageHeight = 66;
     
 //    UIView* sepView = [[UIView alloc] initWithFrame:CGRectMake(0, cellHeight-1, kScreenWidth, 1)];
 //    sepView.dk_backgroundColorPicker = DKColorPickerWithKey(HIGHLIGHTED);
 //    [self addSubview:sepView];
     
     UIImageView *avatarImageViewBG = [[UIImageView alloc] init];
-    avatarImageViewBG.frame =CGRectMake((kScreenWidth-btnWidth)/2, margin-5, cellHeight - 2*margin, cellHeight - 2*margin);
+    avatarImageViewBG.frame =CGRectMake((kScreenWidth-btnWidth)/2+(btnWidth/2-imageHeight)/2+1, (cellHeight-imageHeight)/2+1, imageHeight-2, imageHeight-2);
     avatarImageViewBG.layer.cornerRadius = avatarImageViewBG.frame.size.width * 0.5;
     avatarImageViewBG.layer.masksToBounds = YES;
     [avatarImageViewBG setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:avatarImageViewBG];
+//    avatarImageViewBG.hidden = YES;
     
-    UITapGestureRecognizer *tapGest1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleQQTap:)];
-    [avatarImageViewBG addGestureRecognizer:tapGest1];
-    avatarImageViewBG.userInteractionEnabled=YES;
     
     UIImageView *avatarImageView = [[UIImageView alloc] init];
     self.QQImageView = avatarImageView;
-    avatarImageView.frame =CGRectMake(avatarImageViewBG.frame.origin.x+(avatarImageViewBG.frame.size.width-22)/2, avatarImageViewBG.frame.origin.y+(avatarImageViewBG.frame.size.height-24)/2, 22, 24);
+    avatarImageView.frame =CGRectMake((kScreenWidth-btnWidth)/2+(btnWidth/2-imageHeight)/2, (cellHeight-imageHeight)/2, imageHeight, imageHeight);//CGRectMake(avatarImageViewBG.frame.origin.x+(avatarImageViewBG.frame.size.width-46)/2, avatarImageViewBG.frame.origin.y+(avatarImageViewBG.frame.size.height-46)/2, 46, 46);
     UIImage* image = [UIImage imageNamed:@"qq_login"];
     [avatarImageView setImage:image];
     
     [self addSubview:avatarImageView];
     
+    UITapGestureRecognizer *tapGest1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleQQTap:)];
+    [avatarImageViewBG addGestureRecognizer:tapGest1];
+    avatarImageViewBG.userInteractionEnabled=YES;
+
+    
     UIImageView *mobileImageViewBG = [[UIImageView alloc] init];
-    mobileImageViewBG.frame =CGRectMake(avatarImageViewBG.frame.origin.x+btnWidth-avatarImageViewBG.frame.size.width, margin-5, cellHeight - 2*margin, cellHeight - 2*margin);
+    mobileImageViewBG.frame = CGRectMake((kScreenWidth-btnWidth)/2+btnWidth/2+(btnWidth/2-imageHeight)/2+1, (cellHeight-imageHeight)/2+1, imageHeight-2, imageHeight-2);
     mobileImageViewBG.layer.cornerRadius = avatarImageViewBG.frame.size.width * 0.5;
     mobileImageViewBG.layer.masksToBounds = YES;
     [mobileImageViewBG setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:mobileImageViewBG];
+//    mobileImageViewBG.hidden = YES;
     
-    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleMobileTap:)];
-    [mobileImageViewBG addGestureRecognizer:tapGest];
-    mobileImageViewBG.userInteractionEnabled = YES;
     
     UIImageView *mobileImageView = [[UIImageView alloc] init];
     self.mobileImageView = mobileImageView;
-    mobileImageView.frame =CGRectMake(mobileImageViewBG.frame.origin.x+(mobileImageViewBG.frame.size.width-18)/2, mobileImageViewBG.frame.origin.y+(mobileImageViewBG.frame.size.height-35)/2, 18, 35);
+    mobileImageView.frame = CGRectMake((kScreenWidth-btnWidth)/2+btnWidth/2+(btnWidth/2-imageHeight)/2, (cellHeight-imageHeight)/2, imageHeight, imageHeight);//CGRectMake(mobileImageViewBG.frame.origin.x+(mobileImageViewBG.frame.size.width-46)/2, mobileImageViewBG.frame.origin.y+(mobileImageViewBG.frame.size.height-46)/2, 46, 46);
     UIImage* mobileimage = [UIImage imageNamed:@"mobile_login"];
     [mobileImageView setImage:mobileimage];
     
     [self addSubview:mobileImageView];
     
+    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleMobileTap:)];
+    [mobileImageViewBG addGestureRecognizer:tapGest];
+    mobileImageViewBG.userInteractionEnabled = YES;
     
     UILabel *qqLabel = [[UILabel alloc] init];
     self.qqLabel = qqLabel;

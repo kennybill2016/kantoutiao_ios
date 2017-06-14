@@ -74,6 +74,8 @@ CGFloat const footViewHeight = 10;
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:nil];
     [SVProgressHUD dismiss];
 }
 
@@ -108,6 +110,7 @@ CGFloat const footViewHeight = 10;
     [self.userHeaderView addSubview:self.emptyHeaderView];
     
     self.headerLoginView = [[UserLoginView alloc] initWithFrame:CGRectMake(0, rectStatus.size.height, kScreenWidth, 164-rectStatus.size.height)];
+    self.headerLoginView.delegate = self;
     [self.userHeaderView addSubview:self.headerLoginView];
     
     self.headerUserView = [[UserInfoView alloc] initWithFrame:self.headerLoginView.frame];
