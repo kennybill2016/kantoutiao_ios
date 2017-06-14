@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppInfoViewController">
             <connections>
-                <outlet property="appNameLabel" destination="XBf-Mf-ZpH" id="VyJ-nO-cTl"/>
+                <outlet property="verLabel" destination="LaY-p5-fBf" id="Tl6-Uw-Udk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,10 +21,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appinfoimage" translatesAutoresizingMaskIntoConstraints="NO" id="Eq5-Vn-y3L">
-                    <rect key="frame" x="112.5" y="164" width="150" height="150"/>
+                    <rect key="frame" x="142" y="168" width="90" height="90"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="150" id="hv9-3X-UqR"/>
-                        <constraint firstAttribute="height" constant="150" id="yzJ-xj-0Pd"/>
+                        <constraint firstAttribute="width" constant="90" id="hv9-3X-UqR"/>
+                        <constraint firstAttribute="height" constant="90" id="yzJ-xj-0Pd"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -33,49 +33,46 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="天天新闻" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBf-Mf-ZpH">
-                    <rect key="frame" x="256" y="334" width="88" height="26.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="看头条" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-ib-s2X">
+                    <rect key="frame" x="106" y="284" width="162" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending News Everyday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTC-88-cUo">
-                    <rect key="frame" x="93" y="370" width="189" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="版本号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaY-p5-fBf">
+                    <rect key="frame" x="84" y="336" width="224" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="“看头条”作为一款新生代内容资讯APP，通过大数据和云计算等技术，为用户提供感兴趣、有价值的个性化内容及服务。" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTC-88-cUo">
+                    <rect key="frame" x="37" y="422" width="300" height="123"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="123" id="rtj-Fh-7fr"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="💕Made with love by YangJunhui" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35Z-YO-aqL">
-                    <rect key="frame" x="174" y="559.5" width="253" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="35Z-YO-aqL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="77n-nx-ih7"/>
-                <constraint firstItem="Eq5-Vn-y3L" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="164" id="Aj0-Ad-UYr"/>
-                <constraint firstItem="35Z-YO-aqL" firstAttribute="top" secondItem="hTC-88-cUo" secondAttribute="bottom" constant="10" id="EwV-Ia-96z"/>
-                <constraint firstItem="XBf-Mf-ZpH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="P3J-A8-Ru4"/>
-                <constraint firstAttribute="bottom" secondItem="35Z-YO-aqL" secondAttribute="bottom" constant="40" id="UyD-Lt-Cdw"/>
-                <constraint firstItem="hTC-88-cUo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XyR-Ms-Wz3"/>
-                <constraint firstAttribute="bottom" secondItem="35Z-YO-aqL" secondAttribute="bottom" constant="20" id="YrF-G3-Qdg"/>
+                <constraint firstItem="LaY-p5-fBf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5be-Ui-zYn"/>
+                <constraint firstAttribute="trailing" secondItem="hTC-88-cUo" secondAttribute="trailing" constant="38" id="7gw-MI-gWG"/>
+                <constraint firstItem="Eq5-Vn-y3L" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="168" id="Aj0-Ad-UYr"/>
                 <constraint firstItem="Eq5-Vn-y3L" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cHb-j4-wHm"/>
-                <constraint firstItem="hTC-88-cUo" firstAttribute="top" secondItem="XBf-Mf-ZpH" secondAttribute="bottom" constant="10" id="fe4-GA-0Ha"/>
-                <constraint firstItem="XBf-Mf-ZpH" firstAttribute="top" secondItem="Eq5-Vn-y3L" secondAttribute="bottom" constant="20" id="pW4-g6-UhH"/>
+                <constraint firstItem="LaY-p5-fBf" firstAttribute="top" secondItem="I5b-ib-s2X" secondAttribute="bottom" constant="16" id="kX2-WF-mKm"/>
+                <constraint firstItem="I5b-ib-s2X" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rIY-wc-AF6"/>
+                <constraint firstItem="hTC-88-cUo" firstAttribute="top" secondItem="LaY-p5-fBf" secondAttribute="bottom" constant="50" id="ucb-bq-1L5"/>
+                <constraint firstItem="I5b-ib-s2X" firstAttribute="top" secondItem="Eq5-Vn-y3L" secondAttribute="bottom" constant="26" id="xD8-Up-v0a"/>
+                <constraint firstItem="hTC-88-cUo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="xZc-yY-Nmg"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="EwV-Ia-96z"/>
-                    <exclude reference="UyD-Lt-Cdw"/>
-                </mask>
-            </variation>
-            <point key="canvasLocation" x="254" y="221"/>
+            <point key="canvasLocation" x="253.5" y="220.5"/>
         </view>
     </objects>
     <resources>
-        <image name="appinfoimage" width="1000" height="1000"/>
+        <image name="appinfoimage" width="90" height="90"/>
     </resources>
 </document>

@@ -12,6 +12,7 @@
 
 @interface AppInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *verLabel;
 
 @end
 
@@ -20,6 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于";
+    
+    NSBundle * mainBoundle = [NSBundle mainBundle];
+    NSString * localVersion = [mainBoundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    
+    NSString* version = [NSString stringWithFormat:@"版本号：V%@.%@", localVersion, [mainBoundle objectForInfoDictionaryKey: @"CFBundleVersion"]];
+    self.verLabel.text = version;
     
     // Do any additional setup after loading the view from its nib.
 }
