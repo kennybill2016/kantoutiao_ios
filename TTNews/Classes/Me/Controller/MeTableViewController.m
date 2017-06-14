@@ -26,7 +26,6 @@
 #import "UserManager.h"
 #import "SXNetworkTools.h"
 #import "LoginViewController.h"
-#import "UserLoginCell.h"
 #import "UserLoginView.h"
 #import "UserInfoView.h"
 
@@ -61,7 +60,6 @@ CGFloat const footViewHeight = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"";
-    [self caculateCacheSize];
     [self setupBasic];
 
 }
@@ -70,6 +68,11 @@ CGFloat const footViewHeight = 10;
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self caculateCacheSize];
+  
+    [self.tableView reloadData];
+//    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
+//    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -100,7 +103,19 @@ CGFloat const footViewHeight = 10;
     }
 }
 
--(void)setupBasic{
+- (void)refreshLoginStatus {
+    if([UserManager sharedUserManager].isLogined) {
+        self.headerLoginView.hidden = YES;
+        self.headerUserView.hidden = NO;
+        [self.headerUserView updateUI];
+    }
+    else {
+        self.headerLoginView.hidden = NO;
+        self.headerUserView.hidden = YES;
+    }
+}
+
+- (void)setupBasic{
     self.userHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, -164, kScreenWidth, 164)];
     self.userHeaderView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
     [self.tableView addSubview:self.userHeaderView];
@@ -116,15 +131,7 @@ CGFloat const footViewHeight = 10;
     self.headerUserView = [[UserInfoView alloc] initWithFrame:self.headerLoginView.frame];
     [self.userHeaderView addSubview:self.headerUserView];
     
-    if([UserManager sharedUserManager].isLogined) {
-        self.headerLoginView.hidden = YES;
-        self.headerUserView.hidden = NO;
-        [self.headerUserView updateUI];
-    }
-    else {
-        self.headerLoginView.hidden = NO;
-        self.headerUserView.hidden = YES;
-    }
+    [self refreshLoginStatus];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.contentInset = UIEdgeInsetsMake(164, 0, 0, 0);
@@ -136,7 +143,6 @@ CGFloat const footViewHeight = 10;
     [self.tableView registerClass:[SwitchCell class] forCellReuseIdentifier:SwitchCellIdentifier];
     [self.tableView registerClass:[TwoLabelCell class] forCellReuseIdentifier:TwoLabelCellIdentifier];
     [self.tableView registerClass:[DisclosureCell class] forCellReuseIdentifier:DisclosureCellIdentifier];
-    [self.tableView registerClass:[UserLoginCell class] forCellReuseIdentifier:UserLoginCellIdentifier];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserLogin) name:kUserLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserLogout) name:kUserLogoutNotification object:nil];
@@ -185,38 +191,6 @@ CGFloat const footViewHeight = 10;
         [lineView2 removeFromSuperview];
     }
     return footView;
-}
-
-- (UITableViewCell*)cellForUser:(UITableView *)tableView {
-    if([UserManager sharedUserManager].isLogined){
-        UserInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:UserInfoCellIdentifier];
-        cell.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
-        cell.dk_backgroundColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
-        cell.textLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);
-        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"headerImage"];
-        UIImage *image = [UIImage imageWithContentsOfFile:path];
-        if (image == nil) {
-            image = [UIImage imageNamed:@"defaultUserIcon"];
-            [UIImagePNGRepresentation(image) writeToFile:path atomically:YES];
-        }
-        [cell setAvatarImage:image Name:[UserManager sharedUserManager].username Signature:nil];
-        cell.delegate = self;
-        return cell;
-    }
-    else {
-        UserLoginCell *cell = [tableView dequeueReusableCellWithIdentifier:UserLoginCellIdentifier];
-        cell.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
-        cell.textLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);
-        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"headerImage"];
-        UIImage *image = [UIImage imageWithContentsOfFile:path];
-        if (image == nil) {
-            image = [UIImage imageNamed:@"defaultUserIcon"];
-            [UIImagePNGRepresentation(image) writeToFile:path atomically:YES];
-        }
-        [cell setAvatarImage:image Name:[UserManager sharedUserManager].username Signature:nil];
-        cell.delegate = self;
-        return cell;
-    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -357,13 +331,11 @@ CGFloat const footViewHeight = 10;
 }
 
 - (void)onUserLogin{
-    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
-    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self refreshLoginStatus];
 }
 
 - (void)onUserLogout{
-    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
-    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self refreshLoginStatus];
 }
 
 @end

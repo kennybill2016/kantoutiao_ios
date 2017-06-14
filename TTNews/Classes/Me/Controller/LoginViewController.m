@@ -118,6 +118,13 @@
                                              repeats:YES];
 }
 
+- (void)stopTime {
+    [_timer invalidate];
+    _count = 0;
+    [_sendVerifyCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    _sendVerifyCodeBtn.userInteractionEnabled = YES;
+}
+
 - (IBAction)touchSendVerify:(id)sender {
     if(_mobileField.text.length<=0){
         [SXNetworkTools showText:self.view text:@"手机号码不能为空！" hideAfterDelay:2];
@@ -125,12 +132,13 @@
     }
     if([self isMobileNumber:_mobileField.text]) {
         __weak typeof(self) weakSelf = self;
+        [weakSelf resumeTime];
         [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:_mobileField.text zone:@"86" customIdentifier:nil result:^(NSError *error) {
             if (!error) {
                 NSLog(@"验证码发送成功");
-                [weakSelf resumeTime];
             }else
             {
+                [weakSelf stopTime];
                 NSLog(@"发送验证码失败");
                 [SXNetworkTools showText:self.view text:@"发送验证码失败，请稍候重试！" hideAfterDelay:2];
             }

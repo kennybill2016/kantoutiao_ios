@@ -42,7 +42,7 @@
 - (void)initialization {
     UIImageView *avatarImageView = [[UIImageView alloc] init];
     self.avatarImageView = avatarImageView;
-    avatarImageView.frame =CGRectMake((kScreenWidth-40)/2, 20, 40, 40);
+    avatarImageView.frame =CGRectMake((kScreenWidth-60)/2, 20, 60, 60);
     avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width * 0.5;
     avatarImageView.layer.masksToBounds = YES;
     avatarImageView.layer.borderWidth = 2;
@@ -53,7 +53,7 @@
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:rectName];
     self.nameLabel = nameLabel;
     [self.nameLabel setTextAlignment:NSTextAlignmentCenter];
-    nameLabel.font = [UIFont systemFontOfSize:16];
+    nameLabel.font = [UIFont systemFontOfSize:18];
     [nameLabel setTextColor:[UIColor whiteColor]];
     [self addSubview:nameLabel];
     

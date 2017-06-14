@@ -16,7 +16,6 @@
 		A727D5A41EEA48B10048AD56 /* UITextField+Bounds.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5A31EEA48B10048AD56 /* UITextField+Bounds.m */; };
 		A727D5A71EEA4A4D0048AD56 /* TextFieldBound.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5A61EEA4A4D0048AD56 /* TextFieldBound.m */; };
 		A727D5AA1EEA58430048AD56 /* TextFieldCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5A91EEA58430048AD56 /* TextFieldCustom.m */; };
-		A727D5B01EEE40FA0048AD56 /* UserLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5AF1EEE40FA0048AD56 /* UserLoginCell.m */; };
 		A727D5B31EEE7D190048AD56 /* UserLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5B21EEE7D190048AD56 /* UserLoginView.m */; };
 		A727D5B61EEE8A570048AD56 /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5B51EEE8A570048AD56 /* UserInfoView.m */; };
 		A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */; };
@@ -127,8 +126,6 @@
 		A727D5A61EEA4A4D0048AD56 /* TextFieldBound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldBound.m; sourceTree = "<group>"; };
 		A727D5A81EEA58430048AD56 /* TextFieldCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCustom.h; sourceTree = "<group>"; };
 		A727D5A91EEA58430048AD56 /* TextFieldCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCustom.m; sourceTree = "<group>"; };
-		A727D5AE1EEE40FA0048AD56 /* UserLoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginCell.h; sourceTree = "<group>"; };
-		A727D5AF1EEE40FA0048AD56 /* UserLoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginCell.m; sourceTree = "<group>"; };
 		A727D5B11EEE7D190048AD56 /* UserLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginView.h; sourceTree = "<group>"; };
 		A727D5B21EEE7D190048AD56 /* UserLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginView.m; sourceTree = "<group>"; };
 		A727D5B41EEE8A570048AD56 /* UserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
@@ -414,8 +411,6 @@
 				A727D5A61EEA4A4D0048AD56 /* TextFieldBound.m */,
 				A727D5A81EEA58430048AD56 /* TextFieldCustom.h */,
 				A727D5A91EEA58430048AD56 /* TextFieldCustom.m */,
-				A727D5AE1EEE40FA0048AD56 /* UserLoginCell.h */,
-				A727D5AF1EEE40FA0048AD56 /* UserLoginCell.m */,
 				A727D5B11EEE7D190048AD56 /* UserLoginView.h */,
 				A727D5B21EEE7D190048AD56 /* UserLoginView.m */,
 				A727D5B41EEE8A570048AD56 /* UserInfoView.h */,
@@ -886,7 +881,6 @@
 				A727D5AA1EEA58430048AD56 /* TextFieldCustom.m in Sources */,
 				EE79B1361CC8C435001029EF /* TTPictureComment.m in Sources */,
 				EE79B11A1CC8C435001029EF /* ChannelCollectionViewCell.m in Sources */,
-				A727D5B01EEE40FA0048AD56 /* UserLoginCell.m in Sources */,
 				EE79B1371CC8C435001029EF /* TTPictureUser.m in Sources */,
 				EE79B1321CC8C435001029EF /* PictureCommentViewController.m in Sources */,
 				EE79B1271CC8C435001029EF /* UIView+Extension.m in Sources */,
@@ -1052,6 +1046,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.kantoutiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1071,6 +1066,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.kantoutiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
