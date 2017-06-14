@@ -29,7 +29,6 @@
 		EE3A071E1CDA1DAD0024C37A /* ContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3A071D1CDA1DAD0024C37A /* ContentTableViewController.m */; };
 		EE4635C81CC72B8900DB248F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4635C71CC72B8900DB248F /* main.m */; };
 		EE4635D31CC72B8900DB248F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4635D21CC72B8900DB248F /* Assets.xcassets */; };
-		EE4636B81CC7499D00DB248F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE4636B71CC7499D00DB248F /* LaunchScreen.xib */; };
 		EE4BEB5D1D5480E400B4A035 /* NewsURLs.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE4BEB5C1D5480E400B4A035 /* NewsURLs.plist */; };
 		EE79B10E1CC8C435001029EF /* AppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79B0901CC8C435001029EF /* AppInfoViewController.m */; };
 		EE79B10F1CC8C435001029EF /* AppInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE79B0911CC8C435001029EF /* AppInfoViewController.xib */; };
@@ -152,7 +151,6 @@
 		EE4635C71CC72B8900DB248F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EE4635D21CC72B8900DB248F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE4635D71CC72B8900DB248F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE4636B71CC7499D00DB248F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		EE4BEB5C1D5480E400B4A035 /* NewsURLs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NewsURLs.plist; sourceTree = "<group>"; };
 		EE79B08F1CC8C435001029EF /* AppInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoViewController.h; sourceTree = "<group>"; };
 		EE79B0901CC8C435001029EF /* AppInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoViewController.m; sourceTree = "<group>"; };
@@ -343,7 +341,6 @@
 			isa = PBXGroup;
 			children = (
 				A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */,
-				EE4636B71CC7499D00DB248F /* LaunchScreen.xib */,
 				EE4635D21CC72B8900DB248F /* Assets.xcassets */,
 				EE4635D71CC72B8900DB248F /* Info.plist */,
 				EE4635C71CC72B8900DB248F /* main.m */,
@@ -797,7 +794,6 @@
 				A727D59E1EEA3CFC0048AD56 /* LoginViewController.xib in Resources */,
 				EE79B1461CC8C435001029EF /* VideoPlayView.xib in Resources */,
 				EE79B11F1CC8C435001029EF /* NoPictureNewsTableViewCell.xib in Resources */,
-				EE4636B81CC7499D00DB248F /* LaunchScreen.xib in Resources */,
 				A7BF17791EEFFA910062DBBD /* NativeExpressAdViewCell.xib in Resources */,
 				EE79B10F1CC8C435001029EF /* AppInfoViewController.xib in Resources */,
 				EEB3DF9D1D8F913A0039ABF5 /* BigPictureTableViewCell.xib in Resources */,
@@ -1045,6 +1041,7 @@
 			baseConfigurationReference = 717B946A98B6AB20011716E0 /* Pods-TTNews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 24SE6ECXX7;
@@ -1063,6 +1060,7 @@
 			baseConfigurationReference = 47ED23446BBCD16E40946062 /* Pods-TTNews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 24SE6ECXX7;
