@@ -7,9 +7,10 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-#define GETLIST_CONF_URL @"http://localhost:8887/content/getList.php"
-#define DETAIL_CONF_URL  @"http://localhost:8887/content/detail.php"
-#define USER_CONF_URL @"http://localhost:8887/content/user.php"
+//localhost:8887
+#define GETLIST_CONF_URL @"http://home.kuaikanpian.com/content/getList.php"
+#define DETAIL_CONF_URL  @"http://home.kuaikanpian.com/content/detail.php"
+#define USER_CONF_URL @"http://home.kuaikanpian.com/content/user.php"
 
 @interface SXNetworkTools : AFHTTPSessionManager
 

@@ -16,7 +16,7 @@
 #import <UShareUI/UShareUI.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
-@interface DetailViewController ()<UIWebViewDelegate>{
+@interface DetailViewController ()<UIWebViewDelegate,UIGestureRecognizerDelegate>{
     NSString* content;
     
     UIView* emptyView;
@@ -51,6 +51,7 @@
     [self setupNaigationBar];
     [self setupEmptyView];
     [self loadData];
+    
 //    [self setupToolBars];
 //    [self setupShadeView];
     
@@ -68,6 +69,12 @@
     [super viewWillDisappear:animated];
     [SVProgressHUD dismiss];
 //    self.navigationController.toolbarHidden = YES;
+}
+
+
+- (void)dealloc
+{
+    self.webView.delegate = nil;
 }
 
 - (void)setupAdMob {
@@ -142,14 +149,25 @@
 
 #pragma mark --private Method--初始化webView
 - (void)setupWebView {
-    UIWebView *webView = [[UIWebView alloc] init];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50)];
     self.webView = webView;
-    webView.frame = self.view.frame;
+//    webView.frame = self.view.frame;
     webView.delegate = self;
     [self.view addSubview:webView];
     [SVProgressHUD show];
+    
+    UIScreenEdgePanGestureRecognizer *swipeRight = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self  action:@selector(fireBack:)];
+    swipeRight.edges = UIRectEdgeLeft;
+    swipeRight.delegate = self;
+    [webView addGestureRecognizer:swipeRight];
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 //    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 
+}
+
+- (void)fireBack:(UIButton *)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark --private Method--初始化NavigationBar
@@ -284,7 +302,7 @@
     //创建网页内容对象
     UIImage *imageToShare = [UIImage imageNamed:@"appinfoimage"];
 //    NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.title descr:self.introduct thumImage:imageToShare];
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.maintitle descr:self.introduct thumImage:imageToShare];
     //设置网页地址
     shareObject.webpageUrl = self.srcurl;
     

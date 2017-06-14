@@ -19,7 +19,7 @@
 #import "TTNormalNews.h"
 #import <DKNightVersion.h>
 
-@interface NewsViewController()<UIScrollViewDelegate,TTTopChannelContianerViewDelegate>
+@interface NewsViewController()<UIScrollViewDelegate,TTTopChannelContianerViewDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic, strong) NSMutableArray *currentChannelsArray;
 @property (nonatomic, weak) TTTopChannelContianerView *topContianerView;
 @property (nonatomic, weak) UIScrollView *contentScrollView;
@@ -48,6 +48,7 @@ static NSString * const collectionViewSectionHeaderID = @"ChannelCollectionHeade
     [self setupChildController];
     [self setupContentScrollView];
 //    [self setupCollectionView];
+     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     
 }
 
@@ -152,6 +153,14 @@ static NSString * const collectionViewSectionHeaderID = @"ChannelCollectionHeade
         }
     }
     return _currentChannelsArray;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (self.navigationController.viewControllers.count == 1)
+        return NO;
+    else
+        return YES;
 }
 
 @end

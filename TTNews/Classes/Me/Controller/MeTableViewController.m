@@ -36,7 +36,7 @@ static NSString *const TwoLabelCellIdentifier = @"TwoLabelCell";
 static NSString *const DisclosureCellIdentifier = @"DisclosureCell";
 static NSString *const UserLoginCellIdentifier = @"UserLoginCell";
 
-@interface MeTableViewController () <UserInfoCellDelegate>
+@interface MeTableViewController () <UserInfoCellDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, weak) UISwitch *shakeCanChangeSkinSwitch;
@@ -61,7 +61,7 @@ CGFloat const footViewHeight = 10;
     [super viewDidLoad];
     self.navigationItem.title=@"";
     [self setupBasic];
-
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -336,6 +336,14 @@ CGFloat const footViewHeight = 10;
 
 - (void)onUserLogout{
     [self refreshLoginStatus];
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (self.navigationController.viewControllers.count == 1)
+        return NO;
+    else
+        return YES;
 }
 
 @end
