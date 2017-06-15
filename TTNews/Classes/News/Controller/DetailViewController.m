@@ -45,7 +45,7 @@
         [SVProgressHUD showErrorWithStatus:@"无网络连接"];
         [self.navigationController popViewControllerAnimated:YES];
     }
-    self.view.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x343434, 0xfafafa);
+    self.view.dk_backgroundColorPicker = DKColorPickerWithRGB(0xffffff, 0x343434, 0xffffff);
 
     [self setupWebView];
     [self setupNaigationBar];

@@ -30,8 +30,10 @@
 #import "NativeExpressAdViewCell.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
-static NSString *const GADAdUnitID = @"ca-app-pub-3940256099942544/2562852117";
-static const CGFloat GADAdViewHeight = 135;
+//ca-app-pub-3940256099942544/2562852117 medium
+//ca-app-pub-3940256099942544/2934735716 small
+static NSString *const GADAdUnitID = @"ca-app-pub-3940256099942544/2934735716";
+static const CGFloat GADAdViewHeight = 100;
 
 @interface ContentTableViewController () <GADNativeExpressAdViewDelegate> {
     NSString* max_time;
@@ -225,8 +227,11 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
             
             GADNativeExpressAdView* adView = [weakSelf createAdMob];
             NSMutableArray* insertArr = [NSMutableArray arrayWithArray:arrayM];
-            if(adView)
-                [insertArr addObject:adView];
+            if(adView) {
+                NSMutableArray* adArray = [NSMutableArray arrayWithObject:adView];
+                [insertArr insertObjects:adArray atIndexes:[NSIndexSet indexSetWithIndexesInRange
+                                                                       :NSMakeRange(insertArr.count/2,adArray.count)]];
+            }
             if (type == 1) {
                 if([weakSelf.arrayList count]>0) {
                     [weakSelf.arrayList insertObjects:insertArr atIndexes:[NSIndexSet indexSetWithIndexesInRange
