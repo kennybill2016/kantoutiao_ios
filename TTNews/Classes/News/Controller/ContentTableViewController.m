@@ -230,7 +230,7 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
             if(adView) {
                 NSMutableArray* adArray = [NSMutableArray arrayWithObject:adView];
                 [insertArr insertObjects:adArray atIndexes:[NSIndexSet indexSetWithIndexesInRange
-                                                                       :NSMakeRange(insertArr.count/2,adArray.count)]];
+                                                                       :NSMakeRange(insertArr.count-1,adArray.count)]];
             }
             if (type == 1) {
                 if([weakSelf.arrayList count]>0) {

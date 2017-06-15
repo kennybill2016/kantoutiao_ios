@@ -153,6 +153,7 @@
     self.webView = webView;
 //    webView.frame = self.view.frame;
     webView.delegate = self;
+    [self.webView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:webView];
     [SVProgressHUD show];
     
