@@ -16,7 +16,6 @@
 #import "AppInfoViewController.h"
 #import "EditUserInfoViewController.h"
 #import "UIImage+Extension.h"
-#import "UserInfoCell.h"
 #import "SwitchCell.h"
 #import <DKNightVersion.h>
 #import "TwoLabelCell.h"
@@ -30,7 +29,6 @@
 #import "UserInfoView.h"
 
 
-static NSString *const UserInfoCellIdentifier = @"UserInfoCell";
 static NSString *const SwitchCellIdentifier = @"SwitchCell";
 static NSString *const TwoLabelCellIdentifier = @"TwoLabelCell";
 static NSString *const DisclosureCellIdentifier = @"DisclosureCell";
@@ -139,7 +137,6 @@ CGFloat const footViewHeight = 10;
     self.tableView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
     self.tableView.dk_separatorColorPicker = DKColorPickerWithKey(HIGHLIGHTED);
 //    self.navigationController.navigationBar.dk_barTintColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
-    [self.tableView registerClass:[UserInfoCell class] forCellReuseIdentifier:UserInfoCellIdentifier];
     [self.tableView registerClass:[SwitchCell class] forCellReuseIdentifier:SwitchCellIdentifier];
     [self.tableView registerClass:[TwoLabelCell class] forCellReuseIdentifier:TwoLabelCellIdentifier];
     [self.tableView registerClass:[DisclosureCell class] forCellReuseIdentifier:DisclosureCellIdentifier];

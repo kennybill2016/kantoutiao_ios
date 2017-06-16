@@ -15,6 +15,8 @@
 #import "SXNetworkTools.h"
 #import <UShareUI/UShareUI.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
+#import "ZWPreviewImageView.h"
+#import "ZWHTMLSDK.h"
 
 @interface DetailViewController ()<UIWebViewDelegate,UIGestureRecognizerDelegate>{
     NSString* content;
@@ -34,6 +36,8 @@
 @property (nonatomic, weak) UIBarButtonItem *refreshItem;
 
 @property (nonatomic, strong) GADBannerView *bannerView;
+
+@property (nonatomic, strong) ZWHTMLSDK *htmlSDK;
 
 @end
 
@@ -126,9 +130,11 @@
         if([code isEqualToString:@"0"]) {
             content = responseObject[@"data"][@"content"];
             emptyView.hidden = YES;
-            NSString* headerHtml = [NSString stringWithFormat:@"<head><title>%@</title> <style>img{max-width:%fpx !important;}</style></head><font size='4'><strong>%@</strong></font><br/><font size='2' color='gray'>%@  %@</font><br/><br/>%@",weakSelf.maintitle,kScreenWidth-20,weakSelf.maintitle,weakSelf.source,weakSelf.publish_time,content];
+            NSString* headerHtml = [NSString stringWithFormat:@"<!DOCTYPE HTML><html><head><title>%@</title><meta charset='utf-8'><style>img{max-width:%fpx !important;}</style></head><body><font size='4'><strong>%@</strong></font><br/><font size='2' color='gray'>%@  %@</font><br/><br/>%@</body></html>",weakSelf.maintitle,kScreenWidth-20,weakSelf.maintitle,weakSelf.source,weakSelf.publish_time,content];
              ;
-            [weakSelf.webView loadHTMLString:headerHtml baseURL:nil];
+//            NSURL *url = [NSURL URLWithString:@"http://www.jianshu.com/p/3c54a5d6c34a"];
+//            [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+            [weakSelf.webView loadHTMLString:headerHtml baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
         }
         else {
             NSLog(@"获取数据失败！");
@@ -218,6 +224,9 @@
 
 #pragma mark -UIWebViewDelegate-将要加载Webview
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if ([self.htmlSDK zw_handlePreviewImageRequest:request]) {
+        return NO;
+    }
     return YES;
 }
 
@@ -237,6 +246,11 @@
     self.backItem.enabled = webView.canGoBack;
     self.forwardItem.enabled = webView.canGoForward;
     
+    self.htmlSDK = [ZWHTMLSDK zw_loadStandardBridgeJSWebview:webView];
+    self.htmlSDK.blockHandlePreview = ^(NSArray *allImageArray, NSInteger index) {
+        ZWPreviewImageView *showView = [ZWPreviewImageView showImageWithArray:allImageArray withShowIndex:index];
+        [showView showRootWindow];
+    };
     [self requestAdMob];
 }
 

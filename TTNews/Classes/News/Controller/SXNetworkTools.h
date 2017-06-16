@@ -8,7 +8,7 @@
 #import <AFNetworking/AFNetworking.h>
 
 //localhost:8887
-#ifdef DEBUG
+#ifdef DEBUG123
     #define GETLIST_CONF_URL @"http://localhost:8887/content/getList.php"
     #define DETAIL_CONF_URL  @"http://localhost:8887/content/detail.php"
     #define USER_CONF_URL @"http://localhost:8887/content/user.php"

@@ -21,6 +21,12 @@
 		A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */; };
 		A7BF17781EEFFA910062DBBD /* NativeExpressAdViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */; };
 		A7BF17791EEFFA910062DBBD /* NativeExpressAdViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17771EEFFA910062DBBD /* NativeExpressAdViewCell.xib */; };
+		A7DB5BF21EF2E4BB00FB4381 /* ZWHTMLJS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7DB5BED1EF2E4BB00FB4381 /* ZWHTMLJS.bundle */; };
+		A7DB5BF31EF2E4BB00FB4381 /* ZWHTMLOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DB5BEF1EF2E4BB00FB4381 /* ZWHTMLOption.m */; };
+		A7DB5BF41EF2E4BB00FB4381 /* ZWHTMLSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DB5BF11EF2E4BB00FB4381 /* ZWHTMLSDK.m */; };
+		A7DB5BFD1EF2E62D00FB4381 /* UIView+ZWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DB5BF71EF2E62D00FB4381 /* UIView+ZWFrame.m */; };
+		A7DB5BFE1EF2E62D00FB4381 /* ZWPreviewImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DB5BFA1EF2E62D00FB4381 /* ZWPreviewImageCell.m */; };
+		A7DB5C021EF2E91A00FB4381 /* ZWPreviewImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DB5C001EF2E91A00FB4381 /* ZWPreviewImageView.m */; };
 		A7EEF0491EE7A55700076DD4 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */; };
 		A7EEF04D1EE7A6CE00076DD4 /* NSData+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */; };
 		A7EEF0501EE8211F00076DD4 /* QHProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EEF04F1EE8211F00076DD4 /* QHProgressHUD.m */; };
@@ -89,7 +95,6 @@
 		EE79B1481CC8C435001029EF /* VideoCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE79B10A1CC8C435001029EF /* VideoCommentCell.xib */; };
 		EE79B1491CC8C435001029EF /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79B10C1CC8C435001029EF /* VideoTableViewCell.m */; };
 		EE79B14A1CC8C435001029EF /* VideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE79B10D1CC8C435001029EF /* VideoTableViewCell.xib */; };
-		EE8A19351D5AF9FD00BAE119 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8A19341D5AF9FD00BAE119 /* UserInfoCell.m */; };
 		EE8A19381D5B04C800BAE119 /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8A19371D5B04C800BAE119 /* SwitchCell.m */; };
 		EE8A193B1D5B2BDD00BAE119 /* TwoLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8A193A1D5B2BDD00BAE119 /* TwoLabelCell.m */; };
 		EE8A193E1D5B46CE00BAE119 /* DisclosureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8A193D1D5B46CE00BAE119 /* DisclosureCell.m */; };
@@ -134,6 +139,17 @@
 		A7BF17751EEFFA910062DBBD /* NativeExpressAdViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeExpressAdViewCell.h; sourceTree = "<group>"; };
 		A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeExpressAdViewCell.m; sourceTree = "<group>"; };
 		A7BF17771EEFFA910062DBBD /* NativeExpressAdViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeExpressAdViewCell.xib; sourceTree = "<group>"; };
+		A7DB5BED1EF2E4BB00FB4381 /* ZWHTMLJS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZWHTMLJS.bundle; sourceTree = "<group>"; };
+		A7DB5BEE1EF2E4BB00FB4381 /* ZWHTMLOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWHTMLOption.h; sourceTree = "<group>"; };
+		A7DB5BEF1EF2E4BB00FB4381 /* ZWHTMLOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWHTMLOption.m; sourceTree = "<group>"; };
+		A7DB5BF01EF2E4BB00FB4381 /* ZWHTMLSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWHTMLSDK.h; sourceTree = "<group>"; };
+		A7DB5BF11EF2E4BB00FB4381 /* ZWHTMLSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWHTMLSDK.m; sourceTree = "<group>"; };
+		A7DB5BF61EF2E62D00FB4381 /* UIView+ZWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZWFrame.h"; sourceTree = "<group>"; };
+		A7DB5BF71EF2E62D00FB4381 /* UIView+ZWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZWFrame.m"; sourceTree = "<group>"; };
+		A7DB5BF91EF2E62D00FB4381 /* ZWPreviewImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWPreviewImageCell.h; sourceTree = "<group>"; };
+		A7DB5BFA1EF2E62D00FB4381 /* ZWPreviewImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWPreviewImageCell.m; sourceTree = "<group>"; };
+		A7DB5C001EF2E91A00FB4381 /* ZWPreviewImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWPreviewImageView.m; sourceTree = "<group>"; };
+		A7DB5C011EF2E91A00FB4381 /* ZWPreviewImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWPreviewImageView.h; sourceTree = "<group>"; };
 		A7EEF0451EE7A55700076DD4 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
 		A7EEF0461EE7A55700076DD4 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
 		A7EEF04B1EE7A6CE00076DD4 /* NSData+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Addition.m"; sourceTree = "<group>"; };
@@ -255,8 +271,6 @@
 		EE79B10B1CC8C435001029EF /* VideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewCell.h; sourceTree = "<group>"; };
 		EE79B10C1CC8C435001029EF /* VideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewCell.m; sourceTree = "<group>"; };
 		EE79B10D1CC8C435001029EF /* VideoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoTableViewCell.xib; sourceTree = "<group>"; };
-		EE8A19331D5AF9FD00BAE119 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
-		EE8A19341D5AF9FD00BAE119 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
 		EE8A19361D5B04C800BAE119 /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
 		EE8A19371D5B04C800BAE119 /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
 		EE8A19391D5B2BDD00BAE119 /* TwoLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoLabelCell.h; sourceTree = "<group>"; };
@@ -305,6 +319,40 @@
 				47ED23446BBCD16E40946062 /* Pods-TTNews.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A7DB5BEC1EF2E4BB00FB4381 /* ZWHTMLImage */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB5BF51EF2E62D00FB4381 /* ZWFrame */,
+				A7DB5BF81EF2E62D00FB4381 /* ZWPreviewImage */,
+				A7DB5BED1EF2E4BB00FB4381 /* ZWHTMLJS.bundle */,
+				A7DB5BEE1EF2E4BB00FB4381 /* ZWHTMLOption.h */,
+				A7DB5BEF1EF2E4BB00FB4381 /* ZWHTMLOption.m */,
+				A7DB5BF01EF2E4BB00FB4381 /* ZWHTMLSDK.h */,
+				A7DB5BF11EF2E4BB00FB4381 /* ZWHTMLSDK.m */,
+			);
+			path = ZWHTMLImage;
+			sourceTree = "<group>";
+		};
+		A7DB5BF51EF2E62D00FB4381 /* ZWFrame */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB5BF61EF2E62D00FB4381 /* UIView+ZWFrame.h */,
+				A7DB5BF71EF2E62D00FB4381 /* UIView+ZWFrame.m */,
+			);
+			path = ZWFrame;
+			sourceTree = "<group>";
+		};
+		A7DB5BF81EF2E62D00FB4381 /* ZWPreviewImage */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB5C001EF2E91A00FB4381 /* ZWPreviewImageView.m */,
+				A7DB5C011EF2E91A00FB4381 /* ZWPreviewImageView.h */,
+				A7DB5BF91EF2E62D00FB4381 /* ZWPreviewImageCell.h */,
+				A7DB5BFA1EF2E62D00FB4381 /* ZWPreviewImageCell.m */,
+			);
+			path = ZWPreviewImage;
 			sourceTree = "<group>";
 		};
 		EE4635BA1CC72B8900DB248F = {
@@ -399,8 +447,6 @@
 		EE79B09A1CC8C435001029EF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EE8A19331D5AF9FD00BAE119 /* UserInfoCell.h */,
-				EE8A19341D5AF9FD00BAE119 /* UserInfoCell.m */,
 				EE8A19361D5B04C800BAE119 /* SwitchCell.h */,
 				EE8A19371D5B04C800BAE119 /* SwitchCell.m */,
 				EE8A19391D5B2BDD00BAE119 /* TwoLabelCell.h */,
@@ -475,6 +521,7 @@
 		EE79B0B71CC8C435001029EF /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A7DB5BEC1EF2E4BB00FB4381 /* ZWHTMLImage */,
 				EE79B0B81CC8C435001029EF /* Category */,
 				EE79B0C41CC8C435001029EF /* Http */,
 				EE79B0CF1CC8C435001029EF /* Main */,
@@ -800,6 +847,7 @@
 				EEB3DFA21D8F92010039ABF5 /* TopPictureTableViewCell.xib in Resources */,
 				EE79B1331CC8C435001029EF /* PictureCommentViewController.xib in Resources */,
 				EE79B1111CC8C435001029EF /* EditUserInfoViewController.xib in Resources */,
+				A7DB5BF21EF2E4BB00FB4381 /* ZWHTMLJS.bundle in Resources */,
 				A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */,
 				EE79B13F1CC8C435001029EF /* VideoCommentViewController.xib in Resources */,
 				EE4BEB5D1D5480E400B4A035 /* NewsURLs.plist in Resources */,
@@ -865,10 +913,10 @@
 				EE79B1351CC8C435001029EF /* TTPicture.m in Sources */,
 				EE79B1381CC8C435001029EF /* PictureCommentCell.m in Sources */,
 				EE8A194C1D5C476C00BAE119 /* TTNetworkManager.m in Sources */,
+				A7DB5BF31EF2E4BB00FB4381 /* ZWHTMLOption.m in Sources */,
 				A727D5981EE96A4A0048AD56 /* UIImage+Alpha.m in Sources */,
 				EE79B10E1CC8C435001029EF /* AppInfoViewController.m in Sources */,
 				EE79B1281CC8C435001029EF /* TTConst.m in Sources */,
-				EE8A19351D5AF9FD00BAE119 /* UserInfoCell.m in Sources */,
 				EE79B12D1CC8C435001029EF /* AppDelegate.m in Sources */,
 				A727D5B31EEE7D190048AD56 /* UserLoginView.m in Sources */,
 				EE8A19381D5B04C800BAE119 /* SwitchCell.m in Sources */,
@@ -881,6 +929,7 @@
 				A727D5AA1EEA58430048AD56 /* TextFieldCustom.m in Sources */,
 				EE79B1361CC8C435001029EF /* TTPictureComment.m in Sources */,
 				EE79B11A1CC8C435001029EF /* ChannelCollectionViewCell.m in Sources */,
+				A7DB5BF41EF2E4BB00FB4381 /* ZWHTMLSDK.m in Sources */,
 				EE79B1371CC8C435001029EF /* TTPictureUser.m in Sources */,
 				EE79B1321CC8C435001029EF /* PictureCommentViewController.m in Sources */,
 				EE79B1271CC8C435001029EF /* UIView+Extension.m in Sources */,
@@ -891,6 +940,7 @@
 				EE79B13A1CC8C435001029EF /* PictureTableViewCell.m in Sources */,
 				EE79B1341CC8C435001029EF /* PictureViewController.m in Sources */,
 				EE79B1181CC8C435001029EF /* TTHeaderNews.m in Sources */,
+				A7DB5C021EF2E91A00FB4381 /* ZWPreviewImageView.m in Sources */,
 				EE79B1161CC8C435001029EF /* NewsViewController.m in Sources */,
 				EE79B12C1CC8C435001029EF /* TTVideoFetchDataParameter.m in Sources */,
 				A727D5B61EEE8A570048AD56 /* UserInfoView.m in Sources */,
@@ -920,6 +970,7 @@
 				A727D5A71EEA4A4D0048AD56 /* TextFieldBound.m in Sources */,
 				EE79B1431CC8C435001029EF /* TTVideoUser.m in Sources */,
 				EE79B1121CC8C435001029EF /* MeTableViewController.m in Sources */,
+				A7DB5BFE1EF2E62D00FB4381 /* ZWPreviewImageCell.m in Sources */,
 				EE79B1421CC8C435001029EF /* TTVideoComment.m in Sources */,
 				EEB32A4B1CD38CAF00FF0AB8 /* TTTopChannelContianerView.m in Sources */,
 				EE79B1451CC8C435001029EF /* VideoPlayView.m in Sources */,
@@ -934,6 +985,7 @@
 				A7EEF04D1EE7A6CE00076DD4 /* NSData+Addition.m in Sources */,
 				EEB3DF9C1D8F913A0039ABF5 /* BigPictureTableViewCell.m in Sources */,
 				EE79B1311CC8C435001029EF /* TTJudgeNetworking.m in Sources */,
+				A7DB5BFD1EF2E62D00FB4381 /* UIView+ZWFrame.m in Sources */,
 				EE8A193E1D5B46CE00BAE119 /* DisclosureCell.m in Sources */,
 				EEB3DF761D8ED3730039ABF5 /* SXNetworkTools.m in Sources */,
 			);
