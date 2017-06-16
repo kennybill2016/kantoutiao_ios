@@ -18,6 +18,8 @@
 //* indexPageLab
 @property (nonatomic, strong) UILabel *indexPageLab;
 
+@property (nonatomic, strong) UIButton* downloadImageBtn;
+
 /** 初始化:默认显示第1张图*/
 + (instancetype)showImageWithArray:(NSArray *)imageArray;
 /** 初始化:默认显示第index位置图*/

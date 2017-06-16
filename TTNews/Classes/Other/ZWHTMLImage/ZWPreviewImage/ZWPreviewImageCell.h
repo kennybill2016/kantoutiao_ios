@@ -17,4 +17,7 @@ typedef void(^CallBackCellSingleTap)(void);
 @property (nonatomic, strong) UILabel *titleLab;
 /** */
 @property (nonatomic, copy) CallBackCellSingleTap actionCellSingleTap;
+
+@property (nonatomic, strong) UIImageView *imageView;
+
 @end

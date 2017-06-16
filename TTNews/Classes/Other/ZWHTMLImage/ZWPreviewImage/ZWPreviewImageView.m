@@ -9,12 +9,16 @@
 #import "ZWPreviewImageView.h"
 #import "ZWPreviewImageCell.h"
 #import "UIView+ZWFrame.h"
+#import "UIImageView+WebCache.h"
+#import <SVProgressHUD.h>
+
 @interface ZWPreviewImageView ()
 <UICollectionViewDelegate,
 UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UIActivityIndicatorView *indicator;
 @end
 
 @implementation ZWPreviewImageView
@@ -52,6 +56,8 @@ UICollectionViewDelegateFlowLayout>
 }
 - (void)configBottomIndexView{
     [self addSubview:self.indexPageLab];
+    [self addSubview:self.indicator];
+    [self addSubview:self.downloadImageView];
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
@@ -125,13 +131,61 @@ UICollectionViewDelegateFlowLayout>
 - (UILabel *)indexPageLab{
     if (!_indexPageLab) {
         _indexPageLab = [[UILabel alloc] initWithFrame:CGRectZero];
-        _indexPageLab.textAlignment = NSTextAlignmentRight;
-        _indexPageLab.frame = CGRectMake(0, self.zw_height-30, self.zw_width-10, 20);
+        _indexPageLab.textAlignment = NSTextAlignmentLeft;
+        _indexPageLab.frame = CGRectMake(10, self.zw_height-30, 100, 20);
         _indexPageLab.font = [UIFont systemFontOfSize:15];
         _indexPageLab.textColor = [UIColor whiteColor];
     }
     return _indexPageLab;
 }
+
+-(UIActivityIndicatorView *)indicator{
+    if (!_indicator) {
+        _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _indicator.hidesWhenStopped = YES;
+        _indicator.center = self.center;
+    }
+    return _indicator;
+}
+
+- (UIButton *)downloadImageView{
+    if (!_downloadImageBtn) {
+        _downloadImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _downloadImageBtn.frame = CGRectMake(self.zw_width-30, self.zw_height-40, 30, 30);
+        [_downloadImageBtn setImage:[UIImage imageNamed:@"download_image"] forState:UIControlStateNormal];
+        [_downloadImageBtn addTarget:self action:@selector(handleDownloadBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _downloadImageBtn;
+}
+
+- (void)handleDownloadBtn{
+    NSInteger page = self.collectionView.contentOffset.x/[UIScreen mainScreen].bounds.size.width;
+    if(page>=0&&page<self.imageArray.count) {
+        id singImage = self.imageArray[page];
+        if ([singImage isKindOfClass:[NSString class]]) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:page inSection:0];
+            ZWPreviewImageCell *cell = (ZWPreviewImageCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+            if (!cell.imageView.image) {//如果图片不存在
+                [SVProgressHUD showErrorWithStatus:@"请在图片加载完毕后再保存图片"];
+            } else {
+                [self.indicator startAnimating];
+                UIImageWriteToSavedPhotosAlbum(cell.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            }
+        }
+    }
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    [self.indicator stopAnimating];
+
+    if (error) {
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"保存失败\n%@",error]];
+    } else {
+        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+    }
+    
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

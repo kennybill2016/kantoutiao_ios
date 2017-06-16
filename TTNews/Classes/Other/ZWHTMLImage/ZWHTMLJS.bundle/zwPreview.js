@@ -1,7 +1,6 @@
 function zwPreviewImageClickAction(){
     var imgs=document.getElementsByTagName('img');
     var length=imgs.length;
-    alert(length);
     var allSrc='';
     for(var i=0;i<length;i++){
         var img=imgs[i];

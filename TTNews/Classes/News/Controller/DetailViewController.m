@@ -246,7 +246,9 @@
     self.backItem.enabled = webView.canGoBack;
     self.forwardItem.enabled = webView.canGoForward;
     
-    self.htmlSDK = [ZWHTMLSDK zw_loadStandardBridgeJSWebview:webView];
+//    NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+//    NSLog(@"title=%@",title);
+    self.htmlSDK = [ZWHTMLSDK zw_loadBridgeJSWebview:webView];
     self.htmlSDK.blockHandlePreview = ^(NSArray *allImageArray, NSInteger index) {
         ZWPreviewImageView *showView = [ZWPreviewImageView showImageWithArray:allImageArray withShowIndex:index];
         [showView showRootWindow];
