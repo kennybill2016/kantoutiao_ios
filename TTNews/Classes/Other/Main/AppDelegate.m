@@ -15,6 +15,7 @@
 #import "UserManager.h"
 #import <Bugtags/Bugtags.h>
 #import <Firebase/Firebase.h>
+#import "CacheManager.h"
 
 @interface AppDelegate ()
 
@@ -29,6 +30,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[TTTabBarController alloc] init];
     [self.window makeKeyAndVisible];
+    
+    [CacheManager sharedInstance];
     
     [FIRApp configure];
 //    [GADMobileAds configureWithApplicationID:@"ca-app-pub-3940256099942544~1458002511"];

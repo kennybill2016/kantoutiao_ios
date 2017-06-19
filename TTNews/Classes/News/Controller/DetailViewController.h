@@ -16,5 +16,7 @@
 @property (nonatomic, copy) NSString *publish_time;
 @property (nonatomic, copy) NSString *srcurl;
 @property (nonatomic, copy) NSString *introduct;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *nid;
 
 @end

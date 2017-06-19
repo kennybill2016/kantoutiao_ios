@@ -29,6 +29,7 @@
 #import "SXNetworkTools.h"
 #import "NativeExpressAdViewCell.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
+#import "CacheManager.h"
 
 //ca-app-pub-3940256099942544/2562852117 medium
 //ca-app-pub-3940256099942544/2934735716 small
@@ -110,6 +111,12 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
     min_time = @"0";
     self.arrayList = [[NSMutableArray alloc] initWithCapacity:9];
     
+    NSArray *cacheArray = [[CacheManager sharedInstance] recordsWithType:self.type];
+    if(cacheArray) {
+        NSArray *arrayM = [SXNewsEntity mj_objectArrayWithKeyValuesArray:cacheArray];
+        [self.arrayList addObjectsFromArray:arrayM];
+    }
+
     emptyView = [[UIView alloc] initWithFrame:self.tableView.frame];
     emptyView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
 
@@ -223,6 +230,9 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
             NSArray *temArray = responseObject[@"data"][@"data"];
             max_time = responseObject[@"data"][@"max_time"];
             min_time = responseObject[@"data"][@"min_time"];
+            
+            [[CacheManager sharedInstance] saveRecords:self.type sourceData:temArray];
+
             NSArray *arrayM = [SXNewsEntity mj_objectArrayWithKeyValuesArray:temArray];
             
             GADNativeExpressAdView* adView = [weakSelf createAdMob];
@@ -413,6 +423,8 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
     NSString *requestURL = [NSString stringWithFormat: @"%@?%@", DETAIL_CONF_URL,paramsString];
     DetailViewController *viewController = [[DetailViewController alloc] init];
     viewController.url = requestURL;
+    viewController.type = self.type;
+    viewController.nid = NewsModel.nid;
     viewController.maintitle = NewsModel.title;
     static NSDateFormatter *df;
     if(df == nil)

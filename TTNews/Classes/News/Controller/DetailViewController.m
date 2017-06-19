@@ -17,6 +17,7 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "ZWPreviewImageView.h"
 #import "ZWHTMLSDK.h"
+#import "CacheManager.h"
 
 @interface DetailViewController ()<UIWebViewDelegate,UIGestureRecognizerDelegate>{
     NSString* content;
@@ -45,10 +46,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if([TTJudgeNetworking judge] == NO) {
-        [SVProgressHUD showErrorWithStatus:@"无网络连接"];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+//    if([TTJudgeNetworking judge] == NO) {
+//        [SVProgressHUD showErrorWithStatus:@"无网络连接"];
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
     self.view.dk_backgroundColorPicker = DKColorPickerWithRGB(0xffffff, 0x343434, 0xffffff);
 
     [self setupWebView];
@@ -130,11 +131,10 @@
         if([code isEqualToString:@"0"]) {
             content = responseObject[@"data"][@"content"];
             emptyView.hidden = YES;
-            NSString* headerHtml = [NSString stringWithFormat:@"<!DOCTYPE HTML><html><head><title>%@</title><meta charset='utf-8'><style>img{max-width:%fpx !important;}</style></head><body><font size='4'><strong>%@</strong></font><br/><font size='2' color='gray'>%@  %@</font><br/><br/>%@</body></html>",weakSelf.maintitle,kScreenWidth-20,weakSelf.maintitle,weakSelf.source,weakSelf.publish_time,content];
+            NSString* headerHtml = [NSString stringWithFormat:@"<!DOCTYPE HTML><html><head><title>%@</title><meta charset=\"utf-8\"><style>img{max-width:%fpx !important;}</style></head><body><font size=\"4\"><strong>%@</strong></font><br/><font size=\"2\" color=\"gray\">%@  %@</font><br/><br/>%@</body></html>",weakSelf.maintitle,kScreenWidth-20,weakSelf.maintitle,weakSelf.source,weakSelf.publish_time,content];
              ;
-//            NSURL *url = [NSURL URLWithString:@"http://www.jianshu.com/p/3c54a5d6c34a"];
-//            [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
             [weakSelf.webView loadHTMLString:headerHtml baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+            [[CacheManager sharedInstance] saveContent:weakSelf.nid withType:weakSelf.type sourceData:headerHtml];
         }
         else {
             NSLog(@"获取数据失败！");
@@ -146,9 +146,17 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
-        [emtpyTitle setText:@"网络不给力，请点击刷新"];
-        [emptyImg setImage:[UIImage imageNamed:@"disconnected"]];
-        emptyView.hidden = NO;
+        
+        NSString* contentRet = [[CacheManager sharedInstance] getContentWithType:self.type withGid:self.nid];
+        if(contentRet) {
+            emptyView.hidden = YES;
+            [weakSelf.webView loadHTMLString:contentRet baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+        }
+        else {
+            [emtpyTitle setText:@"网络不给力，请点击刷新"];
+            [emptyImg setImage:[UIImage imageNamed:@"disconnected"]];
+            emptyView.hidden = NO;
+        }
         [SVProgressHUD dismiss];
     }] resume];
 }
