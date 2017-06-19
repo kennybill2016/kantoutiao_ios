@@ -23,6 +23,7 @@
 #import "SXNewsEntity.h"
 #import <MJExtension.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
+#import "CacheManager.h"
 
 //ca-app-pub-3940256099942544/2562852117 medium
 //ca-app-pub-3940256099942544/2934735716 small
@@ -48,6 +49,7 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
 
 @property (nonatomic, strong) NSMutableArray *arrayList;
 @property(nonatomic,assign)BOOL update;
+@property (nonatomic,copy) NSString *adUnitID;
 
 @end
 static NSString * const SinglePictureCell = @"SinglePictureCell";
@@ -91,8 +93,14 @@ static NSString * const SinglePictureCell = @"SinglePictureCell";
     
     max_time = @"";
     min_time = @"0";
+    self.adUnitID = @"";
     self.arrayList = [[NSMutableArray alloc] initWithCapacity:9];
-    
+    NSArray *cacheArray = [[CacheManager sharedInstance] recordsWithType:@"101"];
+    if(cacheArray) {
+        NSArray *arrayM = [SXNewsEntity mj_objectArrayWithKeyValuesArray:cacheArray];
+        [self.arrayList addObjectsFromArray:arrayM];
+    }
+
     self.tableView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
     
     self.navigationController.navigationBar.dk_barTintColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
@@ -175,17 +183,20 @@ static NSString * const SinglePictureCell = @"SinglePictureCell";
 }
 
 - (GADNativeExpressAdView *)createAdMob {
-    GADNativeExpressAdView *adView = [[GADNativeExpressAdView alloc]
-                                      initWithAdSize:GADAdSizeFromCGSize(
-                                                                         CGSizeMake(self.tableView.contentSize.width, GADAdViewHeight))];
-    adView.adUnitID = GADAdUnitID;
-    adView.rootViewController = self;
-    adView.delegate = self;
-    //    [arrayM addObject:adView];
-    [_adsToLoad addObject:adView];
-    _loadStateForAds[[self referenceKeyForAdView:adView]] = @NO;
-    [self preloadNextAd];
-    return adView;
+    if(self.adUnitID.length>0) {
+        GADNativeExpressAdView *adView = [[GADNativeExpressAdView alloc]
+                                          initWithAdSize:GADAdSizeFromCGSize(
+                                                                             CGSizeMake(self.tableView.contentSize.width, GADAdViewHeight))];
+        adView.adUnitID = GADAdUnitID;
+        adView.rootViewController = self;
+        adView.delegate = self;
+        //    [arrayM addObject:adView];
+        [_adsToLoad addObject:adView];
+        _loadStateForAds[[self referenceKeyForAdView:adView]] = @NO;
+        [self preloadNextAd];
+        return adView;
+    }
+    return nil;
 }
 
 /// Preloads native express ads sequentially. Dequeues and loads next ad from adsToLoad list.
@@ -208,8 +219,11 @@ static NSString * const SinglePictureCell = @"SinglePictureCell";
             NSArray *temArray = responseObject[@"data"][@"data"];
             max_time = responseObject[@"data"][@"max_time"];
             min_time = responseObject[@"data"][@"min_time"];
-            NSArray *arrayM = [SXNewsEntity mj_objectArrayWithKeyValuesArray:temArray];
+            self.adUnitID = responseObject[@"data"][@"adUnitID"];
             
+            [[CacheManager sharedInstance] saveRecords:@"101" sourceData:temArray];
+
+            NSArray *arrayM = [SXNewsEntity mj_objectArrayWithKeyValuesArray:temArray];
             GADNativeExpressAdView* adView = [weakSelf createAdMob];
             NSMutableArray* insertArr = [NSMutableArray arrayWithArray:arrayM];
             if(adView) {
@@ -347,6 +361,8 @@ static NSString * const SinglePictureCell = @"SinglePictureCell";
     NSString *requestURL = [NSString stringWithFormat: @"%@?%@", DETAIL_CONF_URL,paramsString];
     DetailViewController *viewController = [[DetailViewController alloc] init];
     viewController.url = requestURL;
+    viewController.type = @"101";
+    viewController.nid = NewsModel.nid;
     viewController.maintitle = NewsModel.title;
     static NSDateFormatter *df;
     if(df == nil)

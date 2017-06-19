@@ -89,6 +89,8 @@
         [self.view addSubview:self.bannerView];
         self.bannerView.adUnitID = self.adUnitID;//@"ca-app-pub-3940256099942544/2934735716";
         self.bannerView.rootViewController = self;
+        
+        self.webView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50);
     }
 }
 
@@ -169,7 +171,7 @@
 
 #pragma mark --private Method--初始化webView
 - (void)setupWebView {
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50)];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.webView = webView;
 //    webView.frame = self.view.frame;
     webView.delegate = self;
