@@ -56,6 +56,8 @@ static const CGFloat GADAdViewHeight = 100;
 @property (nonatomic, copy) NSString *currentSkinModel;
 @property (nonatomic, strong) NSMutableArray *arrayList;
 @property(nonatomic,assign)BOOL update;
+@property (nonatomic,copy) NSString *adUnitID;
+
 
 @end
 
@@ -109,6 +111,7 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
     
     max_time = @"";
     min_time = @"0";
+    self.adUnitID = @"";
     self.arrayList = [[NSMutableArray alloc] initWithCapacity:9];
     
     NSArray *cacheArray = [[CacheManager sharedInstance] recordsWithType:self.type];
@@ -155,13 +158,8 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
 {
     // http://c.m.163.com//nc/article/headline/T1348647853363/0-30.html
     //#define HOME_PAGE "http://localhost:8887/content/getList.php?cid={0}&max_time={1}&min_time={2}&page={3}&deviceid={4}&tn=1&limit=8&user=temporary1493130412672&content_type=1&dtu=200"
-
-    NSString* qid = @"0";
-    if( qid == nil )
-        qid = @"0";
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                    @"", @"method",
-                                   qid, @"qid",
                                    self.type, @"cid",
                                    @"2",@"page",
                                    @"",@"min_time",
@@ -175,12 +173,8 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
 
 - (void)loadMoreData
 {
-    NSString* qid = @"0";
-    if( qid == nil )
-        qid = @"0";
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                    self.type, @"cid",
-                                   qid, @"qid",
                                    @"2",@"page",
                                    min_time,@"min_time",
                                    @"",@"max_time",
@@ -197,17 +191,20 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
 }
 
 - (GADNativeExpressAdView *)createAdMob {
-    GADNativeExpressAdView *adView = [[GADNativeExpressAdView alloc]
-                                      initWithAdSize:GADAdSizeFromCGSize(
-                                                                         CGSizeMake(self.tableView.contentSize.width, GADAdViewHeight))];
-    adView.adUnitID = GADAdUnitID;
-    adView.rootViewController = self;
-    adView.delegate = self;
-//    [arrayM addObject:adView];
-    [_adsToLoad addObject:adView];
-    _loadStateForAds[[self referenceKeyForAdView:adView]] = @NO;
-    [self preloadNextAd];
-    return adView;
+    if(self.adUnitID.length>0) {
+        GADNativeExpressAdView *adView = [[GADNativeExpressAdView alloc]
+                                          initWithAdSize:GADAdSizeFromCGSize(
+                                                                             CGSizeMake(self.tableView.contentSize.width, GADAdViewHeight))];
+        adView.adUnitID = self.adUnitID;
+        adView.rootViewController = self;
+        adView.delegate = self;
+        //    [arrayM addObject:adView];
+        [_adsToLoad addObject:adView];
+        _loadStateForAds[[self referenceKeyForAdView:adView]] = @NO;
+        [self preloadNextAd];
+        return adView;
+    }
+    return nil;
 }
 
 /// Preloads native express ads sequentially. Dequeues and loads next ad from adsToLoad list.
@@ -230,17 +227,17 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
             NSArray *temArray = responseObject[@"data"][@"data"];
             max_time = responseObject[@"data"][@"max_time"];
             min_time = responseObject[@"data"][@"min_time"];
+            self.adUnitID = responseObject[@"data"][@"adUnitID"];
             
             [[CacheManager sharedInstance] saveRecords:self.type sourceData:temArray];
 
             NSArray *arrayM = [SXNewsEntity mj_objectArrayWithKeyValuesArray:temArray];
-            
             GADNativeExpressAdView* adView = [weakSelf createAdMob];
             NSMutableArray* insertArr = [NSMutableArray arrayWithArray:arrayM];
             if(adView) {
                 NSMutableArray* adArray = [NSMutableArray arrayWithObject:adView];
                 [insertArr insertObjects:adArray atIndexes:[NSIndexSet indexSetWithIndexesInRange
-                                                                       :NSMakeRange(insertArr.count-1,adArray.count)]];
+                                                            :NSMakeRange(insertArr.count-1,adArray.count)]];
             }
             if (type == 1) {
                 if([weakSelf.arrayList count]>0) {
@@ -292,7 +289,7 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
         NSLog(@"获取数据失败！");
         if([weakSelf.arrayList count]==0) {
             [emtpyTitle setText:@"网络不给力，请点击刷新"];
-            [emptyImg setImage:[UIImage imageNamed:@"disconnected"]];
+            [emptyImg setImage:[UIImage imageNamed:@"empty"]];
             emptyView.hidden = NO;
         }
         else {
@@ -411,12 +408,8 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
         return;
     }
     SXNewsEntity *NewsModel = self.arrayList[indexPath.row];
-    NSString* qid = @"0";
-    if( qid == nil )
-        qid = @"0";
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                    self.type, @"cid",
-                                   qid, @"qid",
                                    NewsModel.nid,@"nid",
                                    nil];
     NSString* paramsString = [SXNetworkTools genParams:params];

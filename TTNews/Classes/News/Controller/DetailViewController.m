@@ -40,6 +40,8 @@
 
 @property (nonatomic, strong) ZWHTMLSDK *htmlSDK;
 
+@property (nonatomic,copy) NSString *adUnitID;
+
 @end
 
 @implementation DetailViewController
@@ -51,7 +53,7 @@
 //        [self.navigationController popViewControllerAnimated:YES];
 //    }
     self.view.dk_backgroundColorPicker = DKColorPickerWithRGB(0xffffff, 0x343434, 0xffffff);
-
+    self.adUnitID=@"";
     [self setupWebView];
     [self setupNaigationBar];
     [self setupEmptyView];
@@ -59,8 +61,6 @@
     
 //    [self setupToolBars];
 //    [self setupShadeView];
-    
-    [self setupAdMob];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -83,22 +83,26 @@
 }
 
 - (void)setupAdMob {
-    self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50)];
-    [self.bannerView setAdSize:kGADAdSizeSmartBannerPortrait];
-    [self.view addSubview:self.bannerView];
-    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-    self.bannerView.rootViewController = self;
+    if(!self.bannerView&&[self.adUnitID length]>0) {
+        self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50)];
+        [self.bannerView setAdSize:kGADAdSizeSmartBannerPortrait];
+        [self.view addSubview:self.bannerView];
+        self.bannerView.adUnitID = self.adUnitID;//@"ca-app-pub-3940256099942544/2934735716";
+        self.bannerView.rootViewController = self;
+    }
 }
 
 - (void)requestAdMob {
-    GADRequest *request = [GADRequest request];
-    // Requests test ads on devices you specify. Your test device ID is printed to the console when
-    // an ad request is made. GADBannerView automatically returns test ads when running on a
-    // simulator.
-    request.testDevices = @[
-                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
-                            ];
-    [self.bannerView loadRequest:request];
+    if(self.bannerView) {
+        GADRequest *request = [GADRequest request];
+        // Requests test ads on devices you specify. Your test device ID is printed to the console when
+        // an ad request is made. GADBannerView automatically returns test ads when running on a
+        // simulator.
+        //    request.testDevices = @[
+        //                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
+        //                            ];
+        [self.bannerView loadRequest:request];
+    }
 }
 
 - (void)setupEmptyView{
@@ -131,6 +135,8 @@
         if([code isEqualToString:@"0"]) {
             content = responseObject[@"data"][@"content"];
             emptyView.hidden = YES;
+            self.adUnitID = responseObject[@"data"][@"adUnitID"];
+            [weakSelf setupAdMob];
             NSString* headerHtml = [NSString stringWithFormat:@"<!DOCTYPE HTML><html><head><title>%@</title><meta charset=\"utf-8\"><style>img{max-width:%fpx !important;}</style></head><body><font size=\"4\"><strong>%@</strong></font><br/><font size=\"2\" color=\"gray\">%@  %@</font><br/><br/>%@</body></html>",weakSelf.maintitle,kScreenWidth-20,weakSelf.maintitle,weakSelf.source,weakSelf.publish_time,content];
              ;
             [weakSelf.webView loadHTMLString:headerHtml baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
@@ -154,7 +160,7 @@
         }
         else {
             [emtpyTitle setText:@"网络不给力，请点击刷新"];
-            [emptyImg setImage:[UIImage imageNamed:@"disconnected"]];
+            [emptyImg setImage:[UIImage imageNamed:@"empty"]];
             emptyView.hidden = NO;
         }
         [SVProgressHUD dismiss];

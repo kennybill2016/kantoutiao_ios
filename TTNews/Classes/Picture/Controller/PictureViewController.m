@@ -267,7 +267,7 @@ static NSString * const SinglePictureCell = @"SinglePictureCell";
         NSLog(@"获取数据失败！");
         if([weakSelf.arrayList count]==0) {
             [emtpyTitle setText:@"网络不给力，请点击刷新"];
-            [emptyImg setImage:[UIImage imageNamed:@"disconnected"]];
+            [emptyImg setImage:[UIImage imageNamed:@"empty"]];
             emptyView.hidden = NO;
         }
         else {

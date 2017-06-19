@@ -30,6 +30,7 @@
 @property (nonatomic,copy) NSString *introduction;
 @property (nonatomic,copy) NSString *url;
 @property (nonatomic,copy) NSString *source;
+
 //
 //@property (nonatomic,copy)NSNumber *hasImg;
 //@property (nonatomic,copy) NSString *lmodify;
