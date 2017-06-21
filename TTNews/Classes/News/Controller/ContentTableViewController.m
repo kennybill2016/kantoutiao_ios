@@ -420,6 +420,7 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
     viewController.nid = NewsModel.nid;
     viewController.maintitle = NewsModel.title;
     viewController.navType = NewsModel.navtype;
+    viewController.imgurl = NewsModel.imgsrc;
     static NSDateFormatter *df;
     if(df == nil)
     {
@@ -432,32 +433,6 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
     viewController.source = NewsModel.source;
     viewController.srcurl = NewsModel.url;
     [self.navigationController pushViewController:viewController animated:YES];
-    /*
-    NSInteger contentType = [NewsModel.content_type integerValue];
-    if (contentType==0) {
-        [self pushToDetailViewControllerWithUrl:NewsModel.url];
-    }else if (contentType==2){
-        [self pushToDetailViewControllerWithUrl:NewsModel.url];
-
-    }else if (contentType==3){
-        [self pushToDetailViewControllerWithUrl:NewsModel.url];
-
-    }else if (contentType==4){
-
-//        [self pushToDetailViewControllerWithUrl:requestURL];
-//        ShowMultiPictureViewController *viewController = [[ShowMultiPictureViewController alloc] init];
-//        viewController.imageUrls = [NSArray arrayWithArray:NewsModel.cover];
-//        NSString *text = NewsModel.introduction;
-//        if (text == nil || [text isEqualToString:@""]) {
-//            text = NewsModel.title;
-//        }
-//        viewController.text = text;
-//        [self.navigationController pushViewController:viewController animated:YES];
-    }else if(contentType == 1){
-
-    }
-    else {
-    }*/
 }
 
 #pragma mark --private Method--点击了某一条新闻，调转到新闻对应的网页去

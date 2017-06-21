@@ -19,5 +19,6 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *nid;
 @property (nonatomic, copy) NSString *navType;
+@property (nonatomic, copy) NSString *imgurl;
 
 @end

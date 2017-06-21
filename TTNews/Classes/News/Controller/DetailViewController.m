@@ -336,9 +336,9 @@
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     
     //创建网页内容对象
-    UIImage *imageToShare = [UIImage imageNamed:@"appinfoimage"];
+//    UIImage *imageToShare = [UIImage imageNamed:@"appinfoimage"];
 //    NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.maintitle descr:self.introduct thumImage:imageToShare];
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.maintitle descr:self.introduct thumImage:self.imgurl];
     //设置网页地址
     shareObject.webpageUrl = self.srcurl;
     
@@ -364,14 +364,13 @@
     }];
 }
 
-- (void)shareSystem {
-    UIImage *imageToShare = [UIImage imageNamed:@"appinfoimage"];
+- (void)openShareSystem:(UIImage*)image{
     NSURL *urlToShare = [NSURL URLWithString:self.srcurl];
-    NSArray *activityItems = @[self.maintitle, imageToShare, urlToShare];
+    NSArray *activityItems = @[self.maintitle, image, urlToShare];
     
     UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
     //不出现在活动项目
-    activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList];
+    activityVC.excludedActivityTypes = @[UIActivityTypePrint,UIActivityTypeAssignToContact,UIActivityTypeAddToReadingList];
     
     UIActivityViewControllerCompletionWithItemsHandler myBlock = ^(UIActivityType activityType, BOOL completed, NSArray * returnedItems, NSError * activityError)
     {
@@ -381,6 +380,19 @@
     
     UIViewController * rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
     [rootVc presentViewController:activityVC animated:TRUE completion:nil];
+}
+
+- (void)shareSystem {
+    __weak typeof(self) weakSelf = self;
+    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:self.imgurl] options:0
+                                               progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                                                   if(image){
+                                                       [self openShareSystem:image];
+                                                   }
+                                                   else {
+                                                       [SXNetworkTools showText:weakSelf.view text:@"分享失败，请稍候重试！" hideAfterDelay:3];
+                                                   }
+                                               }];
 }
 
 @end

@@ -24,7 +24,8 @@
 #import <MJExtension.h>
 #import "SinglePictureNewsTableViewCell.h"
 #import "DetailViewController.h"
-
+#import <UShareUI/UShareUI.h>
+#import "SDWebImageManager.h"
 
 @interface VideoViewController ()<VideoTableViewCellDelegate, VideoPlayViewDelegate>
 {
@@ -305,11 +306,12 @@ static NSString * const VideoCell = @"VideoCell";
 
 #pragma mark VideoTableViewCell的代理方法
 -(void)clickMoreButton:(TTVideo *)video {
-    UIAlertController *controller =  [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [controller addAction:[UIAlertAction actionWithTitle:@"收藏" style:UIAlertActionStyleDefault handler:nil]];
-    [controller addAction:[UIAlertAction actionWithTitle:@"举报" style:UIAlertActionStyleDefault handler:nil]];
-    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:controller animated:YES completion:nil];
+    [self shareThisNews:video];
+//    UIAlertController *controller =  [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+//    [controller addAction:[UIAlertAction actionWithTitle:@"收藏" style:UIAlertActionStyleDefault handler:nil]];
+//    [controller addAction:[UIAlertAction actionWithTitle:@"举报" style:UIAlertActionStyleDefault handler:nil]];
+//    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+//    [self presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma mark VideoTableViewCell的代理方法
@@ -326,6 +328,88 @@ static NSString * const VideoCell = @"VideoCell";
         _videoArray = [[NSMutableArray alloc] initWithCapacity:5];
     }
     return _videoArray;
+}
+
+- (void)shareThisNews:(TTVideo *)video {
+    __weak typeof(self)weakSelf = self;
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"] ] ||
+       [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]] ||
+       [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"sinaweibo://"]] ) {
+        [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_WechatFavorite)]];
+        [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+            // 根据获取的platformType确定所选平台进行下一步操作
+            [weakSelf shareWebPageToPlatformType:platformType video:video];
+        }];
+    }
+    else {
+        [self shareSystem:video];
+    }
+}
+
+- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType video:(TTVideo *)video {
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    
+    //创建网页内容对象
+    UIImage *imageToShare = [UIImage imageNamed:@"appinfoimage"];
+    //    NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:video.title descr:@"" thumImage:video.imgurl];
+    //设置网页地址
+    shareObject.webpageUrl = video.url;
+    
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    
+    //调用分享接口
+    __weak typeof(self) weakSelf = self;
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            UMSocialLogInfo(@"************Share fail with error %@*********",error);
+            [SXNetworkTools showText:weakSelf.view text:@"分享失败，请稍候重试！" hideAfterDelay:2];
+        }else{
+            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                UMSocialShareResponse *resp = data;
+                //分享结果消息
+                UMSocialLogInfo(@"response message is %@",resp.message);
+                //第三方原始返回的数据
+                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+                
+            }else{
+                UMSocialLogInfo(@"response data is %@",data);
+            }
+        }
+    }];
+}
+
+- (void)openShareSystem:(TTVideo *)video image:(UIImage*)image{
+    NSURL *urlToShare = [NSURL URLWithString:video.url];
+    NSArray *activityItems = @[video.title, image, urlToShare];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+    //不出现在活动项目
+    activityVC.excludedActivityTypes = @[UIActivityTypePrint,UIActivityTypeAssignToContact,UIActivityTypeAddToReadingList];
+    
+    UIActivityViewControllerCompletionWithItemsHandler myBlock = ^(UIActivityType activityType, BOOL completed, NSArray * returnedItems, NSError * activityError)
+    {
+    };
+    
+    activityVC.completionWithItemsHandler = myBlock;
+    
+    UIViewController * rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [rootVc presentViewController:activityVC animated:TRUE completion:nil];
+}
+
+- (void)shareSystem:(TTVideo *)video  {
+    __weak typeof(self) weakSelf = self;
+    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:video.imgurl] options:0
+                                               progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                                                   if(image){
+                                                       [self openShareSystem:video image:image];
+                                                   }
+                                                   else {
+                                                       [SXNetworkTools showText:weakSelf.view text:@"分享失败，请稍候重试！" hideAfterDelay:3];
+                                                   }
+                                               }];
 }
 
 @end

@@ -376,6 +376,7 @@ static NSString * const SinglePictureCell = @"SinglePictureCell";
     viewController.publish_time = time;
     viewController.source = NewsModel.source;
     viewController.srcurl = NewsModel.url;
+    viewController.imgurl = NewsModel.imgsrc;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
