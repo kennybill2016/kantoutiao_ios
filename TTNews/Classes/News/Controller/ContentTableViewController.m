@@ -419,6 +419,7 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
     viewController.type = self.type;
     viewController.nid = NewsModel.nid;
     viewController.maintitle = NewsModel.title;
+    viewController.navType = NewsModel.navtype;
     static NSDateFormatter *df;
     if(df == nil)
     {

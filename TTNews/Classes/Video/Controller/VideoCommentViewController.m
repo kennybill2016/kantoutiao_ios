@@ -76,10 +76,10 @@ static NSString * const VideoCommentCellID = @"VideoCommentCell";
     if (self.isFullScreenPlaying == NO) {//将要呈现的画面不是全屏播放页面
         [self.playView resetPlayView];
     }
-    if (self.saved_top_cmt) {
-        self.video.top_cmt = self.saved_top_cmt;
-        [self.video setValue:@0 forKeyPath:@"cellHeight"];
-    }
+//    if (self.saved_top_cmt) {
+//        self.video.top_cmt = self.saved_top_cmt;
+//        [self.video setValue:@0 forKeyPath:@"cellHeight"];
+//    }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

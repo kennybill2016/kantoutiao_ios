@@ -85,8 +85,6 @@
 		EE79B13B1CC8C435001029EF /* PictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE79B0EF1CC8C435001029EF /* PictureTableViewCell.xib */; };
 		EE79B13C1CC8C435001029EF /* ShowBigPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79B0F11CC8C435001029EF /* ShowBigPictureViewController.m */; };
 		EE79B13D1CC8C435001029EF /* ShowBigPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE79B0F21CC8C435001029EF /* ShowBigPictureViewController.xib */; };
-		EE79B13E1CC8C435001029EF /* VideoCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79B0F61CC8C435001029EF /* VideoCommentViewController.m */; };
-		EE79B13F1CC8C435001029EF /* VideoCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE79B0F71CC8C435001029EF /* VideoCommentViewController.xib */; };
 		EE79B1401CC8C435001029EF /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79B0F91CC8C435001029EF /* VideoViewController.m */; };
 		EE79B1411CC8C435001029EF /* TTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79B0FC1CC8C435001029EF /* TTVideo.m */; };
 		EE79B1421CC8C435001029EF /* TTVideoComment.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79B0FE1CC8C435001029EF /* TTVideoComment.m */; };
@@ -170,7 +168,7 @@
 		A7F6D2281EF3C4F000D55D80 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		A7F6D2291EF3C4F000D55D80 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		EE3A071D1CDA1DAD0024C37A /* ContentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTableViewController.m; sourceTree = "<group>"; };
-		EE4635C31CC72B8900DB248F /* TTNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE4635C31CC72B8900DB248F /* TTNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TTNews.app; path = KanTouTiao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4635C71CC72B8900DB248F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EE4635D21CC72B8900DB248F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE4635D71CC72B8900DB248F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -259,9 +257,6 @@
 		EE79B0F01CC8C435001029EF /* ShowBigPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowBigPictureViewController.h; path = ../View/ShowBigPictureViewController.h; sourceTree = "<group>"; };
 		EE79B0F11CC8C435001029EF /* ShowBigPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowBigPictureViewController.m; path = ../View/ShowBigPictureViewController.m; sourceTree = "<group>"; };
 		EE79B0F21CC8C435001029EF /* ShowBigPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowBigPictureViewController.xib; path = ../View/ShowBigPictureViewController.xib; sourceTree = "<group>"; };
-		EE79B0F51CC8C435001029EF /* VideoCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCommentViewController.h; sourceTree = "<group>"; };
-		EE79B0F61CC8C435001029EF /* VideoCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCommentViewController.m; sourceTree = "<group>"; };
-		EE79B0F71CC8C435001029EF /* VideoCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCommentViewController.xib; sourceTree = "<group>"; };
 		EE79B0F81CC8C435001029EF /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		EE79B0F91CC8C435001029EF /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		EE79B0FB1CC8C435001029EF /* TTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideo.h; sourceTree = "<group>"; };
@@ -701,9 +696,6 @@
 			children = (
 				EE79B0F81CC8C435001029EF /* VideoViewController.h */,
 				EE79B0F91CC8C435001029EF /* VideoViewController.m */,
-				EE79B0F51CC8C435001029EF /* VideoCommentViewController.h */,
-				EE79B0F61CC8C435001029EF /* VideoCommentViewController.m */,
-				EE79B0F71CC8C435001029EF /* VideoCommentViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -795,9 +787,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EE4635C21CC72B8900DB248F /* TTNews */ = {
+		EE4635C21CC72B8900DB248F /* KanTouTiao */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EE4635F01CC72B8A00DB248F /* Build configuration list for PBXNativeTarget "TTNews" */;
+			buildConfigurationList = EE4635F01CC72B8A00DB248F /* Build configuration list for PBXNativeTarget "KanTouTiao" */;
 			buildPhases = (
 				9E3E4B2F63EFEC4B02EDE92E /* [CP] Check Pods Manifest.lock */,
 				EE4635BF1CC72B8900DB248F /* Sources */,
@@ -810,7 +802,7 @@
 			);
 			dependencies = (
 			);
-			name = TTNews;
+			name = KanTouTiao;
 			productName = TTNews;
 			productReference = EE4635C31CC72B8900DB248F /* TTNews.app */;
 			productType = "com.apple.product-type.application";
@@ -843,7 +835,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EE4635C21CC72B8900DB248F /* TTNews */,
+				EE4635C21CC72B8900DB248F /* KanTouTiao */,
 			);
 		};
 /* End PBXProject section */
@@ -874,7 +866,6 @@
 				EE79B1111CC8C435001029EF /* EditUserInfoViewController.xib in Resources */,
 				A7DB5BF21EF2E4BB00FB4381 /* ZWHTMLJS.bundle in Resources */,
 				A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */,
-				EE79B13F1CC8C435001029EF /* VideoCommentViewController.xib in Resources */,
 				EE4BEB5D1D5480E400B4A035 /* NewsURLs.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -951,7 +942,6 @@
 				EE79B1411CC8C435001029EF /* TTVideo.m in Sources */,
 				EE79B1491CC8C435001029EF /* VideoTableViewCell.m in Sources */,
 				A7EEF0491EE7A55700076DD4 /* NSString+Addition.m in Sources */,
-				EE79B13E1CC8C435001029EF /* VideoCommentViewController.m in Sources */,
 				A727D5AA1EEA58430048AD56 /* TextFieldCustom.m in Sources */,
 				EE79B1361CC8C435001029EF /* TTPictureComment.m in Sources */,
 				EE79B11A1CC8C435001029EF /* ChannelCollectionViewCell.m in Sources */,
@@ -1162,7 +1152,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EE4635F01CC72B8A00DB248F /* Build configuration list for PBXNativeTarget "TTNews" */ = {
+		EE4635F01CC72B8A00DB248F /* Build configuration list for PBXNativeTarget "KanTouTiao" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EE4635F11CC72B8A00DB248F /* Debug */,

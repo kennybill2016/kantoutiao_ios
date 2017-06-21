@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EE4635C21CC72B8900DB248F"
-               BuildableName = "TTNews.app"
-               BlueprintName = "TTNews"
+               BuildableName = "KanTouTiao.app"
+               BlueprintName = "KanTouTiao"
                ReferencedContainer = "container:TTNews.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -53,8 +53,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EE4635C21CC72B8900DB248F"
-            BuildableName = "TTNews.app"
-            BlueprintName = "TTNews"
+            BuildableName = "KanTouTiao.app"
+            BlueprintName = "KanTouTiao"
             ReferencedContainer = "container:TTNews.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,11 +76,18 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EE4635C21CC72B8900DB248F"
-            BuildableName = "TTNews.app"
-            BlueprintName = "TTNews"
+            BuildableName = "KanTouTiao.app"
+            BlueprintName = "KanTouTiao"
             ReferencedContainer = "container:TTNews.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -95,8 +102,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EE4635C21CC72B8900DB248F"
-            BuildableName = "TTNews.app"
-            BlueprintName = "TTNews"
+            BuildableName = "KanTouTiao.app"
+            BlueprintName = "KanTouTiao"
             ReferencedContainer = "container:TTNews.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

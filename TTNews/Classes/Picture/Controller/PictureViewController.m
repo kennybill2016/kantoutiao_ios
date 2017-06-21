@@ -354,16 +354,17 @@ static NSString * const SinglePictureCell = @"SinglePictureCell";
     }
     SXNewsEntity *NewsModel = self.arrayList[indexPath.row];
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                   @"101", @"cid",
+                                   NewsModel.type, @"cid",
                                    NewsModel.nid,@"nid",
                                    nil];
     NSString* paramsString = [SXNetworkTools genParams:params];
     NSString *requestURL = [NSString stringWithFormat: @"%@?%@", DETAIL_CONF_URL,paramsString];
     DetailViewController *viewController = [[DetailViewController alloc] init];
     viewController.url = requestURL;
-    viewController.type = @"101";
+    viewController.type = NewsModel.type;
     viewController.nid = NewsModel.nid;
     viewController.maintitle = NewsModel.title;
+    viewController.navType = NewsModel.navtype;
     static NSDateFormatter *df;
     if(df == nil)
     {

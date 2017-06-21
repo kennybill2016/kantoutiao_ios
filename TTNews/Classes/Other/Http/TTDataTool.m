@@ -63,7 +63,7 @@ static NSString * const apikey = @"8b72ce2839d6eea0869b4c2c60d2a449";
                 NSArray *array = [TTVideo mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
                 NSString *maxTime = responseObject[@"info"][@"maxtime"];
                 for (TTVideo *video in array) {
-                    video.maxtime = maxTime;
+//                    video.maxtime = maxTime;
                 }
                 success(array,maxTime);
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -76,8 +76,8 @@ static NSString * const apikey = @"8b72ce2839d6eea0869b4c2c60d2a449";
                 NSMutableArray *videoArray = [self selectDataFromCacheWithVideoParameters:videoParameters];
                 if (videoArray.count>0) {
                     TTVideo *lastVideo = videoArray.lastObject;
-                    NSString *maxtime = lastVideo.maxtime;
-                    success(videoArray, maxtime);
+//                    NSString *maxtime = lastVideo.maxtime;
+//                    success(videoArray, maxtime);
                 }
                 success([videoArray copy], @"");
             }];
@@ -125,20 +125,20 @@ static NSString * const apikey = @"8b72ce2839d6eea0869b4c2c60d2a449";
 }
 
 +(void)addVideo:(TTVideo *)video {
-    [_queue inDatabase:^(FMDatabase *db) {
-        NSString *idstr = video.ID;
-        FMResultSet *result = nil;
-        NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM table_video WHERE idstr = '%@';",idstr];
-        result = [db executeQuery:querySql];
-        if (result.next==NO) {//不存在此条数据
-            NSString *string = video.created_at;
-            NSInteger time = [[[string stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@":" withString:@""].integerValue;
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:video];
-            [db executeUpdate:@"insert into table_video (idstr,time,video) values(?,?,?);", idstr, @(time), data];
-        }
-        [result close];
-        
-    }];
+//    [_queue inDatabase:^(FMDatabase *db) {
+//        NSString *idstr = video.ID;
+//        FMResultSet *result = nil;
+//        NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM table_video WHERE idstr = '%@';",idstr];
+//        result = [db executeQuery:querySql];
+//        if (result.next==NO) {//不存在此条数据
+//            NSString *string = video.created_at;
+//            NSInteger time = [[[string stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@":" withString:@""].integerValue;
+//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:video];
+//            [db executeUpdate:@"insert into table_video (idstr,time,video) values(?,?,?);", idstr, @(time), data];
+//        }
+//        [result close];
+//        
+//    }];
 }
 
 

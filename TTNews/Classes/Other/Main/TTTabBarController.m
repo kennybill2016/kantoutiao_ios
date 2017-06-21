@@ -36,8 +36,8 @@
     PictureViewController *vc2 = [[PictureViewController alloc] init];
     [self addChildViewController:vc2 withImage:[UIImage imageNamed:@"tabbar_picture"] selectedImage:[UIImage imageNamed:@"tabbar_picture_hl"] withTittle:@"图片"];
     
-//    VideoViewController *vc3 = [[VideoViewController alloc] init];
-//    [self addChildViewController:vc3 withImage:[UIImage imageNamed:@"tabbar_video"] selectedImage:[UIImage imageNamed:@"tabbar_video_hl"] withTittle:@"视频"];
+    VideoViewController *vc3 = [[VideoViewController alloc] init];
+    [self addChildViewController:vc3 withImage:[UIImage imageNamed:@"tabbar_video"] selectedImage:[UIImage imageNamed:@"tabbar_video_hl"] withTittle:@"视频"];
     
     MeTableViewController *vc4 = [[MeTableViewController alloc] init];
     _MeController = vc4;

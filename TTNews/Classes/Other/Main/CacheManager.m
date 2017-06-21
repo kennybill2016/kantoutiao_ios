@@ -45,25 +45,31 @@
 
 - (void)saveContent:(NSString *)gid  withType:(NSString*)cid sourceData:(NSString *)content
 {
-    NSString* cacheID = [NSString stringWithFormat:@"cid%@gid%@",cid,gid];
-    
-    NSString *sql = [NSString stringWithFormat: @"delete from cacheContent where cacheid = '%@'", cacheID];
-    [self.database executeUpdate: sql];
-    
-    if(cacheID) {
-        NSString *sql = [NSString stringWithFormat: @"insert into cacheContent(cacheid, gid,cid,data) values('%@', '%@','%@','%@')", cacheID, gid,cid,content];
+    @try{
+        NSString* cacheID = [NSString stringWithFormat:@"cid%@gid%@",cid,gid];
+        
+        NSString *sql = [NSString stringWithFormat: @"delete from cacheContent where cacheid = '%@'", cacheID];
         [self.database executeUpdate: sql];
+        
+        if(cacheID) {
+            NSString *sql = [NSString stringWithFormat: @"insert into cacheContent(cacheid, gid,cid,data) values('%@', '%@','%@','%@')", cacheID, gid,cid,content];
+            [self.database executeUpdate: sql];
+        }
+    }@catch(NSException *exception){
     }
 }
 
 - (NSString *)getContentWithType:(NSString*)cid withGid:(NSString*)gid
 {
-    NSString* cacheID = [NSString stringWithFormat:@"cid%@gid%@",cid,gid];
-    NSString* sql = [NSString stringWithFormat:@"select * from cacheContent where cacheid='%@'",cacheID];
-    FMResultSet *reslutSet = [self.database executeQuery: sql];
-    while ([reslutSet next]) {
-        NSString* data = [reslutSet stringForColumn:@"data"];
-        return data;
+    @try{
+        NSString* cacheID = [NSString stringWithFormat:@"cid%@gid%@",cid,gid];
+        NSString* sql = [NSString stringWithFormat:@"select * from cacheContent where cacheid='%@'",cacheID];
+        FMResultSet *reslutSet = [self.database executeQuery: sql];
+        while ([reslutSet next]) {
+            NSString* data = [reslutSet stringForColumn:@"data"];
+            return data;
+        }
+    }@catch(NSException *exception){
     }
     return nil;
 }
@@ -71,13 +77,16 @@
 //reocrd
 - (void)saveRecords:(NSString*)cid sourceData:(NSArray *)records
 {
-    for(NSInteger index = 0; index<records.count;index++) {
-        NSDictionary* dictItem = [records objectAtIndex:index];
-        NSString* gid = dictItem[@"nid"]?:@"";
-        NSString* cacheID = [NSString stringWithFormat:@"cid%@gid%@",cid,gid];
-        NSString* sourceStr = [dictItem JSONString];
-        NSString *sql = [NSString stringWithFormat: @"insert into cacheRecords(cacheid, gid,cid,data) values('%@', '%@','%@','%@')", cacheID, gid,cid,sourceStr];
-        [self.database executeUpdate: sql];
+    @try{
+        for(NSInteger index = 0; index<records.count;index++) {
+            NSDictionary* dictItem = [records objectAtIndex:index];
+            NSString* gid = dictItem[@"nid"]?:@"";
+            NSString* cacheID = [NSString stringWithFormat:@"cid%@gid%@",cid,gid];
+            NSString* sourceStr = [dictItem JSONString];
+            NSString *sql = [NSString stringWithFormat: @"insert into cacheRecords(cacheid, gid,cid,data) values('%@', '%@','%@','%@')", cacheID, gid,cid,sourceStr];
+            [self.database executeUpdate: sql];
+        }
+    }@catch(NSException *exception){
     }
 }
 
@@ -85,13 +94,16 @@
 {
     NSMutableArray *array = [NSMutableArray array];
     NSString* sql = [NSString stringWithFormat:@"select * from cacheRecords where cid='%@'",cid];
-    FMResultSet *reslutSet = [self.database executeQuery:sql];
-    while ([reslutSet next]) {
-        NSString* data = [reslutSet stringForColumn:@"data"];
-        NSDictionary *dic = [data objectFromJSONString];
-        if (dic) {
-            [array insertObject:dic atIndex:0];
+    @try{
+        FMResultSet *reslutSet = [self.database executeQuery:sql];
+        while ([reslutSet next]) {
+            NSString* data = [reslutSet stringForColumn:@"data"];
+            NSDictionary *dic = [data objectFromJSONString];
+            if (dic) {
+                [array insertObject:dic atIndex:0];
+            }
         }
+    }@catch(NSException *exception){
     }
     return array;
 }

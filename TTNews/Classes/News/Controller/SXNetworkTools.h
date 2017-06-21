@@ -12,10 +12,14 @@
     #define GETLIST_CONF_URL @"http://localhost:8887/content/getList.php"
     #define DETAIL_CONF_URL  @"http://localhost:8887/content/detail.php"
     #define USER_CONF_URL @"http://localhost:8887/content/user.php"
+    #define GETVIDEOLIST_CONF_URL @"http://localhost:8887/content/videoList.php"
+    #define  VIDEODETAIL_CONF_URL  @"http://localhost:8887/content/video.php"
 #else
     #define GETLIST_CONF_URL @"http://home.kuaikanpian.com/content/getList.php"
     #define DETAIL_CONF_URL  @"http://home.kuaikanpian.com/content/detail.php"
     #define USER_CONF_URL @"http://home.kuaikanpian.com/content/user.php"
+    #define GETVIDEOLIST_CONF_URL @"http://home.kuaikanpian.com/content/videoList.php"
+    #define VIDEODETAIL_CONF_URL @"http://home.kuaikanpian.com/content/video.php"
 #endif
 
 @interface SXNetworkTools : AFHTTPSessionManager
