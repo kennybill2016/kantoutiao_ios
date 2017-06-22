@@ -168,7 +168,7 @@
 		A7F6D2281EF3C4F000D55D80 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		A7F6D2291EF3C4F000D55D80 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		EE3A071D1CDA1DAD0024C37A /* ContentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTableViewController.m; sourceTree = "<group>"; };
-		EE4635C31CC72B8900DB248F /* TTNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TTNews.app; path = KanTouTiao.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE4635C31CC72B8900DB248F /* ReMenTouTiao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReMenTouTiao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4635C71CC72B8900DB248F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EE4635D21CC72B8900DB248F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE4635D71CC72B8900DB248F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -383,7 +383,7 @@
 		EE4635C41CC72B8900DB248F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EE4635C31CC72B8900DB248F /* TTNews.app */,
+				EE4635C31CC72B8900DB248F /* ReMenTouTiao.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -787,9 +787,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EE4635C21CC72B8900DB248F /* KanTouTiao */ = {
+		EE4635C21CC72B8900DB248F /* ReMenTouTiao */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EE4635F01CC72B8A00DB248F /* Build configuration list for PBXNativeTarget "KanTouTiao" */;
+			buildConfigurationList = EE4635F01CC72B8A00DB248F /* Build configuration list for PBXNativeTarget "ReMenTouTiao" */;
 			buildPhases = (
 				9E3E4B2F63EFEC4B02EDE92E /* [CP] Check Pods Manifest.lock */,
 				EE4635BF1CC72B8900DB248F /* Sources */,
@@ -802,9 +802,9 @@
 			);
 			dependencies = (
 			);
-			name = KanTouTiao;
+			name = ReMenTouTiao;
 			productName = TTNews;
-			productReference = EE4635C31CC72B8900DB248F /* TTNews.app */;
+			productReference = EE4635C31CC72B8900DB248F /* ReMenTouTiao.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -818,7 +818,8 @@
 				TargetAttributes = {
 					EE4635C21CC72B8900DB248F = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 24SE6ECXX7;
+						DevelopmentTeam = Q2W3DUF64F;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -835,7 +836,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EE4635C21CC72B8900DB248F /* KanTouTiao */,
+				EE4635C21CC72B8900DB248F /* ReMenTouTiao */,
 			);
 		};
 /* End PBXProject section */
@@ -1108,14 +1109,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 24SE6ECXX7;
+				DEVELOPMENT_TEAM = Q2W3DUF64F;
 				GCC_PREFIX_HEADER = TTNews/PrefixHeader.pch;
 				INFOPLIST_FILE = TTNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.kantoutiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "48c7cb96-5822-46b5-8510-a77b12d48f35";
+				PROVISIONING_PROFILE_SPECIFIER = kantoutiao_develop;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1128,14 +1130,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 24SE6ECXX7;
+				DEVELOPMENT_TEAM = Q2W3DUF64F;
 				GCC_PREFIX_HEADER = TTNews/PrefixHeader.pch;
 				INFOPLIST_FILE = TTNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.kantoutiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "48c7cb96-5822-46b5-8510-a77b12d48f35";
+				PROVISIONING_PROFILE_SPECIFIER = kantoutiao_develop;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1152,7 +1155,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EE4635F01CC72B8A00DB248F /* Build configuration list for PBXNativeTarget "KanTouTiao" */ = {
+		EE4635F01CC72B8A00DB248F /* Build configuration list for PBXNativeTarget "ReMenTouTiao" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EE4635F11CC72B8A00DB248F /* Debug */,

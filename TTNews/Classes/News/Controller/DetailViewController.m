@@ -18,6 +18,7 @@
 #import "ZWPreviewImageView.h"
 #import "ZWHTMLSDK.h"
 #import "CacheManager.h"
+#import "SDWebImageManager.h"
 
 @interface DetailViewController ()<UIWebViewDelegate,UIGestureRecognizerDelegate>{
     NSString* content;

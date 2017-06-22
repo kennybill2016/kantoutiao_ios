@@ -26,6 +26,7 @@
 #import "DetailViewController.h"
 #import <UShareUI/UShareUI.h>
 #import "SDWebImageManager.h"
+#import "CacheManager.h"
 
 @interface VideoViewController ()<VideoTableViewCellDelegate, VideoPlayViewDelegate>
 {
@@ -86,6 +87,14 @@ static NSString * const VideoCell = @"VideoCell";
     
     max_time = @"";
     min_time = @"0";
+    
+    _videoArray = [[NSMutableArray alloc] initWithCapacity:5];
+    NSArray *cacheArray = [[CacheManager sharedInstance] recordsWithType:@"201"];
+    if(cacheArray) {
+        NSArray *arrayM = [TTVideo mj_objectArrayWithKeyValuesArray:cacheArray];
+        [self.videoArray addObjectsFromArray:arrayM];
+    }
+
 }
 
 #pragma mark 初始化TableView
@@ -179,6 +188,8 @@ static NSString * const VideoCell = @"VideoCell";
             NSArray *temArray = responseObject[@"data"][@"data"];
             max_time = responseObject[@"data"][@"max_time"];
             min_time = responseObject[@"data"][@"min_time"];
+            
+            [[CacheManager sharedInstance] saveRecords:@"201" sourceData:temArray];
             
             NSArray *arrayM = [TTVideo mj_objectArrayWithKeyValuesArray:temArray];
             NSMutableArray* insertArr = [NSMutableArray arrayWithArray:arrayM];
@@ -323,12 +334,12 @@ static NSString * const VideoCell = @"VideoCell";
     [self pushToVideoCommentViewControllerWithIndexPath:indexPath];
 }
 
--(NSMutableArray *)videoArray {
-    if (!_videoArray) {
-        _videoArray = [[NSMutableArray alloc] initWithCapacity:5];
-    }
-    return _videoArray;
-}
+//-(NSMutableArray *)videoArray {
+//    if (!_videoArray) {
+//        _videoArray = [[NSMutableArray alloc] initWithCapacity:5];
+//    }
+//    return _videoArray;
+//}
 
 - (void)shareThisNews:(TTVideo *)video {
     __weak typeof(self)weakSelf = self;
