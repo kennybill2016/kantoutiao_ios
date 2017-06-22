@@ -114,8 +114,9 @@ CGFloat const footViewHeight = 10;
 }
 
 - (void)setupBasic{
+    //F8676E
     self.userHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, -164, kScreenWidth, 164)];
-    self.userHeaderView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
+    self.userHeaderView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf8676e,0x444444,0xf8676e);
     [self.tableView addSubview:self.userHeaderView];
     
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
@@ -162,7 +163,7 @@ CGFloat const footViewHeight = 10;
 
 #pragma mark -UITableViewDataSource 返回tableView每一组有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -221,6 +222,8 @@ CGFloat const footViewHeight = 10;
     if (indexPath.row == 2) {
         cell.leftLabel.text = @"意见反馈";
     } else if(indexPath.row == 3) {
+        cell.leftLabel.text = @"给个好评";
+    } else if(indexPath.row == 4) {
         cell.leftLabel.text = @"关于";
     }
     return cell;
@@ -239,8 +242,18 @@ CGFloat const footViewHeight = 10;
     } else if (indexPath.section == 0 && indexPath.row == 2) {
         [self.navigationController pushViewController:[[SendFeedbackViewController alloc] init] animated:YES];
     } else if (indexPath.section == 0 && indexPath.row == 3) {
+        [self goAppStore];
+    } else if (indexPath.section == 0 && indexPath.row == 4) {
         [self.navigationController pushViewController:[[AppInfoViewController alloc] init] animated:YES];
     }
+    
+}
+
+- (void) goAppStore{
+    NSURL *url = [NSURL URLWithString:@"http://itunes.apple.com/app/id1251401972?mt=8"];
+    [[UIApplication sharedApplication] openURL:url];
+    self.view.userInteractionEnabled = YES;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
 }
 
 -(void)switchDidChange:(UISwitch *)theSwitch {
