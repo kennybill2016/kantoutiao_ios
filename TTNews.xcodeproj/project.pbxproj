@@ -1146,7 +1146,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = Q2W3DUF64F;
 				GCC_PREFIX_HEADER = TTNews/PrefixHeader.pch;
 				INFOPLIST_FILE = TTNews/Info.plist;
@@ -1154,8 +1154,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.rementoutiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bf2d4b48-496e-4053-86cc-0ee9782d95af";
-				PROVISIONING_PROFILE_SPECIFIER = rementoutiao_dev;
+				PROVISIONING_PROFILE = "b0e502ec-ff38-4301-953b-353bb2b125a0";
+				PROVISIONING_PROFILE_SPECIFIER = rementoutiao_appstore;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1167,7 +1167,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = Q2W3DUF64F;
 				GCC_PREFIX_HEADER = TTNews/PrefixHeader.pch;
 				INFOPLIST_FILE = TTNews/Info.plist;
@@ -1175,8 +1175,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.rementoutiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bf2d4b48-496e-4053-86cc-0ee9782d95af";
-				PROVISIONING_PROFILE_SPECIFIER = rementoutiao_dev;
+				PROVISIONING_PROFILE = "b0e502ec-ff38-4301-953b-353bb2b125a0";
+				PROVISIONING_PROFILE_SPECIFIER = rementoutiao_appstore;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
