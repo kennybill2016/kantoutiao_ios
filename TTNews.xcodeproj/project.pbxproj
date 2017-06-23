@@ -21,6 +21,8 @@
 		A775018F1EFCEF2200FAEC22 /* agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = A775018E1EFCEF2100FAEC22 /* agreement.html */; };
 		A77501961EFCF08A00FAEC22 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A77501941EFCF08A00FAEC22 /* WebViewController.m */; };
 		A77501971EFCF08A00FAEC22 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77501951EFCF08A00FAEC22 /* WebViewController.xib */; };
+		A775019A1EFCF56600FAEC22 /* MainVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A77501991EFCF56600FAEC22 /* MainVideoViewController.m */; };
+		A775019C1EFCF5C600FAEC22 /* VideoURLs.plist in Resources */ = {isa = PBXBuildFile; fileRef = A775019B1EFCF5C600FAEC22 /* VideoURLs.plist */; };
 		A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */; };
 		A7BF17781EEFFA910062DBBD /* NativeExpressAdViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */; };
 		A7BF17791EEFFA910062DBBD /* NativeExpressAdViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17771EEFFA910062DBBD /* NativeExpressAdViewCell.xib */; };
@@ -143,6 +145,9 @@
 		A77501931EFCF08A00FAEC22 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		A77501941EFCF08A00FAEC22 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		A77501951EFCF08A00FAEC22 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		A77501981EFCF56600FAEC22 /* MainVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVideoViewController.h; sourceTree = "<group>"; };
+		A77501991EFCF56600FAEC22 /* MainVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainVideoViewController.m; sourceTree = "<group>"; };
+		A775019B1EFCF5C600FAEC22 /* VideoURLs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VideoURLs.plist; sourceTree = "<group>"; };
 		A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7BF17751EEFFA910062DBBD /* NativeExpressAdViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeExpressAdViewCell.h; sourceTree = "<group>"; };
 		A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeExpressAdViewCell.m; sourceTree = "<group>"; };
@@ -407,6 +412,7 @@
 		EE4635C61CC72B8900DB248F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A775019B1EFCF5C600FAEC22 /* VideoURLs.plist */,
 				A775018E1EFCEF2100FAEC22 /* agreement.html */,
 				A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */,
 				EE4635D21CC72B8900DB248F /* Assets.xcassets */,
@@ -707,6 +713,8 @@
 			children = (
 				EE79B0F81CC8C435001029EF /* VideoViewController.h */,
 				EE79B0F91CC8C435001029EF /* VideoViewController.m */,
+				A77501981EFCF56600FAEC22 /* MainVideoViewController.h */,
+				A77501991EFCF56600FAEC22 /* MainVideoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -881,6 +889,7 @@
 				EE79B1111CC8C435001029EF /* EditUserInfoViewController.xib in Resources */,
 				A7DB5BF21EF2E4BB00FB4381 /* ZWHTMLJS.bundle in Resources */,
 				A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */,
+				A775019C1EFCF5C600FAEC22 /* VideoURLs.plist in Resources */,
 				EE4BEB5D1D5480E400B4A035 /* NewsURLs.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1000,6 +1009,7 @@
 				EE79B1201CC8C435001029EF /* SinglePictureNewsTableViewCell.m in Sources */,
 				A727D5971EE96A4A0048AD56 /* UIColor+HEX.m in Sources */,
 				EE79B1191CC8C435001029EF /* TTNormalNews.m in Sources */,
+				A775019A1EFCF56600FAEC22 /* MainVideoViewController.m in Sources */,
 				EE79B1401CC8C435001029EF /* VideoViewController.m in Sources */,
 				A727D5961EE96A4A0048AD56 /* UIImage+colorImage.m in Sources */,
 				EE4635C81CC72B8900DB248F /* main.m in Sources */,

@@ -36,7 +36,7 @@ static CGFloat buttonWidth = 65;
 - (void)setChannelNameArray:(NSArray *)channelNameArray {
     _channelNameArray = channelNameArray;
 //    CGFloat buttonWidth = self.scrollView.frame.size.width/5;
-    self.scrollView.contentSize = CGSizeMake(buttonWidth * channelNameArray.count, 0);
+    self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 0);
     for (NSInteger i = 0; i < channelNameArray.count; i++) {
         UIButton *button = [self createChannelButton];
         button.frame = CGRectMake(i*buttonWidth, 0, buttonWidth, self.frame.size.height);

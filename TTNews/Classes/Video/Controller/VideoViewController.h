@@ -10,4 +10,6 @@
 
 @interface VideoViewController : UITableViewController
 
+@property(nonatomic,copy) NSString *type;
+
 @end

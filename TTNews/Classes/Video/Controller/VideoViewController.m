@@ -89,7 +89,7 @@ static NSString * const VideoCell = @"VideoCell";
     min_time = @"0";
     
     _videoArray = [[NSMutableArray alloc] initWithCapacity:5];
-    NSArray *cacheArray = [[CacheManager sharedInstance] recordsWithType:@"201"];
+    NSArray *cacheArray = [[CacheManager sharedInstance] recordsWithType:self.type];
     if(cacheArray) {
         NSArray *arrayM = [TTVideo mj_objectArrayWithKeyValuesArray:cacheArray];
         [self.videoArray addObjectsFromArray:arrayM];
@@ -151,7 +151,7 @@ static NSString * const VideoCell = @"VideoCell";
 - (void)LoadNewData {
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                    @"", @"method",
-                                   @"201", @"cid",
+                                   self.type, @"cid",
                                    @"2",@"page",
                                    @"",@"min_time",
                                    @"4",@"limit",
@@ -167,7 +167,7 @@ static NSString * const VideoCell = @"VideoCell";
 - (void)LoadMoreData {
     
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                   @"201", @"cid",
+                                   self.type, @"cid",
                                    @"2",@"page",
                                    min_time,@"min_time",
                                    @"4",@"limit",
@@ -189,7 +189,7 @@ static NSString * const VideoCell = @"VideoCell";
             max_time = responseObject[@"data"][@"max_time"];
             min_time = responseObject[@"data"][@"min_time"];
             
-            [[CacheManager sharedInstance] saveRecords:@"201" sourceData:temArray];
+            [[CacheManager sharedInstance] saveRecords:self.type sourceData:temArray];
             
             NSArray *arrayM = [TTVideo mj_objectArrayWithKeyValuesArray:temArray];
             NSMutableArray* insertArr = [NSMutableArray arrayWithArray:arrayM];
