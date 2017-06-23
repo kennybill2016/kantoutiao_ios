@@ -18,6 +18,9 @@
 		A727D5AA1EEA58430048AD56 /* TextFieldCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5A91EEA58430048AD56 /* TextFieldCustom.m */; };
 		A727D5B31EEE7D190048AD56 /* UserLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5B21EEE7D190048AD56 /* UserLoginView.m */; };
 		A727D5B61EEE8A570048AD56 /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A727D5B51EEE8A570048AD56 /* UserInfoView.m */; };
+		A775018F1EFCEF2200FAEC22 /* agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = A775018E1EFCEF2100FAEC22 /* agreement.html */; };
+		A77501961EFCF08A00FAEC22 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A77501941EFCF08A00FAEC22 /* WebViewController.m */; };
+		A77501971EFCF08A00FAEC22 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77501951EFCF08A00FAEC22 /* WebViewController.xib */; };
 		A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */; };
 		A7BF17781EEFFA910062DBBD /* NativeExpressAdViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */; };
 		A7BF17791EEFFA910062DBBD /* NativeExpressAdViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17771EEFFA910062DBBD /* NativeExpressAdViewCell.xib */; };
@@ -136,6 +139,10 @@
 		A727D5B21EEE7D190048AD56 /* UserLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginView.m; sourceTree = "<group>"; };
 		A727D5B41EEE8A570048AD56 /* UserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
 		A727D5B51EEE8A570048AD56 /* UserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
+		A775018E1EFCEF2100FAEC22 /* agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = agreement.html; sourceTree = "<group>"; };
+		A77501931EFCF08A00FAEC22 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		A77501941EFCF08A00FAEC22 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		A77501951EFCF08A00FAEC22 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7BF17751EEFFA910062DBBD /* NativeExpressAdViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeExpressAdViewCell.h; sourceTree = "<group>"; };
 		A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeExpressAdViewCell.m; sourceTree = "<group>"; };
@@ -400,6 +407,7 @@
 		EE4635C61CC72B8900DB248F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A775018E1EFCEF2100FAEC22 /* agreement.html */,
 				A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */,
 				EE4635D21CC72B8900DB248F /* Assets.xcassets */,
 				EE4635D71CC72B8900DB248F /* Info.plist */,
@@ -448,6 +456,9 @@
 				A727D59A1EEA3CFC0048AD56 /* LoginViewController.h */,
 				A727D59B1EEA3CFC0048AD56 /* LoginViewController.m */,
 				A727D59C1EEA3CFC0048AD56 /* LoginViewController.xib */,
+				A77501931EFCF08A00FAEC22 /* WebViewController.h */,
+				A77501941EFCF08A00FAEC22 /* WebViewController.m */,
+				A77501951EFCF08A00FAEC22 /* WebViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -797,6 +808,7 @@
 				EE4635C11CC72B8900DB248F /* Resources */,
 				D0746D4D2D1D671E1655ECC8 /* [CP] Embed Pods Frameworks */,
 				0B0876AC7803C5E3CB9D2BA1 /* [CP] Copy Pods Resources */,
+				A775018D1EFCBD5900FAEC22 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -849,6 +861,7 @@
 				EE4635D31CC72B8900DB248F /* Assets.xcassets in Resources */,
 				EE79B14A1CC8C435001029EF /* VideoTableViewCell.xib in Resources */,
 				EE79B11B1CC8C435001029EF /* ChannelCollectionViewCell.xib in Resources */,
+				A77501971EFCF08A00FAEC22 /* WebViewController.xib in Resources */,
 				EE79B13D1CC8C435001029EF /* ShowBigPictureViewController.xib in Resources */,
 				EE79B1391CC8C435001029EF /* PictureCommentCell.xib in Resources */,
 				A727D59E1EEA3CFC0048AD56 /* LoginViewController.xib in Resources */,
@@ -860,6 +873,7 @@
 				EE79B1211CC8C435001029EF /* SinglePictureNewsTableViewCell.xib in Resources */,
 				EE79B13B1CC8C435001029EF /* PictureTableViewCell.xib in Resources */,
 				EEB3DFAA1D8F92920039ABF5 /* TopTextTableViewCell.xib in Resources */,
+				A775018F1EFCEF2200FAEC22 /* agreement.html in Resources */,
 				EE79B11D1CC8C435001029EF /* MultiPictureTableViewCell.xib in Resources */,
 				EE79B1481CC8C435001029EF /* VideoCommentCell.xib in Resources */,
 				EEB3DFA21D8F92010039ABF5 /* TopPictureTableViewCell.xib in Resources */,
@@ -903,6 +917,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		A775018D1EFCBD5900FAEC22 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SKIP_DEBUG_BUILDS=1 #在 Debug 模式下编译是否自动上传符号表: 0 上传, 1 不上传;\nSKIP_SIMULATOR_BUILDS=1 #在模拟器环境下编译是否自动上传符号表: 0 上传, 1 不上传;\nAPP_KEY=\"86876356259cf37d8e39aebe03e80c6f\" #请填写应用的 App Key;\nAPP_SECRET=\"aeff464f1a6f2cde7d9053b8efc9c4d1\" #请填写应用的 App Secret，可向应用拥有者索要;\nSCRIPT_SRC=$(find \"$PROJECT_DIR\" -name 'Bugtags_dsym_autoupload.sh' | head -1)\nif [ ! \"${SCRIPT_SRC}\" ]; then\necho \"Bugtags: err: script not found. Make sure that you're including 'Bugtags.bundle' in your project directory\"\nexit 1\nfi\nsource \"${SCRIPT_SRC}\"";
 		};
 		D0746D4D2D1D671E1655ECC8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1005,6 +1032,7 @@
 				EEB3DF9C1D8F913A0039ABF5 /* BigPictureTableViewCell.m in Sources */,
 				EE79B1311CC8C435001029EF /* TTJudgeNetworking.m in Sources */,
 				A7DB5BFD1EF2E62D00FB4381 /* UIView+ZWFrame.m in Sources */,
+				A77501961EFCF08A00FAEC22 /* WebViewController.m in Sources */,
 				EE8A193E1D5B46CE00BAE119 /* DisclosureCell.m in Sources */,
 				EEB3DF761D8ED3730039ABF5 /* SXNetworkTools.m in Sources */,
 			);
@@ -1108,16 +1136,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q2W3DUF64F;
 				GCC_PREFIX_HEADER = TTNews/PrefixHeader.pch;
 				INFOPLIST_FILE = TTNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.kantoutiao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.rementoutiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "174c21f3-13e3-4e28-94f0-15791f8300fa";
-				PROVISIONING_PROFILE_SPECIFIER = kantoutiao_appstore;
+				PROVISIONING_PROFILE = "bf2d4b48-496e-4053-86cc-0ee9782d95af";
+				PROVISIONING_PROFILE_SPECIFIER = rementoutiao_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1129,16 +1157,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q2W3DUF64F;
 				GCC_PREFIX_HEADER = TTNews/PrefixHeader.pch;
 				INFOPLIST_FILE = TTNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.kantoutiao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ljw.rementoutiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "174c21f3-13e3-4e28-94f0-15791f8300fa";
-				PROVISIONING_PROFILE_SPECIFIER = kantoutiao_appstore;
+				PROVISIONING_PROFILE = "bf2d4b48-496e-4053-86cc-0ee9782d95af";
+				PROVISIONING_PROFILE_SPECIFIER = rementoutiao_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

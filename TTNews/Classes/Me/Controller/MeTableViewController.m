@@ -27,6 +27,7 @@
 #import "LoginViewController.h"
 #import "UserLoginView.h"
 #import "UserInfoView.h"
+#import "WebViewController.h"
 
 
 static NSString *const SwitchCellIdentifier = @"SwitchCell";
@@ -34,7 +35,7 @@ static NSString *const TwoLabelCellIdentifier = @"TwoLabelCell";
 static NSString *const DisclosureCellIdentifier = @"DisclosureCell";
 static NSString *const UserLoginCellIdentifier = @"UserLoginCell";
 
-@interface MeTableViewController () <UserInfoCellDelegate,UIGestureRecognizerDelegate>
+@interface MeTableViewController () <UserInfoCellDelegate,UIGestureRecognizerDelegate,UserInfoViewDelegate>
 
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, weak) UISwitch *shakeCanChangeSkinSwitch;
@@ -129,6 +130,7 @@ CGFloat const footViewHeight = 10;
     
     self.headerUserView = [[UserInfoView alloc] initWithFrame:self.headerLoginView.frame];
     [self.userHeaderView addSubview:self.headerUserView];
+    self.headerUserView.delegate = self;
     
     [self refreshLoginStatus];
     
@@ -163,7 +165,7 @@ CGFloat const footViewHeight = 10;
 
 #pragma mark -UITableViewDataSource 返回tableView每一组有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -224,7 +226,9 @@ CGFloat const footViewHeight = 10;
     } else if(indexPath.row == 3) {
         cell.leftLabel.text = @"给个好评";
     } else if(indexPath.row == 4) {
-        cell.leftLabel.text = @"关于";
+        cell.leftLabel.text = @"隐私协议";
+    } else if(indexPath.row == 5) {
+        cell.leftLabel.text = @"关于我们";
     }
     return cell;
 }
@@ -244,6 +248,13 @@ CGFloat const footViewHeight = 10;
     } else if (indexPath.section == 0 && indexPath.row == 3) {
         [self goAppStore];
     } else if (indexPath.section == 0 && indexPath.row == 4) {
+        WebViewController *vc = [[WebViewController alloc] init];
+        vc.title = @"隐私协议";
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"agreement" ofType:@"html"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:filePath]];
+        vc.request = request;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.section == 0 && indexPath.row == 5) {
         [self.navigationController pushViewController:[[AppInfoViewController alloc] init] animated:YES];
     }
     
@@ -354,6 +365,19 @@ CGFloat const footViewHeight = 10;
         return NO;
     else
         return YES;
+}
+
+- (void)tapUserBtn {
+    UIAlertController *controller =  [UIAlertController alertControllerWithTitle:@"您确认要退出登录吗？" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [controller addAction:[UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [[UserManager sharedUserManager] logout];
+    }]];
+    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)tapMoneyBtn {
+    
 }
 
 @end

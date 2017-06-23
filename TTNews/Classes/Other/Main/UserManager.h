@@ -29,4 +29,6 @@
 - (void)setUserInfoFromMobile:(NSString*)mobile;
 - (void)setUserInfo:(NSString*)userName iconUrl:(NSString*)url uid:(NSString*)uid ;
 
+- (void)logout;
+
 @end

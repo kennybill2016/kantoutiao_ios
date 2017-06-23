@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>热门头条</string>
 	<key>CFBundleExecutable</key>
-	<string>RemenTouTiao</string>
+	<string>ReMenTouTiao</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -40,6 +40,26 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wx16907b0df42cf132</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.ljw.qqopen2</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tencent1106244252</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.ljw.rementoutiao</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>rementoutiao</string>
 			</array>
 		</dict>
 	</array>

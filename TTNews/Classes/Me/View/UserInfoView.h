@@ -10,7 +10,8 @@
 
 @protocol UserInfoViewDelegate <NSObject>
 
-//- (void)tapMoneyBtn;
+- (void)tapUserBtn;
+- (void)tapMoneyBtn;
 
 @end
 

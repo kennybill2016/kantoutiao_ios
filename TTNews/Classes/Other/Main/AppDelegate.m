@@ -41,11 +41,11 @@
              withSecret:@"88be18ee2217aa8c3e721a8ed1626f97"];
     [SMSSDK enableAppContactFriends:NO];
     
-    [[UMSocialManager defaultManager] openLog:YES];
+//    [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"59255cf0aed1796e04001ae6"];
     
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx16907b0df42cf132" appSecret:@"16b46a81b2c70b6c97eceb4a3d69d71f" redirectURL:@"http://www.kuaikanpian.com"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106207188"/*设置QQ平台的appID*/  appSecret:@"ghlLP7dNh7WZJizp" redirectURL:@"http://www.kuaikanpian.com"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106244252"/*设置QQ平台的appID*/  appSecret:@"Q6Ds5iBERFZVxc9q" redirectURL:@"http://www.kuaikanpian.com"];
 //    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"http://www.kuaikanpian.com"];
     return YES;
 }

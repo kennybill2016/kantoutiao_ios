@@ -244,7 +244,10 @@
 
 #pragma mark -UIWebViewDelegate-将要加载Webview
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    if ([self.htmlSDK zw_handlePreviewImageRequest:request]) {
+    
+    if([self.navType isEqualToString:@"2"] && self.url.length>0) {
+    }
+    else if ([self.htmlSDK zw_handlePreviewImageRequest:request]) {
         return NO;
     }
     return YES;
@@ -268,11 +271,15 @@
     
 //    NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 //    NSLog(@"title=%@",title);
-    self.htmlSDK = [ZWHTMLSDK zw_loadBridgeJSWebview:webView];
-    self.htmlSDK.blockHandlePreview = ^(NSArray *allImageArray, NSInteger index) {
-        ZWPreviewImageView *showView = [ZWPreviewImageView showImageWithArray:allImageArray withShowIndex:index];
-        [showView showRootWindow];
-    };
+    if([self.navType isEqualToString:@"2"] && self.url.length>0) {
+    }
+    else {
+        self.htmlSDK = [ZWHTMLSDK zw_loadBridgeJSWebview:webView];
+        self.htmlSDK.blockHandlePreview = ^(NSArray *allImageArray, NSInteger index) {
+            ZWPreviewImageView *showView = [ZWPreviewImageView showImageWithArray:allImageArray withShowIndex:index];
+            [showView showRootWindow];
+        };
+    }
     [self requestAdMob];
 }
 

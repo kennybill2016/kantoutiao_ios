@@ -52,6 +52,7 @@ NSString * const kUserIconUrlKey = @"UserIconUrlKey";
     self.iconurl=url;
     self.uid=uid;
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil userInfo:nil];
     [self saveUserInfo];
 }
 
@@ -63,6 +64,9 @@ NSString * const kUserIconUrlKey = @"UserIconUrlKey";
     self.username=nil;
     self.iconurl=nil;
     self.uid=nil;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLogoutNotification object:nil userInfo:nil];
+
     [self saveUserInfo];
 }
 

@@ -49,6 +49,11 @@
     avatarImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [self addSubview:avatarImageView];
     
+    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleUserImageTap:)];
+    [avatarImageView addGestureRecognizer:tapGest];
+    avatarImageView.userInteractionEnabled = YES;
+    
+    
     CGRect rectName = CGRectMake(0, avatarImageView.frame.origin.y+avatarImageView.frame.size.height+10, kScreenWidth, 20);
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:rectName];
     self.nameLabel = nameLabel;
@@ -87,6 +92,13 @@
     self.nameLabel.text = [UserManager sharedUserManager].username;
     
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:[UserManager sharedUserManager].iconurl?:@""] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageTransformAnimatedImage];
+}
+
+- (void)handleUserImageTap:(UIGestureRecognizer *)gesture
+{
+    if([self.delegate respondsToSelector:@selector(tapUserBtn)]) {
+        [self.delegate tapUserBtn];
+    }
 }
 
 @end

@@ -318,11 +318,6 @@ static NSString * const VideoCell = @"VideoCell";
 #pragma mark VideoTableViewCell的代理方法
 -(void)clickMoreButton:(TTVideo *)video {
     [self shareThisNews:video];
-//    UIAlertController *controller =  [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-//    [controller addAction:[UIAlertAction actionWithTitle:@"收藏" style:UIAlertActionStyleDefault handler:nil]];
-//    [controller addAction:[UIAlertAction actionWithTitle:@"举报" style:UIAlertActionStyleDefault handler:nil]];
-//    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-//    [self presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma mark VideoTableViewCell的代理方法
