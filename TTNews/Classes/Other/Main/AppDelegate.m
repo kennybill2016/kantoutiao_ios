@@ -44,7 +44,7 @@
 //    [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"59255cf0aed1796e04001ae6"];
     
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx16907b0df42cf132" appSecret:@"16b46a81b2c70b6c97eceb4a3d69d71f" redirectURL:@"http://www.kuaikanpian.com"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx8fde319206eba8d4" appSecret:@"d27293aa1109e4d8619c1943ceffdefb" redirectURL:@"http://www.kuaikanpian.com"];
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106244252"/*设置QQ平台的appID*/  appSecret:@"Q6Ds5iBERFZVxc9q" redirectURL:@"http://www.kuaikanpian.com"];
 //    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"http://www.kuaikanpian.com"];
     return YES;
