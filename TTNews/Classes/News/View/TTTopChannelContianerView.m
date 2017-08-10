@@ -8,6 +8,8 @@
 
 #import "TTTopChannelContianerView.h"
 #import <DKNightVersion.h>
+#import "WyhChannelModel.h"
+#import "UIColor+HEX.h"
 
 @interface TTTopChannelContianerView()
 
@@ -35,22 +37,36 @@ static CGFloat buttonWidth = 65;
 #pragma mark channelNameArray的setter方法，channelNameArray
 - (void)setChannelNameArray:(NSArray *)channelNameArray {
     _channelNameArray = channelNameArray;
+    
+    for (NSInteger i = 0; i < _buttonArray.count; i++) {
+        UIButton* item = _buttonArray[i];
+        if(item) {
+            [item removeFromSuperview];
+        }
+    }
+    [_buttonArray removeAllObjects];
+    
 //    CGFloat buttonWidth = self.scrollView.frame.size.width/5;
     self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 0);
     for (NSInteger i = 0; i < channelNameArray.count; i++) {
         UIButton *button = [self createChannelButton];
         button.frame = CGRectMake(i*buttonWidth, 0, buttonWidth, self.frame.size.height);
-        [button setTitle:channelNameArray[i] forState:UIControlStateNormal];
+        WyhChannelModel *model = channelNameArray[i];
+        [button setTitle:model.channel_name forState:UIControlStateNormal];
         [self.scrollView addSubview:button];
+        [_buttonArray addObject:button];
     }
     
     //默认选中第三个channelButton,因为scrollView的subview含有indicatorView，所以第三个按钮对应scrollView的subview的index是3
-    [self clickChannelButton:self.scrollView.subviews[1]];
+    if(_buttonArray.count>0) {
+        [self clickChannelButton:self.scrollView.subviews[1]];
+    }
 }
 
 #pragma mark 初始化子控件
 - (void)initialization {
-    self.alpha = 0.9;
+//    self.alpha = 0.9;
+    [self setBackgroundColor:[UIColor parseColorFromRGB:@"#f0f0f0"]];
     
     //初始化scrollView
     UIScrollView *scrollView = [self createScrollView];
@@ -66,33 +82,39 @@ static CGFloat buttonWidth = 65;
     [self.scrollView addSubview:self.indicatorView];
     
     //初始化右侧的加号button
-//    UIButton *button = [self createTheAddButton];
-//    self.addButton = button;
-//    [self addSubview:self.addButton];
+    UIButton *button = [self createTheAddButton];
+    self.addButton = button;
+    [self addSubview:self.addButton];
     
+    _buttonArray = [NSMutableArray new];
+}
+
+- (void)showAddBtn:(BOOL)show {
+    self.addButton.hidden = !show;
 }
 
 #pragma mark 创建容纳channelButton的ScrollView
 - (UIScrollView *)createScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     self.scrollView = scrollView;
-    scrollView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, self.frame.size.height);
+    scrollView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width-kAddChannelWidth-10, self.frame.size.height);
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
+    [scrollView setBackgroundColor:[UIColor parseColorFromRGB:@"#f0f0f0"]];
     return scrollView;
 }
 
-//#pragma mark 创建右侧的加号Button
-//- (UIButton *)createTheAddButton {
-//
-//    UIButton *addChannelButton =[UIButton buttonWithType:UIButtonTypeCustom];
-//    addChannelButton.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x343434, 0xfafafa);
-//    self.addButton = addChannelButton;
-//    [addChannelButton setImage:[UIImage imageNamed:@"home_header_add_slim"] forState:UIControlStateNormal];
-//    addChannelButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - kAddChannelWidth, 0, kAddChannelWidth, kAddChannelWidth);
-//    [addChannelButton addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
-//    return addChannelButton;
-//}
+#pragma mark 创建右侧的加号Button
+- (UIButton *)createTheAddButton {
+
+    UIButton *addChannelButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    addChannelButton.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x343434, 0xfafafa);
+    self.addButton = addChannelButton;
+    [addChannelButton setImage:[UIImage imageNamed:@"home_header_add_slim"] forState:UIControlStateNormal];
+    addChannelButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - kAddChannelWidth, 0, kAddChannelWidth, kAddChannelWidth);
+    [addChannelButton addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
+    return addChannelButton;
+}
 
 #pragma mark 初始化scrollView右侧的显示阴影效果的imageView
 - (UIView *)createSliderView {
@@ -114,7 +136,7 @@ static CGFloat buttonWidth = 65;
 #pragma mark 创建ChannelButton
 - (UIButton *)createChannelButton{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     button.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x949494, 0xfafafa);
     [button setTitleColor:[UIColor colorWithRed:243/255.0 green:75/255.0 blue:80/255.0 alpha:1.0] forState:UIControlStateDisabled];
     [button.titleLabel setFont:[UIFont systemFontOfSize:kTitleLabelNorimalFont]];
@@ -175,12 +197,12 @@ static CGFloat buttonWidth = 65;
     self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width - self.scrollView.frame.size.width/5, 0);
 }
 
-//#pragma mark 点击addButton,展示或隐藏添加channel的View
-//- (void)clickAddButton:(UIButton *)button{
-//    if ([self.delegate respondsToSelector:@selector(showOrHiddenAddChannelsCollectionView:)]) {
-//        [self.delegate showOrHiddenAddChannelsCollectionView:button];
-//    }
-//}
+#pragma mark 点击addButton,展示或隐藏添加channel的View
+- (void)clickAddButton:(UIButton *)button{
+    if ([self.delegate respondsToSelector:@selector(showOrHiddenAddChannelsCollectionView:)]) {
+        [self.delegate showOrHiddenAddChannelsCollectionView:button];
+    }
+}
 
 #pragma mark 添加新闻频道：增加scrollView的contensize，然后在最后添加一个channelButton
 - (void)addAChannelButtonWithChannelName:(NSString *)channelName {
@@ -193,19 +215,22 @@ static CGFloat buttonWidth = 65;
 }
 
 
+- (void)refreshUI {
+    
+}
 
 #pragma mark
 
-//- (void)didShowEditChannelView:(BOOL)value {
-//    if (value == YES) {//显示编辑新闻频道View
-//        self.addButton.selected = YES;
-//        self.indicatorView.hidden = YES;
-//        self.scrollView.hidden = YES;
-//    } else {//显示编辑新闻频道View
-//        self.addButton.selected = NO;
-//        self.indicatorView.hidden = NO;
-//        self.scrollView.hidden = NO;
-//    }
-//}
+- (void)didShowEditChannelView:(BOOL)value {
+    if (value == YES) {//显示编辑新闻频道View
+        self.addButton.selected = YES;
+        self.indicatorView.hidden = YES;
+        self.scrollView.hidden = YES;
+    } else {//显示编辑新闻频道View
+        self.addButton.selected = NO;
+        self.indicatorView.hidden = NO;
+        self.scrollView.hidden = NO;
+    }
+}
 
 @end

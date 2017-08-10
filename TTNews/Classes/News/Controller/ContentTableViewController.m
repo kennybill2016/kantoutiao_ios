@@ -95,6 +95,10 @@ static NSString * const nativeExpressAdViewCell = @"NativeExpressAdViewCell";
     [SVProgressHUD dismiss];
 }
 
+- (void)dealloc {
+    int k = 1;
+}
+
 #pragma mark --private Method--设置tableView
 -(void)setupBasic {
     self.tableView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);

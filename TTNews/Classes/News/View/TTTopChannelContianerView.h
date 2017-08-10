@@ -24,11 +24,17 @@
 - (void)selectChannelButtonWithIndex:(NSInteger)index;
 - (void)deleteChannelButtonWithIndex:(NSInteger)index;
 
-//- (void)didShowEditChannelView:(BOOL)value;
+- (void)didShowEditChannelView:(BOOL)value;
+
+- (void)showAddBtn:(BOOL)show;
+
+- (void)refreshUI;
+
+@property (nonatomic, strong) NSMutableArray *buttonArray;
 
 @property (nonatomic, strong) NSArray *channelNameArray;
 @property (nonatomic, weak) UIScrollView *scrollView;
-//@property (nonatomic, weak) UIButton *addButton;
+@property (nonatomic, weak) UIButton *addButton;
 @property (nonatomic, weak) id<TTTopChannelContianerViewDelegate> delegate;
 
 @end

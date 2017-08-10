@@ -18,6 +18,7 @@
 #import "ChannelsSectionHeaderView.h"
 #import "TTNormalNews.h"
 #import <DKNightVersion.h>
+#import "WyhChannelModel.h"
 
 @interface MainVideoViewController()<UIScrollViewDelegate,TTTopChannelContianerViewDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic, strong) NSMutableArray *currentChannelsArray;
@@ -33,19 +34,13 @@ static NSString * const collectionViewSectionHeaderID = @"ChannelCollectionHeade
 
 @implementation MainVideoViewController
 
-- (NSArray *)arrayLists
-{
-    if (_arrayLists == nil) {
-        _arrayLists = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"VideoURLs.plist" ofType:nil]];
-    }
-    return _arrayLists;
-}
 -(void)viewDidLoad {
     self.automaticallyAdjustsScrollViewInsets = NO;
     //    self.isCellShouldShake = NO;
     self.view.dk_backgroundColorPicker = DKColorPickerWithRGB(0xf0f0f0, 0x000000, 0xfafafa);
     self.navigationController.navigationBar.dk_barTintColorPicker = DKColorPickerWithRGB(0xfa5054,0x444444,0xfa5054);
     
+    [self initChannel];
     [self setupTopContianerView];
     [self setupChildController];
     [self setupContentScrollView];
@@ -82,6 +77,7 @@ static NSString * const collectionViewSectionHeaderID = @"ChannelCollectionHeade
     topContianerView.channelNameArray = self.currentChannelsArray;
     self.topContianerView  = topContianerView;
     topContianerView.delegate = self;
+    [topContianerView showAddBtn:NO];
     [self.view addSubview:topContianerView];
 }
 
@@ -148,13 +144,29 @@ static NSString * const collectionViewSectionHeaderID = @"ChannelCollectionHeade
 }
 
 #pragma mark --private Method--存储更新后的currentChannelsArray到偏好设置中
--(NSMutableArray *)currentChannelsArray {
-    if (!_currentChannelsArray) {
-        if (!_currentChannelsArray) {
-            _currentChannelsArray = [NSMutableArray arrayWithObjects:@"娱乐",@"社会",@"搞笑",nil];
+
+- (void)initChannel {
+    _currentChannelsArray = [NSMutableArray new];
+
+    _arrayLists = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"VideoURLs.plist" ofType:nil]];
+    
+    for (int i = 0; i < _arrayLists.count; i++) {
+        WyhChannelModel *model = [WyhChannelModel new];
+        NSDictionary* dict = _arrayLists[i];
+        NSString* type;
+        if ([[dict objectForKey:@"type"] respondsToSelector:@selector(stringValue)]) {
+            type = [[dict objectForKey:@"type"] stringValue];
         }
+        else {
+            type = [NSString stringWithString:[dict objectForKey:@"type"]];
+        }
+        model.isHot = NO;
+        model.isEnable = NO;
+        model.type = type;
+        model.isTop = [dict[@"isTop"] boolValue];
+        model.channel_name = dict[@"title"];
+        [_currentChannelsArray addObject:model];
     }
-    return _currentChannelsArray;
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer

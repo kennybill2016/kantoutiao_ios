@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSString *channelId;
 @property (nonatomic, copy) NSString *channelName;
 @property(nonatomic,copy) NSString *type;
+@property (nonatomic,assign) BOOL show;
 @property (nonatomic,assign) NSInteger index;
 
 @end

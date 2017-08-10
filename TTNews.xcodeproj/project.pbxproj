@@ -26,6 +26,12 @@
 		A7BF17741EEFE2460062DBBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */; };
 		A7BF17781EEFFA910062DBBD /* NativeExpressAdViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */; };
 		A7BF17791EEFFA910062DBBD /* NativeExpressAdViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7BF17771EEFFA910062DBBD /* NativeExpressAdViewCell.xib */; };
+		A7D73BA91F389D9100B559AB /* WyhChannelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D73BA11F389D9100B559AB /* WyhChannelManager.m */; };
+		A7D73BAA1F389D9100B559AB /* WyhChannelManagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D73BA31F389D9100B559AB /* WyhChannelManagerView.m */; };
+		A7D73BAB1F389D9100B559AB /* WyhChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D73BA51F389D9100B559AB /* WyhChannelModel.m */; };
+		A7D73BAC1F389D9100B559AB /* WyhChannelView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D73BA71F389D9100B559AB /* WyhChannelView.m */; };
+		A7D73BAF1F38A17A00B559AB /* ChannelManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D73BAE1F38A17A00B559AB /* ChannelManagerViewController.m */; };
+		A7D73BB11F38A28000B559AB /* ChannelList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7D73BB01F38A28000B559AB /* ChannelList.plist */; };
 		A7DB5BF21EF2E4BB00FB4381 /* ZWHTMLJS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7DB5BED1EF2E4BB00FB4381 /* ZWHTMLJS.bundle */; };
 		A7DB5BF31EF2E4BB00FB4381 /* ZWHTMLOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DB5BEF1EF2E4BB00FB4381 /* ZWHTMLOption.m */; };
 		A7DB5BF41EF2E4BB00FB4381 /* ZWHTMLSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DB5BF11EF2E4BB00FB4381 /* ZWHTMLSDK.m */; };
@@ -152,6 +158,17 @@
 		A7BF17751EEFFA910062DBBD /* NativeExpressAdViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeExpressAdViewCell.h; sourceTree = "<group>"; };
 		A7BF17761EEFFA910062DBBD /* NativeExpressAdViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeExpressAdViewCell.m; sourceTree = "<group>"; };
 		A7BF17771EEFFA910062DBBD /* NativeExpressAdViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeExpressAdViewCell.xib; sourceTree = "<group>"; };
+		A7D73BA01F389D9100B559AB /* WyhChannelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WyhChannelManager.h; sourceTree = "<group>"; };
+		A7D73BA11F389D9100B559AB /* WyhChannelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WyhChannelManager.m; sourceTree = "<group>"; };
+		A7D73BA21F389D9100B559AB /* WyhChannelManagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WyhChannelManagerView.h; sourceTree = "<group>"; };
+		A7D73BA31F389D9100B559AB /* WyhChannelManagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WyhChannelManagerView.m; sourceTree = "<group>"; };
+		A7D73BA41F389D9100B559AB /* WyhChannelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WyhChannelModel.h; sourceTree = "<group>"; };
+		A7D73BA51F389D9100B559AB /* WyhChannelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WyhChannelModel.m; sourceTree = "<group>"; };
+		A7D73BA61F389D9100B559AB /* WyhChannelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WyhChannelView.h; sourceTree = "<group>"; };
+		A7D73BA71F389D9100B559AB /* WyhChannelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WyhChannelView.m; sourceTree = "<group>"; };
+		A7D73BAD1F38A17A00B559AB /* ChannelManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelManagerViewController.h; sourceTree = "<group>"; };
+		A7D73BAE1F38A17A00B559AB /* ChannelManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelManagerViewController.m; sourceTree = "<group>"; };
+		A7D73BB01F38A28000B559AB /* ChannelList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChannelList.plist; sourceTree = "<group>"; };
 		A7DB5BED1EF2E4BB00FB4381 /* ZWHTMLJS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZWHTMLJS.bundle; sourceTree = "<group>"; };
 		A7DB5BEE1EF2E4BB00FB4381 /* ZWHTMLOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWHTMLOption.h; sourceTree = "<group>"; };
 		A7DB5BEF1EF2E4BB00FB4381 /* ZWHTMLOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWHTMLOption.m; sourceTree = "<group>"; };
@@ -338,6 +355,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A7D73B9E1F389D9100B559AB /* WyhChannelManager */ = {
+			isa = PBXGroup;
+			children = (
+				A7D73BA01F389D9100B559AB /* WyhChannelManager.h */,
+				A7D73BA11F389D9100B559AB /* WyhChannelManager.m */,
+				A7D73BA21F389D9100B559AB /* WyhChannelManagerView.h */,
+				A7D73BA31F389D9100B559AB /* WyhChannelManagerView.m */,
+				A7D73BA41F389D9100B559AB /* WyhChannelModel.h */,
+				A7D73BA51F389D9100B559AB /* WyhChannelModel.m */,
+				A7D73BA61F389D9100B559AB /* WyhChannelView.h */,
+				A7D73BA71F389D9100B559AB /* WyhChannelView.m */,
+			);
+			path = WyhChannelManager;
+			sourceTree = "<group>";
+		};
 		A7DB5BEC1EF2E4BB00FB4381 /* ZWHTMLImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +444,7 @@
 		EE4635C61CC72B8900DB248F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A7D73BB01F38A28000B559AB /* ChannelList.plist */,
 				A775019B1EFCF5C600FAEC22 /* VideoURLs.plist */,
 				A775018E1EFCEF2100FAEC22 /* agreement.html */,
 				A7BF17731EEFE2450062DBBD /* GoogleService-Info.plist */,
@@ -519,6 +552,8 @@
 				EE79B0A01CC8C435001029EF /* DetailViewController.m */,
 				EE79B0A31CC8C435001029EF /* ShowMultiPictureViewController.h */,
 				EE79B0A41CC8C435001029EF /* ShowMultiPictureViewController.m */,
+				A7D73BAD1F38A17A00B559AB /* ChannelManagerViewController.h */,
+				A7D73BAE1F38A17A00B559AB /* ChannelManagerViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -553,6 +588,7 @@
 		EE79B0B71CC8C435001029EF /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A7D73B9E1F389D9100B559AB /* WyhChannelManager */,
 				A7F6D2261EF3C4F000D55D80 /* Tools */,
 				A7DB5BEC1EF2E4BB00FB4381 /* ZWHTMLImage */,
 				EE79B0B81CC8C435001029EF /* Category */,
@@ -876,6 +912,7 @@
 				EE79B1461CC8C435001029EF /* VideoPlayView.xib in Resources */,
 				EE79B11F1CC8C435001029EF /* NoPictureNewsTableViewCell.xib in Resources */,
 				A7BF17791EEFFA910062DBBD /* NativeExpressAdViewCell.xib in Resources */,
+				A7D73BB11F38A28000B559AB /* ChannelList.plist in Resources */,
 				EE79B10F1CC8C435001029EF /* AppInfoViewController.xib in Resources */,
 				EEB3DF9D1D8F913A0039ABF5 /* BigPictureTableViewCell.xib in Resources */,
 				EE79B1211CC8C435001029EF /* SinglePictureNewsTableViewCell.xib in Resources */,
@@ -964,6 +1001,7 @@
 			files = (
 				EEB3DF6F1D8ED0130039ABF5 /* SXNewsEntity.m in Sources */,
 				EE79B1351CC8C435001029EF /* TTPicture.m in Sources */,
+				A7D73BAA1F389D9100B559AB /* WyhChannelManagerView.m in Sources */,
 				EE79B1381CC8C435001029EF /* PictureCommentCell.m in Sources */,
 				EE8A194C1D5C476C00BAE119 /* TTNetworkManager.m in Sources */,
 				A7DB5BF31EF2E4BB00FB4381 /* ZWHTMLOption.m in Sources */,
@@ -1001,6 +1039,7 @@
 				A7F6D22A1EF3C4F000D55D80 /* GTMBase64.m in Sources */,
 				EE79B12F1CC8C435001029EF /* TTTabBarController.m in Sources */,
 				EE3A071E1CDA1DAD0024C37A /* ContentTableViewController.m in Sources */,
+				A7D73BAC1F389D9100B559AB /* WyhChannelView.m in Sources */,
 				EE79B1251CC8C435001029EF /* UIImage+Extension.m in Sources */,
 				EE79B11E1CC8C435001029EF /* NoPictureNewsTableViewCell.m in Sources */,
 				EE79B1471CC8C435001029EF /* VideoCommentCell.m in Sources */,
@@ -1009,6 +1048,7 @@
 				EE79B1201CC8C435001029EF /* SinglePictureNewsTableViewCell.m in Sources */,
 				A727D5971EE96A4A0048AD56 /* UIColor+HEX.m in Sources */,
 				EE79B1191CC8C435001029EF /* TTNormalNews.m in Sources */,
+				A7D73BAB1F389D9100B559AB /* WyhChannelModel.m in Sources */,
 				A775019A1EFCF56600FAEC22 /* MainVideoViewController.m in Sources */,
 				EE79B1401CC8C435001029EF /* VideoViewController.m in Sources */,
 				A727D5961EE96A4A0048AD56 /* UIImage+colorImage.m in Sources */,
@@ -1019,6 +1059,7 @@
 				EE79B11C1CC8C435001029EF /* MultiPictureTableViewCell.m in Sources */,
 				A727D59D1EEA3CFC0048AD56 /* LoginViewController.m in Sources */,
 				EEB3DFA11D8F92010039ABF5 /* TopPictureTableViewCell.m in Sources */,
+				A7D73BAF1F38A17A00B559AB /* ChannelManagerViewController.m in Sources */,
 				EE79B1261CC8C435001029EF /* UIImageView+Extension.m in Sources */,
 				A7F6D2221EF3C33800D55D80 /* CacheManager.m in Sources */,
 				A727D5A41EEA48B10048AD56 /* UITextField+Bounds.m in Sources */,
@@ -1044,6 +1085,7 @@
 				A7DB5BFD1EF2E62D00FB4381 /* UIView+ZWFrame.m in Sources */,
 				A77501961EFCF08A00FAEC22 /* WebViewController.m in Sources */,
 				EE8A193E1D5B46CE00BAE119 /* DisclosureCell.m in Sources */,
+				A7D73BA91F389D9100B559AB /* WyhChannelManager.m in Sources */,
 				EEB3DF761D8ED3730039ABF5 /* SXNetworkTools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
